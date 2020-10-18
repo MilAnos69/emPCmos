@@ -48,7 +48,7 @@ class InsertVendedores : Fragment() {
             ) {
                 if (password.length >= 6) {
                     if (password == confirmPassword) {
-                        Toast.makeText(activity, "RR", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, "Registrado", Toast.LENGTH_SHORT).show()
 
                         val db = FirebaseFirestore.getInstance()
                         val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()

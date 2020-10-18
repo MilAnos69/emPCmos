@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.empcmos"
-        minSdkVersion 19
+        minSdkVersion 19master
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
