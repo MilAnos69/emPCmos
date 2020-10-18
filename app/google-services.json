@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "866058002632",
+    "firebase_url": "https://empcmosbase.firebaseio.com",
+    "project_id": "empcmosbase",
+    "storage_bucket": "empcmosbase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866058002632:android:0ea951ada1917006cc05fd",
+        "android_client_info": {
+          "package_name": "com.example.empcmos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866058002632-d44kche5ru948e1e9hdokbue3cgdlnqg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.empcmos",
+            "certificate_hash": "1684361261ad159b82ed895ea67d1c369fdea0ee"
+          }
+        },
+        {
+          "client_id": "866058002632-3hbm3tca1t8otoipmab349bjm0vo14r0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgQNnAlcVPcAC2p8WcSoAMMkfoqLbYKs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "866058002632-3hbm3tca1t8otoipmab349bjm0vo14r0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

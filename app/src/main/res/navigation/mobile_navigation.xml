@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/listUsers">
+
+    <fragment
+        android:id="@+id/nav_home_second"
+        android:name="com.example.empcmos.ui.home.HomeSecondFragment"
+        android:label="@string/home_second"
+        tools:layout="@layout/fragment_home_second">
+
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_nav_home_second_to_listUsers"
+            app:destination="@id/listUsers" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.empcmos.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/insertUsers"
+        android:name="com.example.empcmos.InsertUsers"
+        android:label="Registro"
+        tools:layout="@layout/fragment_insert_users" />
+    <fragment
+        android:id="@+id/insertVendedores"
+        android:name="com.example.empcmos.InsertVendedores"
+        android:label="Registro"
+        tools:layout="@layout/fragment_vendedores" />
+    <fragment
+        android:id="@+id/listUsers"
+        android:name="com.example.empcmos.listUsers"
+        android:label="Lista Usuarios"
+        tools:layout="@layout/fragment_list_users" />
+</navigation>
