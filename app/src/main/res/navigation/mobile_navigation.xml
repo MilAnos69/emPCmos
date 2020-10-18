@@ -6,20 +6,6 @@
     app:startDestination="@id/listarProductos">
 
     <fragment
-        android:id="@+id/nav_home_second"
-        android:name="com.example.empcmos.ui.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
-
-        <argument
-            android:name="myArg"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_nav_home_second_to_listUsers"
-            app:destination="@id/listUsers" />
-    </fragment>
-
-    <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.empcmos.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"

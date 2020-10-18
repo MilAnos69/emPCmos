@@ -1,28 +1,69 @@
 package com.example.empcmos.ui
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.example.empcmos.AdapterProducto
+import com.example.empcmos.Producto
 import com.example.empcmos.R
 import com.example.empcmos.ui.Modelo.EUsuarios
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.usuario.view.*
 
-class UsuarioAdapter(private val mContext: Context, private val LV_Usuarios: List<EUsuarios>) : ArrayAdapter<EUsuarios>(mContext, 0, LV_Usuarios) {
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val layout = LayoutInflater.from(mContext).inflate(R.layout.usuario, parent, false)
+class UsuarioAdapter(mContext: Context?, listaUsuario: ArrayList<EUsuarios>) : RecyclerView.Adapter<UsuarioAdapter.ViewHolderU>(), View.OnClickListener  {
+    var inglaterr : LayoutInflater
 
-        val user = LV_Usuarios[position]
+    var Items = ArrayList<EUsuarios>()
 
-        var db = FirebaseFirestore.getInstance()
+    lateinit var listener : View.OnClickListener
+
+    init {
+        this.inglaterr = LayoutInflater.from(mContext)
+        this.Items = listaUsuario
+    }
+
+    class ViewHolderU(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        var usuario : TextView
+        var nombre : TextView
 
 
-        layout.name.text = user.nombre + user.apellido
-        layout.userName.text = user.usuario
+        init {
+            usuario = itemView.findViewById(R.id.userName)
+            nombre = itemView.findViewById(R.id.name)
+        }
 
-        return layout
+    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderU {
+        var view : View =  inglaterr.inflate(R.layout.usuario, parent, false)
+        view.setOnClickListener(this)
+        return ViewHolderU(view)
+    }
+
+    override fun getItemCount(): Int {
+        return Items.size
+    }
+
+
+    fun setOnClickListener(listener : View.OnClickListener){
+        this.listener = listener
+    }
+
+    override fun onClick(v: View?) {
+        if (listener!=null){
+            listener.onClick(v)
+        }
+    }
+
+    override fun onBindViewHolder(holder: UsuarioAdapter.ViewHolderU , position: Int) {
+        var usuario : String = Items.get(position).usuario
+        var nombre : String = Items.get(position).nombre
+        holder.usuario.setText(usuario)
+        holder.nombre.setText(nombre)
     }
 }

@@ -7,51 +7,55 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.empcmos.ui.Modelo.EUsuarios
 import com.example.empcmos.ui.UsuarioAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_list_users.*
 
-
-/**
- * A simple [Fragment] subclass.
- */
 class listUsers : Fragment() {
 
-    //private val db = FirebaseFirestore.getInstance()
-    //private lateinit var listUsuarios: ListView
+    private val db = FirebaseFirestore.getInstance()
+    lateinit var adapterUsuario : UsuarioAdapter
+    lateinit var recyclerView : RecyclerView
+    lateinit var listUsuarios: ArrayList<EUsuarios>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_users, container, false)
+        var view = inflater.inflate(R.layout.fragment_list_users, container, false)
+        recyclerView = view.findViewById(R.id.LV_Usuarios)
+        listUsuarios = ArrayList<EUsuarios>()
+        //cargarVista()
+        mostrarDatos()
+        return view
     }
 
-   /* override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        listUsuarios = LV_Usuarios;
-        //this.listView()
     }
-    private fun listView() {
-        val listItems = arrayListOf<EUsuarios>()
 
+
+    //ERROR AL CARGAR DATOSS
+    fun cargarVista(){
         var userProductsRef =  db.collection("User")
             .document(FirebaseAuth.getInstance().currentUser?.uid.toString())
             .collection("Users")
 
         userProductsRef.get().addOnSuccessListener { users ->
             for(user in users) {
-                listItems.add(user.toObject(EUsuarios::class.java))
+                listUsuarios.add(user.toObject(EUsuarios::class.java))
             }
-
-            var adapter = activity?.let { UsuarioAdapter(it, listItems) }
-            listUsuarios.adapter = adapter
-        }.addOnFailureListener { exception ->
-            Log.w("Error", "e: ", exception)
         }
-    }*/
+    }
+
+    private fun mostrarDatos() {
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        adapterUsuario = UsuarioAdapter(context, listUsuarios)
+        recyclerView.adapter = this.adapterUsuario
+    }
 }
