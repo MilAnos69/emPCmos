@@ -6,11 +6,6 @@
     app:startDestination="@id/listarProductos">
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.empcmos.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
         android:id="@+id/insertUsers"
         android:name="com.example.empcmos.InsertUsers"
         android:label="Registro"
