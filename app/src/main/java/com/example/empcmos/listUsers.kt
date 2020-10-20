@@ -1,5 +1,6 @@
 package com.example.empcmos
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -30,7 +31,7 @@ class listUsers : Fragment() {
         var view = inflater.inflate(R.layout.fragment_list_users, container, false)
         recyclerView = view.findViewById(R.id.LV_Usuarios)
         listUsuarios = ArrayList<EUsuarios>()
-        //cargarVista()
+        cargarVista()
         mostrarDatos()
         return view
     }
@@ -43,11 +44,10 @@ class listUsers : Fragment() {
     //ERROR AL CARGAR DATOSS
     fun cargarVista(){
         var userProductsRef =  db.collection("User")
-            .document(FirebaseAuth.getInstance().currentUser?.uid.toString())
-            .collection("Users")
 
         userProductsRef.get().addOnSuccessListener { users ->
             for(user in users) {
+                Log.d(TAG, user.toObject(EUsuarios::class.java).toString())
                 listUsuarios.add(user.toObject(EUsuarios::class.java))
             }
         }
