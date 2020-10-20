@@ -62,8 +62,7 @@ class InsertUsers : Fragment() {
                             estado,
                             userId
                         )
-                        var userProductsRef = db.collection("User").document(userId)
-                            .collection("Users")
+                        var userProductsRef = db.collection("User")
                         userProductsRef.add(usuario).addOnCompleteListener { task ->
                             if (task.isComplete) {
                                 Toast.makeText(
