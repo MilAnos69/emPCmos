@@ -1,11 +1,8 @@
 package com.example.empcmos
 
-import android.app.SearchManager
-import android.content.Context
+import android.app.Activity
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
-import android.widget.Toast
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -14,12 +11,20 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.FragmentContainerView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.Navigation
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ComunicarFragmentos {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+
+    lateinit var detallePersonaFragment : Detalles_Producto
+
+    lateinit var fragmentTransaction : FragmentTransaction
+    lateinit var fragmentManager : FragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,5 +53,12 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun enviarProductos(producto: Producto) {
+        detallePersonaFragment = Detalles_Producto()
+        var bundleEnvio : Bundle = Bundle()
+        bundleEnvio.putSerializable("objeto", producto)
+        detallePersonaFragment.arguments = bundleEnvio
     }
 }

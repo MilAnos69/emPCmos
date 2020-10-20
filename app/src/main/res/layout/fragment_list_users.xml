@@ -5,9 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".listUsers">
-
-
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/LV_Usuarios"
             android:layout_width="match_parent"
