@@ -51,7 +51,6 @@ class InsertVendedores : Fragment() {
                         Toast.makeText(activity, "Registrado", Toast.LENGTH_SHORT).show()
 
                         val db = FirebaseFirestore.getInstance()
-                        val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
                         val vendedores = EVendedores(
                             nombre,
                             apellido,
@@ -60,11 +59,9 @@ class InsertVendedores : Fragment() {
                             password,
                             telefono,
                             direccion,
-                            estado,
-                            userId
+                            estado
                         )
-                        var venderdorProductsRef = db.collection("User").document(userId)
-                            .collection("Vendedores")
+                        var venderdorProductsRef = db.collection("Vendedor")
                         venderdorProductsRef.add(vendedores).addOnCompleteListener { task ->
                             if (task.isComplete) {
                                 Toast.makeText(

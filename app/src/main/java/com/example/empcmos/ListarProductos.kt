@@ -6,15 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.empcmos.ui.Adapters.AdapterProducto
+import com.example.empcmos.ui.Modelo.EProducto
 
 class ListarProductos : Fragment() {
 
     lateinit var adapterProducto : AdapterProducto
     lateinit var recyclerView : RecyclerView
-    var item = ArrayList<Producto>()
+    var item = ArrayList<EProducto>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,15 +28,15 @@ class ListarProductos : Fragment() {
     ): View? {
         var view = inflater.inflate(R.layout.fragment_listar_productos, container, false)
         recyclerView = view.findViewById(R.id.listV)
-        item = ArrayList<Producto>()
+        item = ArrayList<EProducto>()
         cargarVista()
         mostrarDatos()
         return view
     }
 
     fun cargarVista(){
-        item.add(Producto("camara","100.0", R.drawable.logo_empcmos))
-        item.add(Producto("camara2","150.0", R.drawable.logo_empcmos))
+        item.add(EProducto("camara","100.0", R.drawable.logo_empcmos))
+        item.add(EProducto("camara2","150.0", R.drawable.logo_empcmos))
     }
 
     fun mostrarDatos(){

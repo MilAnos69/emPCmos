@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.empcmos.ui.Modelo.EProducto
 
 /**
  * A simple [Fragment] subclass.
@@ -28,9 +29,9 @@ class Detalles_Productos : Fragment() {
         imagenDetalle = view.findViewById(R.id.imagen_producto)
 
         var objetoProducto : Bundle? = arguments
-        var producto : Producto? = null
+        var producto : EProducto? = null
         if (objetoProducto!=null){
-            producto =objetoProducto.getSerializable("objeto") as Producto
+            producto =objetoProducto.getSerializable("objeto") as EProducto
             nombreDetalle.setText(producto.tituloProducto)
             imagenDetalle.setImageResource(producto.imagenId)
         }

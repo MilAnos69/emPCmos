@@ -1,4 +1,4 @@
-package com.example.empcmos
+package com.example.empcmos.ui.Adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import java.util.zip.Inflater
+import com.example.empcmos.R
+import com.example.empcmos.ui.Modelo.EProducto
 
-class AdapterProducto(mContext: Context?, listaProducto: ArrayList<Producto>) : RecyclerView.Adapter<AdapterProducto.ViewHolder>(), View.OnClickListener  {
+class AdapterProducto(mContext: Context?, listaProducto: ArrayList<EProducto>) : RecyclerView.Adapter<AdapterProducto.ViewHolder>(), View.OnClickListener  {
 
     var inglaterr : LayoutInflater
 
-    var Items = ArrayList<Producto>()
+    var Items = ArrayList<EProducto>()
 
     lateinit var listener : View.OnClickListener
 
@@ -37,7 +38,7 @@ class AdapterProducto(mContext: Context?, listaProducto: ArrayList<Producto>) : 
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var view : View =  inglaterr.inflate(R.layout.listaproductos, parent, false)
+        var view : View =  inglaterr.inflate(R.layout.fragment_listar_productos, parent, false)
         view.setOnClickListener(this)
         return ViewHolder(view)
     }

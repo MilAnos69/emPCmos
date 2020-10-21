@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_vendedores" />
     <fragment
         android:id="@+id/listUsers"
-        android:name="com.example.empcmos.listUsers"
+        android:name="com.example.empcmos.ListUsers"
         android:label="Lista Usuarios"
         tools:layout="@layout/fragment_list_users" />
     <fragment
@@ -29,4 +29,13 @@
         android:id="@+id/detallesProducto"
         android:name="com.example.empcmos.Detalles_Productos"
         tools:layout="@layout/fragment_detalles_producto" />
+    <fragment
+        android:id="@+id/listVendedores"
+        android:name="com.example.empcmos.ListVendedores"
+        android:label="Lista vendedores" />
+    <fragment
+        android:id="@+id/insertProducto"
+        android:name="com.example.empcmos.fragment_insert_producto"
+        android:label="Agregar Producto"
+        tools:layout="@layout/fragment_insert_producto" />
 </navigation>
