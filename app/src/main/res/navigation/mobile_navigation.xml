@@ -25,4 +25,8 @@
         android:name="com.example.empcmos.ListarProductos"
         android:label="Productos"
         tools:layout="@layout/fragment_listar_productos" />
+    <fragment
+        android:id="@+id/detallesProducto"
+        android:name="com.example.empcmos.Detalles_Productos"
+        tools:layout="@layout/fragment_detalles_producto" />
 </navigation>

@@ -43,14 +43,15 @@ class listUsers : Fragment() {
 
     //ERROR AL CARGAR DATOSS
     fun cargarVista(){
-        var userProductsRef =  db.collection("User")
+        listUsuarios.add(EUsuarios("nicolas","peralta","hola","nico","123456","12341",true,"1231231"))
+        /*var userProductsRef =  db.collection("User")
 
         userProductsRef.get().addOnSuccessListener { users ->
             for(user in users) {
                 Log.d(TAG, user.toObject(EUsuarios::class.java).toString())
                 listUsuarios.add(user.toObject(EUsuarios::class.java))
             }
-        }
+        }*/
     }
 
     private fun mostrarDatos() {
