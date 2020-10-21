@@ -1,21 +1,15 @@
-package com.example.empcmos.ui
+package com.example.empcmos.ui.Adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.empcmos.AdapterProducto
-import com.example.empcmos.Producto
 import com.example.empcmos.R
 import com.example.empcmos.ui.Modelo.EUsuarios
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.usuario.view.*
 
-class UsuarioAdapter(mContext: Context?, listaUsuario: ArrayList<EUsuarios>) : RecyclerView.Adapter<UsuarioAdapter.ViewHolderU>(), View.OnClickListener  {
+class AdapterUsuario(mContext: Context?, listaUsuario: ArrayList<EUsuarios>) : RecyclerView.Adapter<com.example.empcmos.ui.Adapters.AdapterUsuario.ViewHolderU>(), View.OnClickListener  {
     var inglaterr : LayoutInflater
 
     var Items = ArrayList<EUsuarios>()
@@ -60,9 +54,9 @@ class UsuarioAdapter(mContext: Context?, listaUsuario: ArrayList<EUsuarios>) : R
         }
     }
 
-    override fun onBindViewHolder(holder: UsuarioAdapter.ViewHolderU , position: Int) {
+    override fun onBindViewHolder(holder: ViewHolderU, position: Int) {
         var usuario : String = Items.get(position).usuario
-        var nombre : String = Items.get(position).nombre
+        var nombre : String = Items.get(position).nombre  + " "+ Items.get(position).apellido
         holder.usuario.setText(usuario)
         holder.nombre.setText(nombre)
     }

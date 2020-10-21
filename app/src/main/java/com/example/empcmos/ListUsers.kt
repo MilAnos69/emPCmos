@@ -1,25 +1,20 @@
 package com.example.empcmos
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.empcmos.ui.Modelo.EUsuarios
-import com.example.empcmos.ui.UsuarioAdapter
-import com.google.firebase.auth.FirebaseAuth
+import com.example.empcmos.ui.Adapters.AdapterUsuario
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_list_users.*
 
-class listUsers : Fragment() {
+class ListUsers : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
-    lateinit var adapterUsuario : UsuarioAdapter
+    lateinit var adapterUsuario : AdapterUsuario
     lateinit var recyclerView : RecyclerView
     lateinit var listUsuarios: ArrayList<EUsuarios>
 
@@ -32,7 +27,6 @@ class listUsers : Fragment() {
         recyclerView = view.findViewById(R.id.LV_Usuarios)
         listUsuarios = ArrayList<EUsuarios>()
         cargarVista()
-        mostrarDatos()
         return view
     }
 
@@ -43,20 +37,24 @@ class listUsers : Fragment() {
 
     //ERROR AL CARGAR DATOSS
     fun cargarVista(){
-        listUsuarios.add(EUsuarios("nicolas","peralta","hola","nico","123456","12341",true,"1231231"))
-        /*var userProductsRef =  db.collection("User")
+       var userProductsRef =  db.collection("User")
 
         userProductsRef.get().addOnSuccessListener { users ->
             for(user in users) {
-                Log.d(TAG, user.toObject(EUsuarios::class.java).toString())
-                listUsuarios.add(user.toObject(EUsuarios::class.java))
+                listUsuarios.add(EUsuarios(user?.getString("nombre").toString(),user?.getString("apellido").toString(),
+                    user?.getString("correo").toString(),user?.getString("usuario").toString(),
+                    user?.getString("password").toString(),user?.getString("telefono").toString(),
+                    user?.getBoolean("estado")))
+
+                //listUsuarios.add(user.toObject(EUsuarios::class.java))
             }
-        }*/
+            mostrarDatos()
+        }
     }
 
     private fun mostrarDatos() {
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapterUsuario = UsuarioAdapter(context, listUsuarios)
+        adapterUsuario = AdapterUsuario(context, listUsuarios)
         recyclerView.adapter = this.adapterUsuario
     }
 }

@@ -13,8 +13,20 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-14" />
-                            <option name="y" value="-22" />
+                            <option name="x" value="218" />
+                            <option name="y" value="593" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="insertProducto">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="224" />
+                            <option name="y" value="-33" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -25,8 +37,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="203" />
-                            <option name="y" value="-20" />
+                            <option name="x" value="-9" />
+                            <option name="y" value="-26" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -56,13 +68,25 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="listVendedores">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-11" />
+                            <option name="y" value="281" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="listarProductos">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="198" />
-                            <option name="y" value="291" />
+                            <option name="x" value="221" />
+                            <option name="y" value="281" />
                           </Point>
                         </option>
                       </LayoutPositions>
