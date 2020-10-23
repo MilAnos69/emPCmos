@@ -1,5 +1,7 @@
 package com.example.empcmos
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,9 +19,22 @@ class ListarProductos : Fragment() {
     lateinit var recyclerView : RecyclerView
     var item = ArrayList<EProducto>()
 
+    //Referencias para comunicar fragment
+
+    lateinit var activity : Activity
+    lateinit var interfaceComunicar : ComunicarFragmentos
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is Activity){
+            this.activity = context as Activity
+            this.interfaceComunicar = this.activity as ComunicarFragmentos
+        }
     }
 
     override fun onCreateView(
@@ -44,9 +59,11 @@ class ListarProductos : Fragment() {
         adapterProducto = AdapterProducto(context, item)
         recyclerView.adapter = this.adapterProducto
 
-        adapterProducto.setOnClickListener(View.OnClickListener {
-            fun onClick(v: View) {
+        adapterProducto.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v : View) {
                 var nombre : String = item.get(recyclerView.getChildAdapterPosition(v)).tituloProducto
+                var fm = interfaceComunicar.enviarProductos(item.get(recyclerView.getChildAdapterPosition(v)))
+                fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, fm)?.addToBackStack(null)?.commit()
                 Toast.makeText(context, "Selecciono: " + nombre,Toast.LENGTH_SHORT).show()
             }
         })

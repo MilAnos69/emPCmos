@@ -11,13 +11,12 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import com.example.empcmos.ui.Modelo.EProducto
 
 class MainActivity : AppCompatActivity(), ComunicarFragmentos {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-
-    lateinit var detallePersonaFragment : Detalles_Productos
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,10 +47,11 @@ class MainActivity : AppCompatActivity(), ComunicarFragmentos {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun enviarProductos(producto: EProducto) {
-        detallePersonaFragment = Detalles_Productos()
+    override fun enviarProductos(producto: EProducto) : Fragment {
+        var detalleProductoFragment = Detalles_Productos()
         var bundleEnvio : Bundle = Bundle()
         bundleEnvio.putSerializable("objeto", producto)
-        detallePersonaFragment.arguments = bundleEnvio
+        detalleProductoFragment.arguments = bundleEnvio
+        return detalleProductoFragment
     }
 }
