@@ -12,6 +12,9 @@
             android:title="Vendedores" />
         <item
             android:id="@+id/listVendedores"
-            android:title="Productos" />
+            android:title="Lista Productos" />
+        <item
+            android:id="@+id/listUsers"
+            android:title="Lista Usuarios" />
     </group>
 </menu>

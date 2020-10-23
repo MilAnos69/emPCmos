@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ListUsers">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listV"
+    <TextView
+        android:id="@+id/titulo_detalle_producto"
         android:layout_width="match_parent"
-        android:layout_height="651dp" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Detalle  Producto"
+        android:textSize="30sp"
+        android:textStyle="bold"></TextView>
+
+    <ImageView
+        android:id="@+id/imagen_producto"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:paddingTop="10dp"
+        android:src="@drawable/logo_empcmos"></ImageView>
+
+    <TextView
+        android:id="@+id/titulo_detalle_producto2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="Nombre Producto"
+        android:textSize="30sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/nombre_producto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="nombre Producto:"
+        android:textSize="30sp"></TextView>
 </LinearLayout>

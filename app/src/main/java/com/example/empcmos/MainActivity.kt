@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), ComunicarFragmentos {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.insertUsers, R.id.insertVendedores, R.id.listVendedores, R.id.listUsers), drawerLayout)
+            R.id.insertUsers, R.id.insertVendedores, R.id.listVendedores, R.id.listUsers, R.id.listarProductos), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
