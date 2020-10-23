@@ -38,7 +38,7 @@ class AdapterProducto(mContext: Context?, listaProducto: ArrayList<EProducto>) :
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var view : View =  inglaterr.inflate(R.layout.fragment_listar_productos, parent, false)
+        var view : View =  inglaterr.inflate(R.layout.lista_productos, parent, false)
         view.setOnClickListener(this)
         return ViewHolder(view)
     }

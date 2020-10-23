@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/detallesProducto">
+    app:startDestination="@id/listarProductos">
 
     <fragment
         android:id="@+id/insertUsers"
@@ -26,10 +26,6 @@
         android:label="Productos"
         tools:layout="@layout/fragment_listar_productos" />
     <fragment
-        android:id="@+id/detallesProducto"
-        android:name="com.example.empcmos.ListarProductos"
-        tools:layout="@layout/fragment_listar_productos" />
-    <fragment
         android:id="@+id/listVendedores"
         android:name="com.example.empcmos.ListVendedores"
         android:label="Lista vendedores"
@@ -39,4 +35,8 @@
         android:name="com.example.empcmos.fragment_insert_producto"
         android:label="Agregar Producto"
         tools:layout="@layout/fragment_insert_producto" />
+    <fragment
+        android:id="@+id/detalles_Productos"
+        android:name="com.example.empcmos.Detalles_Productos"
+        android:label="Detalles Productos" />
 </navigation>
