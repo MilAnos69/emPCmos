@@ -1,9 +1,13 @@
 package com.example.empcmos.ui.Modelo.Partes
 
-import com.example.empcmos.ui.Modelo.Partes.EGeneral
-
 class ERam (
-    var general: EGeneral,
+    var nombre:String,
+    var descripcion:String,
+    var marca:String,
+    var valor:Number,
+    var imagen:String,
+    var estado:Boolean,
+    var cantidad:Number,
     var tipo:String,
     var frecuencia:Number
 )

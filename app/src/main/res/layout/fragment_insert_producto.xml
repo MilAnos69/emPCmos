@@ -3,4 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_insert_producto"/>
+    tools:context=".fragment_insert_producto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/TipoProducto"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"></androidx.appcompat.widget.AppCompatSpinner>
+
+        <FrameLayout
+            android:id="@+id/container_fragments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+    </LinearLayout>
+
+</FrameLayout>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/listarProductos">
+    app:startDestination="@id/insertProducto">
 
     <fragment
         android:id="@+id/insertUsers"
@@ -39,9 +39,4 @@
         android:id="@+id/detalles_Productos"
         android:name="com.example.empcmos.Detalles_Productos"
         android:label="Detalles Productos" />
-    <fragment
-        android:id="@+id/index"
-        android:name="com.example.empcmos.Index"
-        android:label="fragment_index"
-        tools:layout="@layout/fragment_index" />
 </navigation>
