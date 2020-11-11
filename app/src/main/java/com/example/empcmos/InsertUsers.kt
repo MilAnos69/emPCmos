@@ -69,7 +69,7 @@ class InsertUsers : Fragment() {
                                 ).show()
                             } else {
                                 Toast.makeText(
-                                    activity, "Error al usuario",
+                                    activity, "Error al crear usuario",
                                     Toast.LENGTH_LONG
                                 ).show()
                             }

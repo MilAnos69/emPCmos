@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InsertMotherBoard">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/IB_Imagen"
+                    android:layout_width="113dp"
+                    android:layout_height="113dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="152dp"
+                    android:src="@drawable/ic_menu_gallery" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/Tb_Nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:hint="Nombre"
+                android:maxLength="40"
+                android:inputType="textPersonName"
+                android:paddingTop="15dp" />
+            <EditText
+                android:id="@+id/Tb_Descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:gravity="left"
+                android:maxLines="5"
+                android:hint="Descripción"
+                android:inputType="textPersonName"
+                android:paddingTop="15dp" />
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/S_Marca"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"></androidx.appcompat.widget.AppCompatSpinner>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/S_TipoProcesador"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"></androidx.appcompat.widget.AppCompatSpinner>
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/S_Socket"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"></androidx.appcompat.widget.AppCompatSpinner>
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/S_Tamano"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"></androidx.appcompat.widget.AppCompatSpinner>
+
+            <EditText
+                android:id="@+id/TB_Chipset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Chipset"
+                android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/TB_Voltaje"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Voltaje"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/TB_PuertosM_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Puertos M.2"
+                android:inputType="number" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/S_TamañoM2"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"></androidx.appcompat.widget.AppCompatSpinner>
+
+            <EditText
+                android:id="@+id/TB_PuertosDiscoDuro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Puertos Disco Duro"
+                android:inputType="number" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/S_TipoRam"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"></androidx.appcompat.widget.AppCompatSpinner>
+            <EditText
+                android:id="@+id/Tb_Cantidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Cantidad"
+                android:inputType="number" />
+            <EditText
+                android:id="@+id/TB_Valor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Valor"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/B_Agregar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Agregar" />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
