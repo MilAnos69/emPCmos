@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
+=======
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InsertMotherBoard">
 
+<<<<<<< HEAD
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -151,4 +155,12 @@
 
         </LinearLayout>
     </ScrollView>
+=======
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 </FrameLayout>

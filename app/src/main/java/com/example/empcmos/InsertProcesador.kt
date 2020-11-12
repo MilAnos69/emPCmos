@@ -1,13 +1,18 @@
 package com.example.empcmos
 
+<<<<<<< HEAD
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
+=======
+import android.os.Bundle
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -15,12 +20,15 @@ import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.EProcesador
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_procesador.*
+=======
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 
 /**
  * A simple [Fragment] subclass.
  */
 class InsertProcesador : Fragment() {
 
+<<<<<<< HEAD
     private val db = FirebaseFirestore.getInstance()
     private var s_marca: Spinner? = null
     lateinit var listMarcas: ArrayList<String>
@@ -41,10 +49,13 @@ class InsertProcesador : Fragment() {
     private lateinit var interfazComunicarFragmentos: ComunicarFragmentos
     private lateinit var activity: Activity
 
+=======
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+<<<<<<< HEAD
         listMarcas = ArrayList<String>()
         listTipos = ArrayList<String>()
         listGeneracion = ArrayList<String>()
@@ -220,4 +231,10 @@ class InsertProcesador : Fragment() {
     }
 
 
+=======
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_insert_procesador, container, false)
+    }
+
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 }

@@ -39,4 +39,9 @@
         android:id="@+id/detalles_Productos"
         android:name="com.example.empcmos.Detalles_Productos"
         android:label="Detalles Productos" />
+    <fragment
+        android:id="@+id/index"
+        android:name="com.example.empcmos.Index"
+        android:label="fragment_index"
+        tools:layout="@layout/fragment_index" />
 </navigation>

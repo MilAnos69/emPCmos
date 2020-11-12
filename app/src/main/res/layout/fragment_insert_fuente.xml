@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".InsertFuente">
 
+<<<<<<< HEAD
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -112,5 +113,12 @@
 
         </LinearLayout>
     </ScrollView>
+=======
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 
 </FrameLayout>

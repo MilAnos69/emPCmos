@@ -1,13 +1,18 @@
 package com.example.empcmos
 
+<<<<<<< HEAD
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
+=======
+import android.os.Bundle
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -15,12 +20,15 @@ import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.ECaja
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_caja.*
+=======
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 
 /**
  * A simple [Fragment] subclass.
  */
 class InsertCaja : Fragment() {
 
+<<<<<<< HEAD
     private val db = FirebaseFirestore.getInstance()
 
     private var s_marca: Spinner? = null
@@ -34,10 +42,13 @@ class InsertCaja : Fragment() {
     private lateinit var interfazComunicarFragmentos: ComunicarFragmentos
     private lateinit var activity: Activity
 
+=======
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+<<<<<<< HEAD
         listMarcas = ArrayList<String>()
         listPlacas = ArrayList<String>()
         return inflater.inflate(R.layout.fragment_insert_caja, container, false)
@@ -155,4 +166,10 @@ class InsertCaja : Fragment() {
         }
     }
 
+=======
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_insert_caja, container, false)
+    }
+
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 }
