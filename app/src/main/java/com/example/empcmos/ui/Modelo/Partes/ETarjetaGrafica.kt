@@ -10,5 +10,7 @@ class ETarjetaGrafica(
     var tipoSalida:String,
     var estado:Boolean,
     var imagen:String,
-    var cantidad:Number
+    var cantidad:Number,
+    var idUser: String,
+    var parte: String
 )

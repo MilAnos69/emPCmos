@@ -1,5 +1,7 @@
 package com.example.empcmos
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
@@ -48,6 +50,9 @@ class InsertMotherBoard : Fragment() {
     lateinit var listRam: ArrayList<String>
     private var ram: String = ""
 
+    private lateinit var interfazComunicarFragmentos: ComunicarFragmentos
+    private lateinit var activity: Activity
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,6 +66,14 @@ class InsertMotherBoard : Fragment() {
         return inflater.inflate(R.layout.fragment_insert_mother_board, container, false)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is Activity){
+            this.activity = context as Activity
+            this.interfazComunicarFragmentos = this.activity as ComunicarFragmentos
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         s_marca = S_Marca
@@ -71,32 +84,43 @@ class InsertMotherBoard : Fragment() {
         s_tipoRam = S_TipoRam
         cargarVista()
 
-        /*IB_Imagen.setOnClickListener{
-            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            intent.setType
+        imageButton.setOnClickListener{
+            interfazComunicarFragmentos.galeria()
         }
 
         B_Agregar.setOnClickListener {
             var nombre:String = Tb_Nombre.text.toString()
             var descripcion:String = Tb_Descripcion.text.toString()
             var chipset:String = TB_Chipset.text.toString()
-            var voltaje:Number = Integer.parseInt(TB_Voltaje.text.toString())
-            var puertoM2:Number = Integer.parseInt(TB_PuertosM_2.text.toString())
-            var puertosDiscoDuro:Number = Integer.parseInt(TB_PuertosDiscoDuro.text.toString())
-            var cantidad:Number = Integer.parseInt(Tb_Cantidad.text.toString())
-            var valor:Number = Integer.parseInt(TB_Valor.text.toString())
+            var voltaje:Int
+            var puertoM2:Int
+            var puertosDiscoDuro:Int
+            var cantidad:Int
+            var valor:Int
             var estado: Boolean = true
+            var foto:String
+
             if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(chipset)
-                && !TextUtils.isEmpty(voltaje.toString()) && !TextUtils.isEmpty(puertoM2.toString()) && !TextUtils.isEmpty(puertosDiscoDuro.toString())
-                && !TextUtils.isEmpty(valor.toString()) && !TextUtils.isEmpty(cantidad.toString())){
+                && !TextUtils.isEmpty(TB_Voltaje.toString()) && !TextUtils.isEmpty(TB_PuertosM_2.toString()) && !TextUtils.isEmpty(TB_PuertosDiscoDuro.toString())
+                && !TextUtils.isEmpty(TB_Valor.toString()) && !TextUtils.isEmpty(Tb_Cantidad.toString()) && interfazComunicarFragmentos.foto() == true
+                && !TextUtils.isEmpty(marca) && !TextUtils.isEmpty(procesador) && !TextUtils.isEmpty(socket)
+                && !TextUtils.isEmpty(tamaño) && !TextUtils.isEmpty(tamañoM2) && !TextUtils.isEmpty(ram)){
+
+                voltaje = Integer.parseInt(TB_Voltaje.text.toString())
+                puertoM2 = Integer.parseInt(TB_PuertosM_2.text.toString())
+                puertosDiscoDuro = Integer.parseInt(TB_PuertosDiscoDuro.text.toString())
+                cantidad = Integer.parseInt(Tb_Cantidad.text.toString())
+                valor = Integer.parseInt(TB_Valor.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
+                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
 
                 val db = FirebaseFirestore.getInstance()
                 val motherBoard = EMotherBoard(
                     nombre, descripcion, marca, procesador, valor, socket, chipset, voltaje, tamaño,
-                    puertoM2, puertosDiscoDuro, tamañoM2, estado, ram, imagen, cantidad
+                    puertoM2, puertosDiscoDuro, tamañoM2, estado, ram, foto, cantidad,
+                    "fgMeKpjGmZVXh7Yp2rLp", "Mother Board"
                 )
-                var userProductsRef = db.collection("Productos").document("MotherBoard").collection("fgMeKpjGmZVXh7Yp2rLp")
+                var userProductsRef = db.collection("Productos")
                 userProductsRef.add(motherBoard).addOnCompleteListener { task ->
                     if (task.isComplete) {
                         Toast.makeText(
@@ -110,9 +134,13 @@ class InsertMotherBoard : Fragment() {
                         ).show()
                     }
                 }
+            }else{
+                Toast.makeText(
+                    activity, "Ingrese todos los datos",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-
-        }*/
+        }
     }
 
     fun cargarVista(){
@@ -159,6 +187,7 @@ class InsertMotherBoard : Fragment() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 procesador = parent?.getItemAtPosition(position).toString()
                 listSocket = ArrayList<String>()
+                socket = ""
                 cargarSocket()
             }
         }

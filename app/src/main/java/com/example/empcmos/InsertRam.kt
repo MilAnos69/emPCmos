@@ -1,5 +1,7 @@
 package com.example.empcmos
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -31,6 +33,9 @@ class InsertRam : Fragment() {
     lateinit var listTipo: ArrayList<String>
     private var tipo: String = ""
 
+    private lateinit var interfazComunicarFragmentos: ComunicarFragmentos
+    private lateinit var activity: Activity
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +44,15 @@ class InsertRam : Fragment() {
         listTipo = ArrayList<String>()
         return inflater.inflate(R.layout.fragment_insert_ram, container, false)
     }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is Activity){
+            this.activity = context as Activity
+            this.interfazComunicarFragmentos = this.activity as ComunicarFragmentos
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         s_marca = S_Marca
@@ -46,23 +60,35 @@ class InsertRam : Fragment() {
 
         cargarVista()
 
-        /*B_Agregar.setOnClickListener {
+        imageButton.setOnClickListener{
+            interfazComunicarFragmentos.galeria()
+        }
+
+        B_Agregar.setOnClickListener {
             var nombre:String = Tb_Nombre.text.toString()
             var descripcion:String = Tb_Descripcion.text.toString()
-            var frecuencia:Number = Integer.parseInt(TB_Frecuencia.text.toString())
-            var cantidad:Number = Integer.parseInt(TB_Cantidad.text.toString())
-            var valor:Number = Integer.parseInt(TB_Valor.text.toString())
+            var frecuencia:Int
+            var cantidad:Int
+            var valor:Int
             var estado: Boolean = true
-            if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(frecuencia.toString())
-                && !TextUtils.isEmpty(valor.toString()) && !TextUtils.isEmpty(cantidad.toString())){
+            var foto:String
+
+            if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(TB_Frecuencia.toString())
+                && !TextUtils.isEmpty(TB_Valor.toString()) && !TextUtils.isEmpty(TB_Cantidad.toString()) && interfazComunicarFragmentos.foto() == true
+                && !TextUtils.isEmpty(marca) && !TextUtils.isEmpty(tipo)){
+                frecuencia = TB_Frecuencia.text.toString().toInt()
+                cantidad  = TB_Cantidad.text.toString().toInt()
+                valor = TB_Valor.text.toString().toInt()
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
+                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
 
                 val db = FirebaseFirestore.getInstance()
-                val motherBoard = ERam(
-                    nombre, descripcion, marca, valor, imagen, estado, cantidad, tipo, frecuencia
+                val ram = ERam(
+                    nombre, descripcion, marca, valor, foto, estado, cantidad, tipo, frecuencia,
+                    "fgMeKpjGmZVXh7Yp2rLp", "Ram"
                 )
-                var userProductsRef = db.collection("Productos").document("Ram").collection("fgMeKpjGmZVXh7Yp2rLp")
-                userProductsRef.add(motherBoard).addOnCompleteListener { task ->
+                var userProductsRef = db.collection("Productos")
+                userProductsRef.add(ram).addOnCompleteListener { task ->
                     if (task.isComplete) {
                         Toast.makeText(
                             activity, "Producto creado",
@@ -75,9 +101,13 @@ class InsertRam : Fragment() {
                         ).show()
                     }
                 }
+            }else {
+                Toast.makeText(
+                    activity, "Ingrese todos los datos",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-
-        }*/
+        }
     }
 
     fun cargarVista(){

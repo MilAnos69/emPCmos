@@ -17,4 +17,6 @@ class EMotherBoard(
     var tipoRam:String,
     var imagen:String,
     var cantidad:Number,
+    var idUser: String,
+    var parte: String
 )

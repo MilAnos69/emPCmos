@@ -18,13 +18,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageButton
-                    android:id="@+id/IB_Imagen"
+                <ImageView
+                    android:id="@+id/imageView"
                     android:layout_width="113dp"
                     android:layout_height="113dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="152dp"
                     android:src="@drawable/ic_menu_gallery" />
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="42dp"
+                    android:layout_marginTop="46dp"
+                    android:layout_marginEnd="208dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_toEndOf="@+id/imageView"
+                    android:src="@drawable/ic_search_black_24dp" />
             </RelativeLayout>
 
             <EditText
@@ -36,15 +47,17 @@
                 android:maxLength="40"
                 android:inputType="textPersonName"
                 android:paddingTop="15dp" />
+
             <EditText
                 android:id="@+id/Tb_Descripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="9dp"
                 android:gravity="left"
-                android:maxLines="5"
                 android:hint="Descripción"
                 android:inputType="textPersonName"
+                android:maxLength="120"
+                android:maxLines="5"
                 android:paddingTop="15dp" />
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/S_Marca"
@@ -54,41 +67,51 @@
                 android:id="@+id/S_TipoPlaca"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"></androidx.appcompat.widget.AppCompatSpinner>
+
             <EditText
                 android:id="@+id/TB_Tamano"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Tamaño"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:maxLength="10" />
+
             <EditText
                 android:id="@+id/TB_Puertos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="# Puertos USB"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="2" />
+
             <EditText
                 android:id="@+id/TB_Ventiladores"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="# Ventiladores"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="2" />
+
             <EditText
                 android:id="@+id/TB_Cantidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Cantidad"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="5" />
+
             <EditText
                 android:id="@+id/TB_Valor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Valor"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="8" />
             <Button
                 android:id="@+id/B_Agregar"
                 android:layout_width="match_parent"
