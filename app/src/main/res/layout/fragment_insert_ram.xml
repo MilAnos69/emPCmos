@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     tools:context=".InsertRam">
 
     <ScrollView
@@ -103,14 +102,4 @@
 
         </LinearLayout>
     </ScrollView>
-=======
-    tools:context=".ui.InsertRam">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
->>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
-
 </FrameLayout>

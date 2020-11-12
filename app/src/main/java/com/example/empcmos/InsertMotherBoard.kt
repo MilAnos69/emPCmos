@@ -1,20 +1,15 @@
 package com.example.empcmos
 
-<<<<<<< HEAD
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
-=======
-import android.os.Bundle
->>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -23,15 +18,12 @@ import androidx.core.view.isVisible
 import com.example.empcmos.ui.Modelo.Partes.EMotherBoard
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_mother_board.*
-=======
->>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 
 /**
  * A simple [Fragment] subclass.
  */
 class InsertMotherBoard : Fragment() {
 
-<<<<<<< HEAD
     private val db = FirebaseFirestore.getInstance()
 
     private var s_marca: Spinner? = null
@@ -276,13 +268,4 @@ class InsertMotherBoard : Fragment() {
             }
         }
     }
-
-=======
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_insert_mother_board, container, false)
-    }
-
->>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 }
