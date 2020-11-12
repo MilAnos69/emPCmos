@@ -1,10 +1,15 @@
 package com.example.empcmos
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.Menu
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -16,12 +21,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.empcmos.ui.Modelo.EProducto
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import java.io.IOException
+import java.time.LocalDateTime
 
 class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val SELECT_PICTURE=2
+    internal var storage:FirebaseStorage?=null
+    internal var storageReferencia:StorageReference?=null
+    private var filepath: Uri? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +58,8 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        storage = FirebaseStorage.getInstance()
+        storageReferencia=storage!!.reference
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -68,27 +82,50 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         return detalleProductoFragment
     }
 
-    /*override fun galeria() {
-        val intent=Intent()
-        //intent.type="image/*"
-        //intent.action=Intent.ACTION_GET_CONTENT
-        //startActivityForResult(Intent.createChooser(intent, "Seleccionar Imagen"), SELECT_PICTURE)
+    override fun galeria() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent,"Seleccionar Imagen"), 111)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == SELECT_PICTURE && resultCode == Activity.RESULT_OK){
+        if (requestCode == 111 && resultCode == Activity.RESULT_OK && data != null && data.data != null){
             try {
-                val uri = data!!.data
+                filepath = data.data!!;
                 val img : ImageView = findViewById(R.id.imageView)
-                img.setImageURI(uri)
-                foto = uri.toString()
+                var bitmap = MediaStore.Images.Media.getBitmap(contentResolver,filepath)
+                img.setImageBitmap(bitmap)
+                if (filepath != null){
+                    foto()
+                }
             }catch (e: IOException){
                 e.printStackTrace()
             }
         }
     }
-}*/
 
-     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun subirImagen(idUser: String, nombre:String): String {
+        val current = LocalDateTime.now().toString()
+        val imagen: String = current.toString() + "_" + idUser + "_" + nombre
+        if(filepath!=null){
+            var referenciaImagen = storageReferencia!!.child("images/"+ imagen)
+            referenciaImagen.putFile(filepath!!)
+            return imagen
+        }else{
+            return ""
+        }
+
+    }
+
+    override fun foto(): Boolean{
+        if (filepath != null){
+            return true
+        }else{
+            return false
+        }
+
+    }
 }

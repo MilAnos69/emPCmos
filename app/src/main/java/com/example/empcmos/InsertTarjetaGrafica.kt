@@ -1,11 +1,18 @@
 package com.example.empcmos
 
+<<<<<<< HEAD
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
+=======
+import android.os.Bundle
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -13,12 +20,15 @@ import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.ETarjetaGrafica
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_tarjeta_grafica.*
+=======
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 
 /**
  * A simple [Fragment] subclass.
  */
 class InsertTarjetaGrafica : Fragment() {
 
+<<<<<<< HEAD
     private val db = FirebaseFirestore.getInstance()
 
     private var s_marca: Spinner? = null
@@ -29,6 +39,9 @@ class InsertTarjetaGrafica : Fragment() {
     lateinit var listSalidas: ArrayList<String>
     private var tipoSalida: String = ""
 
+    private lateinit var interfazComunicarFragmentos: ComunicarFragmentos
+    private lateinit var activity: Activity
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,31 +51,53 @@ class InsertTarjetaGrafica : Fragment() {
         return inflater.inflate(R.layout.fragment_insert_tarjeta_grafica, container, false)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is Activity){
+            this.activity = context as Activity
+            this.interfazComunicarFragmentos = this.activity as ComunicarFragmentos
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         s_marca = S_Marca
         s_tipoSalida = S_TipoSalidas
         cargarVista()
 
-        /*B_Agregar.setOnClickListener {
+        imageButton.setOnClickListener{
+            interfazComunicarFragmentos.galeria()
+        }
+
+        B_Agregar.setOnClickListener {
             var nombre:String = Tb_Nombre.text.toString()
             var descripcion:String = Tb_Descripcion.text.toString()
-            var vram:Number = Integer.parseInt(TB_VRam.text.toString())
-            var voltaje:Number = Integer.parseInt(TB_Voltaje.text.toString())
-            var cantidad:Number = Integer.parseInt(TB_Cantidad.text.toString())
-            var valor:Number = Integer.parseInt(TB_Valor.text.toString())
+            var vram:Int
+            var voltaje:Int
+            var cantidad:Int
+            var valor:Int
             var estado: Boolean = true
-            if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(vram.toString())
-                && !TextUtils.isEmpty(voltaje.toString()) && !TextUtils.isEmpty(valor.toString()) && !TextUtils.isEmpty(cantidad.toString())){
+            var foto:String
+
+            if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(TB_VRam.toString())
+                && !TextUtils.isEmpty(TB_Voltaje.toString()) && !TextUtils.isEmpty(TB_Valor.toString()) && !TextUtils.isEmpty(TB_Cantidad.toString())
+                && interfazComunicarFragmentos.foto() == true && !TextUtils.isEmpty(marca)
+                && !TextUtils.isEmpty(tipoSalida)){
+
+                vram = Integer.parseInt(TB_VRam.text.toString())
+                voltaje = Integer.parseInt(TB_Voltaje.text.toString())
+                cantidad = Integer.parseInt(TB_Cantidad.text.toString())
+                valor = Integer.parseInt(TB_Valor.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
+                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
 
                 val db = FirebaseFirestore.getInstance()
-                val motherBoard = ETarjetaGrafica(
+                val tarjetaGrafica = ETarjetaGrafica(
                     nombre, descripcion, marca,  valor, voltaje, vram, tipoSalida,
-                    estado, imagen, cantidad
+                    estado, foto, cantidad, "fgMeKpjGmZVXh7Yp2rLp", "Tarjeta Grafica"
                 )
-                var userProductsRef = db.collection("Productos").document("MotherBoard").collection("fgMeKpjGmZVXh7Yp2rLp")
-                userProductsRef.add(motherBoard).addOnCompleteListener { task ->
+                var userProductsRef = db.collection("Productos")
+                userProductsRef.add(tarjetaGrafica).addOnCompleteListener { task ->
                     if (task.isComplete) {
                         Toast.makeText(
                             activity, "Producto creado",
@@ -75,9 +110,13 @@ class InsertTarjetaGrafica : Fragment() {
                         ).show()
                     }
                 }
+            }else {
+                Toast.makeText(
+                    activity, "Ingrese todos los datos",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-
-        }*/
+        }
     }
 
     fun cargarVista(){
@@ -123,4 +162,12 @@ class InsertTarjetaGrafica : Fragment() {
         }
     }
 
+=======
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_insert_tarjeta_grafica, container, false)
+    }
+
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 }

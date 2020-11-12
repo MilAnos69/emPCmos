@@ -11,5 +11,7 @@ class ESSD_2 (
     var tipo:String,
     var voltaje:Number,
     var capacidad:Number,
-    var tamaño:String
+    var tamaño:String,
+    var idUser: String,
+    var parte: String
 )

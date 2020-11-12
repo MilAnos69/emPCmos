@@ -1,11 +1,18 @@
 package com.example.empcmos
 
+<<<<<<< HEAD
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
+=======
+import android.os.Bundle
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -13,12 +20,15 @@ import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.EFuente
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_fuente.*
+=======
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 
 /**
  * A simple [Fragment] subclass.
  */
 class InsertFuente : Fragment() {
 
+<<<<<<< HEAD
     private val db = FirebaseFirestore.getInstance()
 
     private var s_marca: Spinner? = null
@@ -29,13 +39,27 @@ class InsertFuente : Fragment() {
     lateinit var listTipos: ArrayList<String>
     private var tipo: String = ""
 
+    private lateinit var interfazComunicarFragmentos: ComunicarFragmentos
+    private lateinit var activity: Activity
+
+=======
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+<<<<<<< HEAD
         listMarcas = ArrayList<String>()
         listTipos = ArrayList<String>()
         return inflater.inflate(R.layout.fragment_insert_fuente, container, false)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is Activity){
+            this.activity = context as Activity
+            this.interfazComunicarFragmentos = this.activity as ComunicarFragmentos
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,26 +68,38 @@ class InsertFuente : Fragment() {
         s_tipo = S_Tipo
         cargarVista()
 
-        /*B_Agregar.setOnClickListener {
+        imageButton.setOnClickListener{
+            interfazComunicarFragmentos.galeria()
+        }
+
+        B_Agregar.setOnClickListener {
             var nombre:String = Tb_Nombre.text.toString()
             var descripcion:String = Tb_Descripcion.text.toString()
-            var voltaje:Number = Integer.parseInt(TB_Voltaje.text.toString())
-            var cantidad:Number = Integer.parseInt(TB_Cantidad.text.toString())
+            var voltaje:Int
+            var cantidad:Int
             var tamaño:String = TB_Tamano.text.toString()
-            var valor:Number = Integer.parseInt(TB_Valor.text.toString())
+            var valor:Int
             var estado: Boolean = true
+            var foto:String
+
             if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(tamaño)
-                && !TextUtils.isEmpty(voltaje.toString()) && !TextUtils.isEmpty(valor.toString())
-                && !TextUtils.isEmpty(cantidad.toString())){
+                && !TextUtils.isEmpty(TB_Voltaje.toString()) && !TextUtils.isEmpty(TB_Valor.toString())
+                && !TextUtils.isEmpty(TB_Cantidad.toString()) && interfazComunicarFragmentos.foto() == true
+                && !TextUtils.isEmpty(marca) && !TextUtils.isEmpty(tipo)){
+
+                voltaje = Integer.parseInt(TB_Voltaje.text.toString())
+                cantidad = Integer.parseInt(TB_Cantidad.text.toString())
+                valor = Integer.parseInt(TB_Valor.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
+                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
 
                 val db = FirebaseFirestore.getInstance()
-                val motherBoard = EFuente(
-                    nombre, descripcion, marca, valor, imagen, estado, cantidad, tipo,
-                    voltaje, tamaño
+                val fuente = EFuente(
+                    nombre, descripcion, marca, valor, foto, estado, cantidad, tipo,
+                    voltaje, tamaño, "fgMeKpjGmZVXh7Yp2rLp", "Fuente"
                 )
-                var userProductsRef = db.collection("Productos").document("Fuente").collection("fgMeKpjGmZVXh7Yp2rLp")
-                userProductsRef.add(motherBoard).addOnCompleteListener { task ->
+                var userProductsRef = db.collection("Productos")
+                userProductsRef.add(fuente).addOnCompleteListener { task ->
                     if (task.isComplete) {
                         Toast.makeText(
                             activity, "Producto creado",
@@ -76,9 +112,13 @@ class InsertFuente : Fragment() {
                         ).show()
                     }
                 }
+            }else {
+                Toast.makeText(
+                    activity, "Ingrese todos los datos",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-
-        }*/
+        }
     }
 
     fun cargarVista(){
@@ -124,4 +164,10 @@ class InsertFuente : Fragment() {
         }
     }
 
+=======
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_insert_fuente, container, false)
+    }
+
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 }

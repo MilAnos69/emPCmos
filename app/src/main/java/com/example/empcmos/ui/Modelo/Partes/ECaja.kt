@@ -11,5 +11,7 @@ class ECaja (
     var cantidadUSB:Number,
     var tamaño:String,
     var cantidadVentiladores:Number,
-    var tipoPlaca:String
+    var tipoPlaca:String,
+    var idUser: String,
+    var parte: String
 )

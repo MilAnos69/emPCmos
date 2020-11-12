@@ -1,11 +1,18 @@
 package com.example.empcmos
 
+<<<<<<< HEAD
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
+=======
+import android.os.Bundle
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -13,12 +20,15 @@ import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.ESSD_2
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_s_s_d_m2.*
+=======
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 
 /**
  * A simple [Fragment] subclass.
  */
 class InsertSSDM2 : Fragment() {
 
+<<<<<<< HEAD
     private val db = FirebaseFirestore.getInstance()
 
     private var s_marca: Spinner? = null
@@ -33,14 +43,28 @@ class InsertSSDM2 : Fragment() {
     lateinit var listTamaño: ArrayList<String>
     private var tamaño: String = ""
 
+    private lateinit var interfazComunicarFragmentos: ComunicarFragmentos
+    private lateinit var activity: Activity
+
+=======
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+<<<<<<< HEAD
         listMarcas = ArrayList<String>()
         listTipos = ArrayList<String>()
         listTamaño = ArrayList<String>()
         return inflater.inflate(R.layout.fragment_insert_s_s_d_m2, container, false)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is Activity){
+            this.activity = context as Activity
+            this.interfazComunicarFragmentos = this.activity as ComunicarFragmentos
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,27 +73,40 @@ class InsertSSDM2 : Fragment() {
         s_tipo = S_Tipo
         s_tamaño = S_Tamano
         cargarVista()
+        
+        imageButton.setOnClickListener{
+            interfazComunicarFragmentos.galeria()
+        }
 
-        /*B_Agregar.setOnClickListener {
+        B_Agregar.setOnClickListener {
             var nombre:String = Tb_Nombre.text.toString()
             var descripcion:String = Tb_Descripcion.text.toString()
-            var voltaje:Number = Integer.parseInt(TB_Voltaje.text.toString())
-            var cantidad:Number = Integer.parseInt(TB_Cantidad.text.toString())
-            var capacidad:Number = Integer.parseInt(TB_Capacidad.text.toString())
-            var valor:Number = Integer.parseInt(TB_Valor.text.toString())
+            var voltaje:Int
+            var cantidad:Int
+            var capacidad:Int
+            var valor:Int
             var estado: Boolean = true
-            if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(capacidad.toString())
-                && !TextUtils.isEmpty(voltaje.toString()) && !TextUtils.isEmpty(valor.toString())
-                && !TextUtils.isEmpty(cantidad.toString())){
+            var foto:String
+
+            if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(TB_Capacidad.toString())
+                && !TextUtils.isEmpty(TB_Voltaje.toString()) && !TextUtils.isEmpty(TB_Valor.toString())
+                && !TextUtils.isEmpty(TB_Cantidad.toString()) && interfazComunicarFragmentos.foto() == true
+                && !TextUtils.isEmpty(marca) && !TextUtils.isEmpty(tipo) && !TextUtils.isEmpty(tamaño)){
+
+                voltaje = Integer.parseInt(TB_Voltaje.text.toString())
+                cantidad = Integer.parseInt(TB_Cantidad.text.toString())
+                capacidad = Integer.parseInt(TB_Capacidad.text.toString())
+                valor = Integer.parseInt(TB_Valor.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
+                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
 
                 val db = FirebaseFirestore.getInstance()
-                val motherBoard = ESSD_2(
-                    nombre, descripcion, marca, valor, imagen, estado, cantidad, tipo,
-                    voltaje, capacidad, tamaño
+                val ssdM2 = ESSD_2(
+                    nombre, descripcion, marca, valor, foto, estado, cantidad, tipo,
+                    voltaje, capacidad, tamaño, "fgMeKpjGmZVXh7Yp2rLp", "SSD M2"
                 )
-                var userProductsRef = db.collection("Productos").document("Disco SSD M.2").collection("fgMeKpjGmZVXh7Yp2rLp")
-                userProductsRef.add(motherBoard).addOnCompleteListener { task ->
+                var userProductsRef = db.collection("Productos")
+                userProductsRef.add(ssdM2).addOnCompleteListener { task ->
                     if (task.isComplete) {
                         Toast.makeText(
                             activity, "Producto creado",
@@ -82,9 +119,13 @@ class InsertSSDM2 : Fragment() {
                         ).show()
                     }
                 }
+            }else {
+                Toast.makeText(
+                    activity, "Ingrese todos los datos",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-
-        }*/
+        }
     }
 
     fun cargarVista(){
@@ -149,4 +190,10 @@ class InsertSSDM2 : Fragment() {
             }
         }
     }
+=======
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_insert_s_s_d_m2, container, false)
+    }
+
+>>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 }
