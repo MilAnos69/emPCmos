@@ -59,8 +59,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.google.firebase:firebase-auth:19.4.0'
     implementation 'com.android.support:multidex:1.0.3'
-<<<<<<< HEAD
     implementation 'com.google.firebase:firebase-storage:19.2.0'
-=======
->>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 }

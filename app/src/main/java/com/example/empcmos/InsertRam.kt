@@ -1,41 +1,28 @@
-<<<<<<< HEAD
+
 package com.example.empcmos
 
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
-=======
-package com.example.empcmos.ui
-
-import android.os.Bundle
->>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-
-import com.example.empcmos.R
 import com.example.empcmos.ui.Modelo.Partes.ERam
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_ram.*
-=======
-import android.widget.Spinner
-
-import com.example.empcmos.R
->>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 
 /**
  * A simple [Fragment] subclass.
  */
 class InsertRam : Fragment() {
 
-<<<<<<< HEAD
+
     private val db = FirebaseFirestore.getInstance()
 
     private var s_marca: Spinner? = null
@@ -48,16 +35,11 @@ class InsertRam : Fragment() {
 
     private lateinit var interfazComunicarFragmentos: ComunicarFragmentos
     private lateinit var activity: Activity
-=======
-    private var s_marca: Spinner? = null
-    private var s_tipoRam: Spinner? = null
->>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-<<<<<<< HEAD
         listMarcas = ArrayList<String>()
         listTipo = ArrayList<String>()
         return inflater.inflate(R.layout.fragment_insert_ram, container, false)
@@ -170,11 +152,4 @@ class InsertRam : Fragment() {
             }
         }
     }
-
-=======
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_insert_ram, container, false)
-    }
-
->>>>>>> f04b9906872fdfdddcec8e478342f61e06cf3584
 }
