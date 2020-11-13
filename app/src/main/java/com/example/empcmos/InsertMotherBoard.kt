@@ -16,6 +16,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.empcmos.ui.Modelo.Partes.EMotherBoard
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_mother_board.*
 
@@ -99,6 +100,7 @@ class InsertMotherBoard : Fragment() {
             var valor:Int
             var estado: Boolean = true
             var foto:String
+            val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
             if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(chipset)
                 && !TextUtils.isEmpty(TB_Voltaje.toString()) && !TextUtils.isEmpty(TB_PuertosM_2.toString()) && !TextUtils.isEmpty(TB_PuertosDiscoDuro.toString())
@@ -112,13 +114,13 @@ class InsertMotherBoard : Fragment() {
                 cantidad = Integer.parseInt(Tb_Cantidad.text.toString())
                 valor = Integer.parseInt(TB_Valor.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
-                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
+                foto = interfazComunicarFragmentos.subirImagen(userId,nombre)
 
                 val db = FirebaseFirestore.getInstance()
                 val motherBoard = EMotherBoard(
                     nombre, descripcion, marca, procesador, valor, socket, chipset, voltaje, tamaño,
                     puertoM2, puertosDiscoDuro, tamañoM2, estado, ram, foto, cantidad,
-                    "fgMeKpjGmZVXh7Yp2rLp", "Mother Board"
+                    userId, "Mother Board"
                 )
                 var userProductsRef = db.collection("Productos")
                 userProductsRef.add(motherBoard).addOnCompleteListener { task ->

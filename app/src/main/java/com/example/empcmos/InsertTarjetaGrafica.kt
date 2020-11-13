@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.ETarjetaGrafica
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_tarjeta_grafica.*
 
@@ -70,6 +71,7 @@ class InsertTarjetaGrafica : Fragment() {
             var valor:Int
             var estado: Boolean = true
             var foto:String
+            val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
             if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(TB_VRam.toString())
                 && !TextUtils.isEmpty(TB_Voltaje.toString()) && !TextUtils.isEmpty(TB_Valor.toString()) && !TextUtils.isEmpty(TB_Cantidad.toString())
@@ -81,12 +83,12 @@ class InsertTarjetaGrafica : Fragment() {
                 cantidad = Integer.parseInt(TB_Cantidad.text.toString())
                 valor = Integer.parseInt(TB_Valor.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
-                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
+                foto = interfazComunicarFragmentos.subirImagen(userId,nombre)
 
                 val db = FirebaseFirestore.getInstance()
                 val tarjetaGrafica = ETarjetaGrafica(
                     nombre, descripcion, marca,  valor, voltaje, vram, tipoSalida,
-                    estado, foto, cantidad, "fgMeKpjGmZVXh7Yp2rLp", "Tarjeta Grafica"
+                    estado, foto, cantidad, userId, "Tarjeta Grafica"
                 )
                 var userProductsRef = db.collection("Productos")
                 userProductsRef.add(tarjetaGrafica).addOnCompleteListener { task ->

@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.ECaja
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_caja.*
 
@@ -61,34 +62,35 @@ class InsertCaja : Fragment() {
         }
 
         B_Agregar.setOnClickListener {
-            var nombre:String = Tb_Nombre.text.toString()
-            var descripcion:String = Tb_Descripcion.text.toString()
-            var puertosUSB:Int
-            var ventiladores:Int
-            var tamaño:String = TB_Tamano.text.toString()
-            var cantidad:Int
-            var valor:Int
-            var estado: Boolean = true
-            var foto:String
+            val nombre:String = Tb_Nombre.text.toString()
+            val descripcion:String = Tb_Descripcion.text.toString()
+            val puertosUSB:Int
+            val ventiladores:Int
+            val tamaño:String = TB_Tamano.text.toString()
+            val cantidad:Int
+            val valor:Int
+            val estado = true
+            val foto:String
+            val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
-            if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(TB_Puertos.toString())
-                && !TextUtils.isEmpty(TB_Ventiladores.toString()) && !TextUtils.isEmpty(TB_Valor.toString()) && !TextUtils.isEmpty(tamaño)
-                && !TextUtils.isEmpty(TB_Cantidad.toString()) && interfazComunicarFragmentos.foto() == true
-                && !TextUtils.isEmpty(marca) && !TextUtils.isEmpty(placa)){
+            if ((!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(TB_Puertos.toString())
+                        && !TextUtils.isEmpty(TB_Ventiladores.toString()) && !TextUtils.isEmpty(TB_Valor.toString()) && !TextUtils.isEmpty(tamaño)
+                        && !TextUtils.isEmpty(TB_Cantidad.toString())) && interfazComunicarFragmentos.foto() && !TextUtils.isEmpty(marca) && !TextUtils.isEmpty(placa)
+            ){
 
                 puertosUSB = Integer.parseInt(TB_Puertos.text.toString())
                 ventiladores = Integer.parseInt(TB_Ventiladores.text.toString())
                 cantidad = Integer.parseInt(TB_Cantidad.text.toString())
                 valor = Integer.parseInt(TB_Valor.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
-                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
+                foto = interfazComunicarFragmentos.subirImagen(userId,nombre)
 
                 val db = FirebaseFirestore.getInstance()
                 val caja = ECaja(
                     nombre, descripcion, marca, valor, foto, estado, cantidad, puertosUSB,
-                    tamaño, ventiladores, placa,"fgMeKpjGmZVXh7Yp2rLp", "Caja"
+                    tamaño, ventiladores, placa,userId, "Caja"
                 )
-                var userProductsRef = db.collection("Productos")
+                val userProductsRef = db.collection("Productos")
                 userProductsRef.add(caja).addOnCompleteListener { task ->
                     if (task.isComplete) {
                         Toast.makeText(
@@ -118,11 +120,11 @@ class InsertCaja : Fragment() {
 
     fun cargarMarca(){
         listMarcas.add("-Marca Caja-")
-        var userProductsRef =  db.collection("Compatibilidad").document("Caja").collection("Marca")
+        val userProductsRef =  db.collection("Compatibilidad").document("Caja").collection("Marca")
         userProductsRef.get().addOnSuccessListener { marcas ->
             for(marca in marcas) {
                 listMarcas.add(marca?.getString("Nombre").toString())
-                s_marca?.adapter =activity?.applicationContext?.let { ArrayAdapter(it,android.R.layout.simple_spinner_item, listMarcas) }
+                s_marca?.adapter =activity.applicationContext?.let { ArrayAdapter(it,android.R.layout.simple_spinner_item, listMarcas) }
             }
         }
         s_marca?.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
@@ -137,11 +139,11 @@ class InsertCaja : Fragment() {
 
     fun cargarTipo(){
         listPlacas.add("-Tamaño de Placa-")
-        var userProductsRef =  db.collection("Compatibilidad").document("MotherBoard").collection("Tamaño")
+        val userProductsRef =  db.collection("Compatibilidad").document("MotherBoard").collection("Tamaño")
         userProductsRef.get().addOnSuccessListener { procesadores ->
             for(procesador in procesadores) {
                 listPlacas.add(procesador?.getString("Tamaño").toString())
-                s_tipoPlaca?.adapter =activity?.applicationContext?.let { ArrayAdapter(it,android.R.layout.simple_spinner_item, listPlacas) }
+                s_tipoPlaca?.adapter =activity.applicationContext?.let { ArrayAdapter(it,android.R.layout.simple_spinner_item, listPlacas) }
             }
         }
         s_tipoPlaca?.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{

@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.EProcesador
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_procesador.*
 
@@ -82,6 +83,7 @@ class InsertProcesador : Fragment() {
             var cantidad:Int
             var estado: Boolean = true
             var foto:String
+            val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
             if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(TB_Voltaje.toString())
                 && !TextUtils.isEmpty(TB_Valor.toString()) && !TextUtils.isEmpty(TB_Cantidad.toString()) && interfazComunicarFragmentos.foto() == true
@@ -92,12 +94,12 @@ class InsertProcesador : Fragment() {
                 voltaje = Integer.parseInt(TB_Voltaje.text.toString())
                 cantidad = Integer.parseInt(TB_Cantidad.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
-                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
+                foto = interfazComunicarFragmentos.subirImagen(userId,nombre)
 
                // mStorageRef = FirebaseStorage.getInstance().getReference();
                 val motherBoard = EProcesador(
                     nombre, descripcion, marca, generacion, valor, voltaje, tipo, estado, foto, socket, cantidad,
-                    "fgMeKpjGmZVXh7Yp2rLp", "Procesador"
+                    userId, "Procesador"
                 )
                 //val storageRef = Firebase.storage.reference.child("images/"+interfazComunicarFragmentos.foto)
                 var userProductsRef = db.collection("Productos")

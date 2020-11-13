@@ -28,7 +28,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun register(view: View){
-        //startActivity(Intent(this, RegisterActivity::class.java))
+        startActivity(Intent(this, RegistroUsuarioActivity::class.java))
+    }
+
+    fun registerVendedor(view: View){
+        startActivity(Intent(this, RegistroVendedorActivity::class.java))
     }
 
     fun forgetPassword(view: View){

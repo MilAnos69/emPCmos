@@ -1,12 +1,12 @@
 package com.example.empcmos
 
 import android.app.Activity
-import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.Menu
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
@@ -21,6 +21,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.empcmos.ui.Modelo.EProducto
+import com.example.empcmos.ui.Modelo.EUsuarios
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.IOException
@@ -33,33 +36,16 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     internal var storage:FirebaseStorage?=null
     internal var storageReferencia:StorageReference?=null
     private var filepath: Uri? = null
+    private val db = FirebaseFirestore.getInstance()
+    lateinit var listUsuarios: ArrayList<EUsuarios>
+    private  var rol: String=""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val toolbar: Toolbar=findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        listUsuarios = ArrayList<EUsuarios>()
+        cargarVista()
 
-        val drawerLayout: DrawerLayout=findViewById(R.id.drawer_layout)
-        val navView: NavigationView=findViewById(R.id.nav_view)
-        val navController=findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        appBarConfiguration=AppBarConfiguration(
-            setOf(
-                R.id.insertUsers,
-                R.id.insertVendedores,
-                R.id.listVendedores,
-                R.id.listUsers,
-                R.id.listarProductos,
-                R.id.insertProducto
-            ), drawerLayout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-        storage = FirebaseStorage.getInstance()
-        storageReferencia=storage!!.reference
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -126,6 +112,52 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         }else{
             return false
         }
+    }
 
+    fun cargarVista(){
+        val userEmail = FirebaseAuth.getInstance().currentUser?.email.toString()
+        var userProductsRef =  db.collection("User").whereEqualTo("correo",userEmail)
+
+         userProductsRef.get().addOnSuccessListener { users ->
+            for (user in users) {
+                rol = user.getString("rol").toString()
+            }
+             llenarOnCreate()
+        }
+
+    }
+
+    fun llenarOnCreate(){
+        if(rol == "Vendedor"){
+            setContentView(R.layout.activity_main_vendedor)
+        }else if(rol == "Usuario"){
+            setContentView(R.layout.activity_main_usuario)
+        }else if(rol == ""){
+            setContentView(R.layout.activity_main)
+        }
+
+
+        val toolbar: Toolbar=findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        val drawerLayout: DrawerLayout=findViewById(R.id.drawer_layout)
+        val navView: NavigationView = findViewById(R.id.nav_view)
+        val navController=findNavController(R.id.nav_host_fragment)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        appBarConfiguration=AppBarConfiguration(
+            setOf(
+                R.id.insertUsers,
+                R.id.insertVendedores,
+                R.id.listVendedores,
+                R.id.listUsers,
+                R.id.listarProductos,
+                R.id.insertProducto
+            ), drawerLayout
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+        storage = FirebaseStorage.getInstance()
+        storageReferencia=storage!!.reference
     }
 }

@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.EFuente
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_fuente.*
 
@@ -70,6 +71,7 @@ class InsertFuente : Fragment() {
             var valor:Int
             var estado: Boolean = true
             var foto:String
+            val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
             if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(tamaño)
                 && !TextUtils.isEmpty(TB_Voltaje.toString()) && !TextUtils.isEmpty(TB_Valor.toString())
@@ -80,12 +82,12 @@ class InsertFuente : Fragment() {
                 cantidad = Integer.parseInt(TB_Cantidad.text.toString())
                 valor = Integer.parseInt(TB_Valor.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
-                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
+                foto = interfazComunicarFragmentos.subirImagen(userId,nombre)
 
                 val db = FirebaseFirestore.getInstance()
                 val fuente = EFuente(
                     nombre, descripcion, marca, valor, foto, estado, cantidad, tipo,
-                    voltaje, tamaño, "fgMeKpjGmZVXh7Yp2rLp", "Fuente"
+                    voltaje, tamaño, userId, "Fuente"
                 )
                 var userProductsRef = db.collection("Productos")
                 userProductsRef.add(fuente).addOnCompleteListener { task ->

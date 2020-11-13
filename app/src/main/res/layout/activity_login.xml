@@ -60,11 +60,11 @@
         android:ems="10"
         android:hint="email"
         android:inputType="textEmailAddress"
+        android:maxLength="50"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/view5" />
 
     <EditText
         android:id="@+id/inputPassword"
@@ -79,6 +79,7 @@
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
+        android:maxLength="40"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,14 +107,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
-        android:text="Registrate Ahora"
+        android:text="¡Registrate Ahora!"
+        android:textColor="#C70039"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:onClick="register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/gotoRegisterVendedor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="32dp"
+        android:clickable="true"
+        android:onClick="registerVendedor"
+        android:text="¡Conviertete en Vendedor!"
         android:textColor="#C70039"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="511dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

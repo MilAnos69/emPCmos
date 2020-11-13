@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.ERam
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_ram.*
 
@@ -72,6 +73,7 @@ class InsertRam : Fragment() {
             var valor:Int
             var estado: Boolean = true
             var foto:String
+            val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
             if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(TB_Frecuencia.toString())
                 && !TextUtils.isEmpty(TB_Valor.toString()) && !TextUtils.isEmpty(TB_Cantidad.toString()) && interfazComunicarFragmentos.foto() == true
@@ -80,12 +82,12 @@ class InsertRam : Fragment() {
                 cantidad  = TB_Cantidad.text.toString().toInt()
                 valor = TB_Valor.text.toString().toInt()
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
-                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
+                foto = interfazComunicarFragmentos.subirImagen(userId,nombre)
 
                 val db = FirebaseFirestore.getInstance()
                 val ram = ERam(
                     nombre, descripcion, marca, valor, foto, estado, cantidad, tipo, frecuencia,
-                    "fgMeKpjGmZVXh7Yp2rLp", "Ram"
+                    userId, "Ram"
                 )
                 var userProductsRef = db.collection("Productos")
                 userProductsRef.add(ram).addOnCompleteListener { task ->

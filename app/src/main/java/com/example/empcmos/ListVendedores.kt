@@ -40,7 +40,7 @@ class ListVendedores : Fragment() {
 
     //ERROR AL CARGAR DATOSS
     fun cargarVista(){
-        var userProductsRef =  db.collection("Vendedor")
+        var userProductsRef =  db.collection("User").whereEqualTo("rol","Vendedor")
 
         userProductsRef.get().addOnSuccessListener { users ->
             for(user in users) {
@@ -48,7 +48,7 @@ class ListVendedores : Fragment() {
                     EVendedores(user?.getString("nombre").toString(),user?.getString("apellido").toString(),
                         user?.getString("correo").toString(),user?.getString("usuario").toString(),
                         user?.getString("password").toString(),user?.getString("telefono").toString(),
-                        user?.getString("direccion").toString(),user?.getBoolean("estado"))
+                        user?.getString("direccion").toString(),user?.getBoolean("estado"),user?.getString("rol").toString())
                 )
 
             }
