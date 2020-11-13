@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.EDiscoDuro
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_disco_duro.*
 
@@ -70,6 +71,7 @@ class InsertDiscoDuro : Fragment() {
             var valor:Int
             var estado: Boolean = true
             var foto:String
+            val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
             if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(TB_Cantidad.toString())
                 && !TextUtils.isEmpty(TB_Voltaje.toString()) && !TextUtils.isEmpty(TB_Valor.toString())
@@ -81,12 +83,12 @@ class InsertDiscoDuro : Fragment() {
                 capacidad = Integer.parseInt(TB_Capacidad.text.toString())
                 valor = Integer.parseInt(TB_Valor.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
-                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
+                foto = interfazComunicarFragmentos.subirImagen(userId,nombre)
 
                 val db = FirebaseFirestore.getInstance()
                 val discoDuro = EDiscoDuro(
                     nombre, descripcion, marca, valor, foto, estado, cantidad, tipo,
-                    voltaje, capacidad, "fgMeKpjGmZVXh7Yp2rLp", "Disco Duro"
+                    voltaje, capacidad, userId, "Disco Duro"
                 )
                 var userProductsRef = db.collection("Productos")
                 userProductsRef.add(discoDuro).addOnCompleteListener { task ->

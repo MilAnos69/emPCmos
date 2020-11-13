@@ -37,16 +37,14 @@ class ListUsers : Fragment() {
 
     //ERROR AL CARGAR DATOSS
     fun cargarVista(){
-       var userProductsRef =  db.collection("User")
+       var userProductsRef =  db.collection("User").whereEqualTo("rol","Usuario")
 
         userProductsRef.get().addOnSuccessListener { users ->
             for(user in users) {
                 listUsuarios.add(EUsuarios(user?.getString("nombre").toString(),user?.getString("apellido").toString(),
                     user?.getString("correo").toString(),user?.getString("usuario").toString(),
                     user?.getString("password").toString(),user?.getString("telefono").toString(),
-                    user?.getBoolean("estado")))
-
-                //listUsuarios.add(user.toObject(EUsuarios::class.java))
+                    user?.getBoolean("estado"),user?.getString("rol").toString()))
             }
             mostrarDatos()
         }

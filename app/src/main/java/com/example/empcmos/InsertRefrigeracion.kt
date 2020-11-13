@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.ERefrigerador
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_refrigeracion.*
 
@@ -81,6 +82,7 @@ class InsertRefrigeracion : Fragment() {
             var valor:Int
             var estado: Boolean = true
             var foto:String
+            val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
             if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(TB_Voltaje.toString())
                 && !TextUtils.isEmpty(TB_Valor.toString()) && !TextUtils.isEmpty(TB_Cantidad.toString()) && interfazComunicarFragmentos.foto() == true
@@ -91,12 +93,12 @@ class InsertRefrigeracion : Fragment() {
                 cantidad = Integer.parseInt(TB_Cantidad.text.toString())
                 valor = Integer.parseInt(TB_Valor.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
-                foto = interfazComunicarFragmentos.subirImagen("fgMeKpjGmZVXh7Yp2rLp",nombre)
+                foto = interfazComunicarFragmentos.subirImagen(userId,nombre)
 
                 val db = FirebaseFirestore.getInstance()
                 val motherBoard = ERefrigerador(
                     nombre, descripcion, marca, tipo, valor, tamaño, voltaje, estado, foto, socket, cantidad,
-                    "fgMeKpjGmZVXh7Yp2rLp", "Refrigeracion"
+                    userId, "Refrigeracion"
                 )
                 var userProductsRef = db.collection("Productos")
                 userProductsRef.add(motherBoard).addOnCompleteListener { task ->
