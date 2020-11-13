@@ -62,8 +62,8 @@ class ListarProductos : Fragment() {
         adapterProducto.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v : View) {
                 var nombre : String = item.get(recyclerView.getChildAdapterPosition(v)).tituloProducto
-                var fm = interfaceComunicar.enviarProductos(item.get(recyclerView.getChildAdapterPosition(v)))
-                fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, fm)?.addToBackStack(null)?.commit()
+                //var fm = interfaceComunicar.enviarProductos(item.get(recyclerView.getChildAdapterPosition(v)))
+                //fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, fm)?.addToBackStack(null)?.commit()
                 Toast.makeText(context, "Selecciono: " + nombre,Toast.LENGTH_SHORT).show()
             }
         })

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
+import android.view.View
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import com.google.android.material.navigation.NavigationView
@@ -49,9 +50,6 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        val inflater=menuInflater
-        inflater.inflate(R.menu.main, menu)
         return true
     }
 
@@ -60,12 +58,10 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun enviarProductos(producto: EProducto): Fragment {
-        var detalleProductoFragment=Detalles_Productos()
+    override fun enviarProductos(producto: EProducto, view: View){
         var bundleEnvio: Bundle=Bundle()
         bundleEnvio.putSerializable("objeto", producto)
-        detalleProductoFragment.arguments=bundleEnvio
-        return detalleProductoFragment
+        view.findNavController().navigate(R.id.action_index_to_detalles_Productos, bundleEnvio)
     }
 
     override fun galeria() {
@@ -152,7 +148,9 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
                 R.id.listVendedores,
                 R.id.listUsers,
                 R.id.listarProductos,
-                R.id.insertProducto
+                R.id.insertProducto,
+                R.id.index,
+                R.id.detalles_Productos
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

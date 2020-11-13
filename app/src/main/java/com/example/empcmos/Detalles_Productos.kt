@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
+import androidx.navigation.findNavController
 import com.example.empcmos.ui.Modelo.EProducto
 
 /**
@@ -35,6 +37,12 @@ class Detalles_Productos : Fragment() {
             nombreDetalle.setText(producto.tituloProducto)
             imagenDetalle.setImageResource(producto.imagenId)
         }
+
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                view.findNavController().navigate(R.id.action_detalles_Productos_to_index)
+            }
+        })
 
         return view
     }
