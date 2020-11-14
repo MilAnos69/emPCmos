@@ -78,22 +78,21 @@ class InsertVendedores : Fragment() {
                                                 estado,
                                                 "Vendedor"
                                             )
-                                            var venderdorProductsRef=db.collection("User")
-                                            venderdorProductsRef.add(vendedores)
-                                                .addOnCompleteListener { task ->
-                                                    if (task.isComplete) {
-                                                        Toast.makeText(
-                                                            activity, "Vendedor creado",
-                                                            Toast.LENGTH_SHORT
-                                                        ).show()
-                                                        val intent = Intent(activity, LoginActivity::class.java)
-                                                        startActivity(intent)
-                                                    } else {
-                                                        Toast.makeText(
-                                                            activity, "Error al Vendedor",
-                                                            Toast.LENGTH_LONG
-                                                        ).show()
-                                                    }
+                                            var venderdorProductsRef=db.collection("User").document(user.uid)
+                                            venderdorProductsRef.set(vendedores)
+                                                .addOnSuccessListener {
+                                                    Toast.makeText(
+                                                        activity, "Vendedor creado",
+                                                        Toast.LENGTH_LONG
+                                                    ).show()
+                                                    val intent = Intent(activity, LoginActivity::class.java)
+                                                    startActivity(intent)
+                                                }
+                                                .addOnFailureListener{
+                                                    Toast.makeText(
+                                                        activity, "Error al crear Vendedor",
+                                                        Toast.LENGTH_LONG
+                                                    ).show()
                                                 }
                                         } else {
                                             Toast.makeText(

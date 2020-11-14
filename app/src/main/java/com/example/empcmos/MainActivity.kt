@@ -202,8 +202,8 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         // menu should be considered as top level destinations.
         appBarConfiguration=AppBarConfiguration(
             setOf(
-                R.id.insertUsers,
-                R.id.insertVendedores,
+                R.id.editUsuario,
+                R.id.editVendedores,
                 R.id.listVendedores,
                 R.id.listUsers,
                 R.id.listarProductos,

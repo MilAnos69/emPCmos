@@ -11,7 +11,7 @@
             android:id="@+id/listarProductos"
             android:title="Lista Productos" />
         <item
-            android:id="@+id/insertVendedores"
+            android:id="@+id/editVendedores"
             android:title="Actualizar Datos" />
     </group>
 </menu>
