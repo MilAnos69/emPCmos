@@ -1,14 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Index">
+    tools:context=".Index"
+    android:orientation="vertical"
+    android:padding="5dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_nov"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Novedades"
+                android:textSize="15dp"
+                android:padding="5dp"
+                android:textColor="#000000"
+                />
+
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/imageSlider"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="#512DA8"
+                app:sliderIndicatorUnselectedColor="#FFF"
+                app:sliderScrollTimeInSec="1"
+                app:sliderStartAutoCycle="true"/>
+
+            <TextView
+                android:id="@+id/text_cate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categorias"
+                android:textSize="15dp"
+                android:padding="5dp"
+                android:textColor="#000000"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listaCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="110dp" />
+
+            <TextView
+                android:id="@+id/text_pro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Productos"
+                android:textSize="15dp"
+                android:padding="5dp"
+                android:textColor="#000000"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listaP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

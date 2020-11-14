@@ -1,32 +1,70 @@
 package com.example.empcmos
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
+import android.view.*
+import android.widget.TextView
+import androidx.appcompat.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.empcmos.ui.Adapters.AdapterItemCategoria
+import com.example.empcmos.ui.Adapters.AdapterItemImage
+import com.example.empcmos.ui.Adapters.AdapterProductoIndex
+import com.example.empcmos.ui.Modelo.EProducto
+import com.example.empcmos.ui.Modelo.Partes.ECategoria
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
+import com.smarteist.autoimageslider.SliderAnimations
+import com.smarteist.autoimageslider.SliderView
+import java.util.*
+import kotlin.collections.ArrayList
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1="param1"
-private const val ARG_PARAM2="param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Index.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Index : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String?=null
-    private var param2: String?=null
+
+    lateinit var activity : Activity
+    lateinit var interfaceComunicar : ComunicarFragmentos
+
+    lateinit var sliderView : SliderView
+    lateinit var adapterImagenes : AdapterItemImage
+    var item = ArrayList<Int>()
+
+    lateinit var adapterCategoria : AdapterItemCategoria
+    lateinit var recyclerViewCategoria : RecyclerView
+    var manage2 : LinearLayoutManager = LinearLayoutManager(context)
+    var itemCategoria = ArrayList<ECategoria>()
+
+    lateinit var adapterProducto : AdapterProductoIndex
+    lateinit var recyclerView : RecyclerView
+    var manage1 : LinearLayoutManager = LinearLayoutManager(context)
+    var item1 = ArrayList<EProducto>()
+    var item2 = ArrayList<EProducto>()
+
+    lateinit var text1 : TextView
+    lateinit var text2 : TextView
+    lateinit var text3 : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1=it.getString(ARG_PARAM1)
-            param2=it.getString(ARG_PARAM2)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is Activity){
+            this.activity = context as Activity
+            this.interfaceComunicar = this.activity as ComunicarFragmentos
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var id : Int = item.itemId
+        if (id == R.id.nav_search){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreateView(
@@ -34,26 +72,143 @@ class Index : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_index, container, false)
+        var view = inflater.inflate(R.layout.fragment_index, container, false)
+        sliderView = view.findViewById(R.id.imageSlider)
+        recyclerViewCategoria = view.findViewById(R.id.listaCategoria)
+        recyclerView = view.findViewById(R.id.listaP)
+        item = ArrayList<Int>()
+        itemCategoria = ArrayList<ECategoria>()
+        item1 = ArrayList<EProducto>()
+
+        text1 = view.findViewById(R.id.text_nov)
+        text2 = view.findViewById(R.id.text_cate)
+        text3 = view.findViewById(R.id.text_pro)
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Index.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String)=
-            Index().apply {
-                arguments=Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onStart() {
+        super.onStart()
+        cargarVista()
+        mostrarDatos()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main, menu)
+        val item : MenuItem = menu!!.findItem(R.id.nav_search)
+        if (item != null) {
+            var searchView = item.actionView as SearchView
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return true
                 }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText!!.isNotEmpty()) {
+                        item1.clear()
+                        val search = newText.toLowerCase(Locale.getDefault())
+                        item2.forEach {
+                            if (it.tituloProducto.toLowerCase(Locale.getDefault())
+                                    .contains(search)
+                            ) {
+                                item1.add(it)
+                            }
+                        }
+                        recyclerView.adapter!!.notifyDataSetChanged()
+                    } else {
+                        item1.clear()
+                        item1.addAll(item2)
+                        recyclerView.adapter!!.notifyDataSetChanged()
+                    }
+                    return true
+                }
+            })
+            item.setOnActionExpandListener(object : MenuItem.OnActionExpandListener{
+                override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                    ocultar()
+                    return true
+                }
+
+                override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                    mostrar()
+                    return true
+                }
+
+            })
+        }
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    fun cargarVista(){
+        //Cargar Novedades
+        item.add(R.drawable.categoria)
+        item.add(R.drawable.nuevos_productos)
+        item.add(R.drawable.fondo)
+
+        //Cargar Datos Categoria
+        itemCategoria.add(ECategoria("Procesador", R.drawable.procesador))
+        itemCategoria.add(ECategoria("MotherBoard", R.drawable.placa))
+        itemCategoria.add(ECategoria("Fuente", R.drawable.fuente))
+        itemCategoria.add(ECategoria("Ram", R.drawable.ram))
+        itemCategoria.add(ECategoria("Disco Duro", R.drawable.disco))
+        itemCategoria.add(ECategoria("Disco SSD", R.drawable.ssd))
+        itemCategoria.add(ECategoria("Grafica", R.drawable.grafica))
+        itemCategoria.add(ECategoria("Cooler", R.drawable.cooler))
+        itemCategoria.add(ECategoria("Case", R.drawable.caja))
+
+        //Cargar Productos
+        item2.addAll(interfaceComunicar.llenarProductos())
+        item1.addAll(interfaceComunicar.llenarProductos())
+    }
+
+    fun mostrarDatos(){
+        adapterImagenes = AdapterItemImage(context, item)
+        sliderView.setSliderAdapter(adapterImagenes)
+        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
+        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+        sliderView.setScrollTimeInSec(4); //set scroll delay in seconds :
+        sliderView.startAutoCycle();
+
+        manage2.orientation = LinearLayoutManager.HORIZONTAL
+        adapterCategoria = AdapterItemCategoria(context, itemCategoria)
+        recyclerViewCategoria.layoutManager = manage2
+        recyclerViewCategoria.adapter = this.adapterCategoria
+
+        adapterCategoria.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v : View) {
+                var nombre : String = itemCategoria.get(recyclerViewCategoria.getChildAdapterPosition(v)).nombreC
+                Toast.makeText(context, "Selecciono: " + nombre, Toast.LENGTH_SHORT).show()
             }
+        })
+
+        manage1.orientation = LinearLayoutManager.HORIZONTAL
+        adapterProducto = AdapterProductoIndex(context, item1)
+        recyclerView.layoutManager = manage1
+        recyclerView.adapter = this.adapterProducto
+
+        adapterProducto.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v : View) {
+                var nombre : String = item1.get(recyclerView.getChildAdapterPosition(v)).tituloProducto
+                var fm = interfaceComunicar.enviarProductos(item1.get(recyclerView.getChildAdapterPosition(v)),v)
+                //fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, fm)?.addToBackStack(null)?.commit()
+                Toast.makeText(context, "Selecciono: " + nombre, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun ocultar(){
+        text1.visibility = View.GONE
+        text2.visibility = View.GONE
+        text3.visibility = View.GONE
+        sliderView.visibility = View.GONE
+        recyclerViewCategoria.visibility = View.GONE
+    }
+
+    fun mostrar(){
+        text1.visibility = View.VISIBLE
+        text2.visibility = View.VISIBLE
+        text3.visibility = View.VISIBLE
+        sliderView.visibility = View.VISIBLE
+        recyclerViewCategoria.visibility = View.VISIBLE
     }
 }

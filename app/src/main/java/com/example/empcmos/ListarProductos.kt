@@ -44,14 +44,9 @@ class ListarProductos : Fragment() {
         var view = inflater.inflate(R.layout.fragment_listar_productos, container, false)
         recyclerView = view.findViewById(R.id.listV)
         item = ArrayList<EProducto>()
-        cargarVista()
-        mostrarDatos()
+        //cargarVista()
+        //mostrarDatos()
         return view
-    }
-
-    fun cargarVista(){
-        item.add(EProducto("camara","100.0", R.drawable.logo_empcmos))
-        item.add(EProducto("camara2","150.0", R.drawable.logo_empcmos))
     }
 
     fun mostrarDatos(){
@@ -62,8 +57,8 @@ class ListarProductos : Fragment() {
         adapterProducto.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v : View) {
                 var nombre : String = item.get(recyclerView.getChildAdapterPosition(v)).tituloProducto
-                var fm = interfaceComunicar.enviarProductos(item.get(recyclerView.getChildAdapterPosition(v)))
-                fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, fm)?.addToBackStack(null)?.commit()
+                //var fm = interfaceComunicar.enviarProductos(item.get(recyclerView.getChildAdapterPosition(v)))
+                //fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, fm)?.addToBackStack(null)?.commit()
                 Toast.makeText(context, "Selecciono: " + nombre,Toast.LENGTH_SHORT).show()
             }
         })

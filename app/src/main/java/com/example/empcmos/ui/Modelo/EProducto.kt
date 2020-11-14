@@ -4,6 +4,6 @@ import java.io.Serializable
 
 class EProducto(
     var tituloProducto : String,
-    var precioProducto : String,
-    var imagenId : Int
+    var precioProducto : Number,
+    var imagenId : String
 ):Serializable
