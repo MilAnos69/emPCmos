@@ -9,4 +9,5 @@ interface ComunicarFragmentos {
     fun galeria()
     fun subirImagen(idUser: String, nombre:String): String
     fun foto(): Boolean
+    fun llenarProductos() : ArrayList<EProducto>
 }

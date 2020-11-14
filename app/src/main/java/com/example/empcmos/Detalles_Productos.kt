@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.findNavController
 import com.example.empcmos.ui.Modelo.EProducto
+import com.squareup.picasso.Picasso
 
 /**
  * A simple [Fragment] subclass.
@@ -35,7 +36,7 @@ class Detalles_Productos : Fragment() {
         if (objetoProducto!=null){
             producto =objetoProducto.getSerializable("objeto") as EProducto
             nombreDetalle.setText(producto.tituloProducto)
-            imagenDetalle.setImageResource(producto.imagenId)
+            Picasso.get().load(producto.imagenId).into(imagenDetalle)
         }
 
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {

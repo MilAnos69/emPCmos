@@ -83,10 +83,13 @@ class Index : Fragment() {
         text1 = view.findViewById(R.id.text_nov)
         text2 = view.findViewById(R.id.text_cate)
         text3 = view.findViewById(R.id.text_pro)
+        return view
+    }
 
+    override fun onStart() {
+        super.onStart()
         cargarVista()
         mostrarDatos()
-        return view
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -153,9 +156,8 @@ class Index : Fragment() {
         itemCategoria.add(ECategoria("Case", R.drawable.caja))
 
         //Cargar Productos
-        item2.add(EProducto("camara","100.0", R.drawable.logo_empcmos))
-        item2.add(EProducto("tarjeta","150.0", R.drawable.logo_empcmos))
-        item1.addAll(item2)
+        item2.addAll(interfaceComunicar.llenarProductos())
+        item1.addAll(interfaceComunicar.llenarProductos())
     }
 
     fun mostrarDatos(){
