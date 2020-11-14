@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -55,6 +56,8 @@ class LoginActivity : AppCompatActivity() {
                         //se cierre si llega vacio
                         if (user?.isEmailVerified == true){
                             //Enviar a vista usuario logeado
+                            inputEmail.setText("")
+                            inputPassword.setText("")
                             startActivity(Intent(this, MainActivity::class.java))
                         }else{
                             Toast.makeText(this, "Verificar correo",

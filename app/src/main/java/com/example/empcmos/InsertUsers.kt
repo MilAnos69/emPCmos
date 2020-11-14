@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuth
  */
 class InsertUsers : Fragment() {
 
+    private val db = FirebaseFirestore.getInstance()
+    private val userEmail = FirebaseAuth.getInstance().currentUser?.email.toString()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +32,7 @@ class InsertUsers : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         Btn_Agregar.setOnClickListener{
             var nombre:String = Tb_Nombre.text.toString()
             var apellido: String = Tb_Apellido.text.toString()
@@ -72,22 +75,21 @@ class InsertUsers : Fragment() {
                                                 estado,
                                                 "Usuario"
                                             )
-                                            var userProductsRef=db.collection("User")
-                                            userProductsRef.add(usuario)
-                                                .addOnCompleteListener { task ->
-                                                    if (task.isComplete) {
-                                                        Toast.makeText(
-                                                            activity, "Usuario creado",
-                                                            Toast.LENGTH_SHORT
-                                                        ).show()
-                                                        val intent = Intent(activity, LoginActivity::class.java)
-                                                        startActivity(intent)
-                                                    } else {
-                                                        Toast.makeText(
-                                                            activity, "Error al crear usuario",
-                                                            Toast.LENGTH_LONG
-                                                        ).show()
-                                                    }
+                                            var userProductsRef=db.collection("User").document(user.uid)
+                                            userProductsRef.set(usuario)
+                                                .addOnSuccessListener {
+                                                    Toast.makeText(
+                                                        activity, "Usuario creado",
+                                                        Toast.LENGTH_LONG
+                                                    ).show()
+                                                    val intent = Intent(activity, LoginActivity::class.java)
+                                                    startActivity(intent)
+                                                }
+                                                .addOnFailureListener{
+                                                    Toast.makeText(
+                                                        activity, "Error al crear usuario",
+                                                        Toast.LENGTH_LONG
+                                                    ).show()
                                                 }
                                         } else {
                                             Toast.makeText(

@@ -111,11 +111,12 @@
                 android:hint="Valor"
                 android:inputType="number"
                 android:maxLength="8" />
+
             <Button
                 android:id="@+id/B_Agregar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Agregar" />
+                android:text="Guardar" />
 
         </LinearLayout>
     </ScrollView>
