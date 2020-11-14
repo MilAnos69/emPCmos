@@ -9,5 +9,7 @@ class ERam (
     var estado:Boolean,
     var cantidad:Number,
     var tipo:String,
-    var frecuencia:Number
+    var frecuencia:Number,
+    var idUser: String,
+    var parte: String
 )

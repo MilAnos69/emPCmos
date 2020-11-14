@@ -5,19 +5,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/insertUsers"
-            android:title="Usuarios" />
-        <item
-            android:id="@+id/insertVendedores"
-            android:title="Vendedores" />
+            android:id="@+id/listarProductos"
+            android:title="Lista Productos" />
         <item
             android:id="@+id/listVendedores"
-            android:title="Lista Productos" />
+            android:title="Lista Vendedores" />
         <item
             android:id="@+id/listUsers"
             android:title="Lista Usuarios" />
-        <item
-            android:id="@+id/insertProducto"
-            android:title="Agregar Productos" />
     </group>
 </menu>

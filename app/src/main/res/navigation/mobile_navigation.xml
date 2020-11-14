@@ -3,18 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/insertProducto">
+    android:label="Datos Personales"
+    app:startDestination="@id/editVendedores">
 
-    <fragment
-        android:id="@+id/insertUsers"
-        android:name="com.example.empcmos.InsertUsers"
-        android:label="Registro"
-        tools:layout="@layout/fragment_insert_users" />
-    <fragment
-        android:id="@+id/insertVendedores"
-        android:name="com.example.empcmos.InsertVendedores"
-        android:label="Registro"
-        tools:layout="@layout/fragment_vendedores" />
     <fragment
         android:id="@+id/listUsers"
         android:name="com.example.empcmos.ListUsers"
@@ -39,4 +30,19 @@
         android:id="@+id/detalles_Productos"
         android:name="com.example.empcmos.Detalles_Productos"
         android:label="Detalles Productos" />
+    <fragment
+        android:id="@+id/index"
+        android:name="com.example.empcmos.Index"
+        android:label="fragment_index"
+        tools:layout="@layout/fragment_index" />
+    <fragment
+        android:id="@+id/editUsuario"
+        android:name="com.example.empcmos.EditUsuario"
+        android:label="Datos Personales"
+        tools:layout="@layout/fragment_edit_usuario" />
+    <fragment
+        android:id="@+id/editVendedores"
+        android:name="com.example.empcmos.EditVendedores"
+        android:label="Datos Personales"
+        tools:layout="@layout/fragment_edit_vendedores" />
 </navigation>

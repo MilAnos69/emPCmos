@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.EProcesador
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_procesador.*
 
@@ -70,26 +71,35 @@ class InsertProcesador : Fragment() {
 
         cargarVista()
 
-        /*imageButton.setOnClickListener{
+        imageButton.setOnClickListener{
             interfazComunicarFragmentos.galeria()
         }
 
         B_Agregar.setOnClickListener {
             var nombre:String = Tb_Nombre.text.toString()
             var descripcion:String = Tb_Descripcion.text.toString()
-            var valor:Number = Integer.parseInt(TB_Valor.text.toString())
-            var voltaje:Number = Integer.parseInt(TB_Voltaje.text.toString())
-            var cantidad:Number = Integer.parseInt(TB_Cantidad.text.toString())
+            var valor:Int
+            var voltaje:Int
+            var cantidad:Int
             var estado: Boolean = true
+            var foto:String
+            val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
-            if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(voltaje.toString())
-                && !TextUtils.isEmpty(valor.toString()) && !TextUtils.isEmpty(cantidad.toString()) && !TextUtils.isEmpty(interfazComunicarFragmentos.foto)){
+            if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(TB_Voltaje.toString())
+                && !TextUtils.isEmpty(TB_Valor.toString()) && !TextUtils.isEmpty(TB_Cantidad.toString()) && interfazComunicarFragmentos.foto() == true
+                && !TextUtils.isEmpty(marca) && !TextUtils.isEmpty(generacion) && !TextUtils.isEmpty(tipo)
+                && !TextUtils.isEmpty(socket)){
+
+                valor = Integer.parseInt(TB_Valor.text.toString())
+                voltaje = Integer.parseInt(TB_Voltaje.text.toString())
+                cantidad = Integer.parseInt(TB_Cantidad.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
+                foto = interfazComunicarFragmentos.subirImagen(userId,nombre)
 
                // mStorageRef = FirebaseStorage.getInstance().getReference();
                 val motherBoard = EProcesador(
-                    nombre, descripcion, marca, generacion, valor, voltaje, tipo, estado, interfazComunicarFragmentos.foto, socket, cantidad,
-                    "fgMeKpjGmZVXh7Yp2rLp", "Procesador"
+                    nombre, descripcion, marca, generacion, valor, voltaje, tipo, estado, foto, socket, cantidad,
+                    userId, "Procesador"
                 )
                 //val storageRef = Firebase.storage.reference.child("images/"+interfazComunicarFragmentos.foto)
                 var userProductsRef = db.collection("Productos")
@@ -106,9 +116,13 @@ class InsertProcesador : Fragment() {
                         ).show()
                     }
                 }
+            }else {
+                Toast.makeText(
+                    activity, "Ingrese todos los datos",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-
-        }*/
+        }
     }
 
 
@@ -137,6 +151,8 @@ class InsertProcesador : Fragment() {
                 marca = parent?.getItemAtPosition(position).toString()
                 listSocket = ArrayList<String>()
                 listTipos = ArrayList<String>()
+                tipo = ""
+                socket = ""
                 listTipos.add("-Tipo Procesador-")
                 cargarTipo()
             }
@@ -159,6 +175,8 @@ class InsertProcesador : Fragment() {
                 tipo = parent?.getItemAtPosition(position).toString()
                 listSocket = ArrayList<String>()
                 listGeneracion = ArrayList<String>()
+                socket = ""
+                generacion = ""
                 cargarSocket()
                 cargarGeneracion()
             }
@@ -202,6 +220,4 @@ class InsertProcesador : Fragment() {
             }
         }
     }
-
-
 }

@@ -10,5 +10,7 @@ class EDiscoDuro (
     var cantidad:Number,
     var tipo:String,
     var voltaje:Number,
-    var capacidad:Number
+    var capacidad:Number,
+    var idUser: String,
+    var parte: String
 )

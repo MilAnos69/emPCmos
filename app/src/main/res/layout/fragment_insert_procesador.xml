@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -48,15 +47,17 @@
                 android:maxLength="40"
                 android:inputType="textPersonName"
                 android:paddingTop="15dp" />
+
             <EditText
                 android:id="@+id/Tb_Descripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="9dp"
                 android:gravity="left"
-                android:maxLines="5"
                 android:hint="Descripción"
                 android:inputType="textPersonName"
+                android:maxLength="120"
+                android:maxLines="5"
                 android:paddingTop="15dp" />
 
             <androidx.appcompat.widget.AppCompatSpinner
@@ -85,29 +86,33 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Voltaje"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="2" />
+
             <EditText
                 android:id="@+id/TB_Cantidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Cantidad"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="5" />
+
             <EditText
                 android:id="@+id/TB_Valor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Valor"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="8" />
 
             <Button
                 android:id="@+id/B_Agregar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Agregar" />
+                android:text="Guardar" />
 
         </LinearLayout>
     </ScrollView>
-
 </FrameLayout>

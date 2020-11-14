@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="emPCmos/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/emPCmos.iml" filepath="$PROJECT_DIR$/.idea/emPCmos.iml" group="emPCmos" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="emPCmos/app" />
+      <module fileurl="file://$PROJECT_DIR$/emPCmos.iml" filepath="$PROJECT_DIR$/emPCmos.iml" group="emPCmos" />
     </modules>
   </component>
 </project>

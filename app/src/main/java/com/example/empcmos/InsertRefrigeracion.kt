@@ -1,5 +1,7 @@
 package com.example.empcmos
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -11,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.empcmos.ui.Modelo.Partes.ERefrigerador
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_insert_refrigeracion.*
 
@@ -37,6 +40,9 @@ class InsertRefrigeracion : Fragment() {
     lateinit var listSocket: ArrayList<String>
     private var socket: String = ""
 
+    private lateinit var interfazComunicarFragmentos: ComunicarFragmentos
+    private lateinit var activity: Activity
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,6 +54,14 @@ class InsertRefrigeracion : Fragment() {
         return inflater.inflate(R.layout.fragment_insert_refrigeracion, container, false)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is Activity){
+            this.activity = context as Activity
+            this.interfazComunicarFragmentos = this.activity as ComunicarFragmentos
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         s_marca = S_Marca
@@ -56,22 +70,37 @@ class InsertRefrigeracion : Fragment() {
         s_tamaño = S_Tamano
         cargarVista()
 
-        /*B_Agregar.setOnClickListener {
+        imageButton.setOnClickListener{
+            interfazComunicarFragmentos.galeria()
+        }
+
+        B_Agregar.setOnClickListener {
             var nombre:String = Tb_Nombre.text.toString()
             var descripcion:String = Tb_Descripcion.text.toString()
-            var voltaje:Number = Integer.parseInt(TB_Voltaje.text.toString())
-            var cantidad:Number = Integer.parseInt(TB_Cantidad.text.toString())
-            var valor:Number = Integer.parseInt(TB_Valor.text.toString())
+            var voltaje:Int
+            var cantidad:Int
+            var valor:Int
             var estado: Boolean = true
-            if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(voltaje.toString())
-                && !TextUtils.isEmpty(valor.toString()) && !TextUtils.isEmpty(cantidad.toString())){
+            var foto:String
+            val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
+
+            if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(descripcion) && !TextUtils.isEmpty(TB_Voltaje.toString())
+                && !TextUtils.isEmpty(TB_Valor.toString()) && !TextUtils.isEmpty(TB_Cantidad.toString()) && interfazComunicarFragmentos.foto() == true
+                && !TextUtils.isEmpty(marca) && !TextUtils.isEmpty(tipo) && !TextUtils.isEmpty(tamaño)
+                && !TextUtils.isEmpty(socket)){
+
+                voltaje = Integer.parseInt(TB_Voltaje.text.toString())
+                cantidad = Integer.parseInt(TB_Cantidad.text.toString())
+                valor = Integer.parseInt(TB_Valor.text.toString())
                 Toast.makeText(activity, "Registrando", Toast.LENGTH_SHORT).show()
+                foto = interfazComunicarFragmentos.subirImagen(userId,nombre)
 
                 val db = FirebaseFirestore.getInstance()
                 val motherBoard = ERefrigerador(
-                    nombre, descripcion, marca, tipo, valor, tamaño, voltaje, estado, imagen, socket, cantidad
+                    nombre, descripcion, marca, tipo, valor, tamaño, voltaje, estado, foto, socket, cantidad,
+                    userId, "Refrigeracion"
                 )
-                var userProductsRef = db.collection("Productos").document("MotherBoard").collection("fgMeKpjGmZVXh7Yp2rLp")
+                var userProductsRef = db.collection("Productos")
                 userProductsRef.add(motherBoard).addOnCompleteListener { task ->
                     if (task.isComplete) {
                         Toast.makeText(
@@ -85,9 +114,13 @@ class InsertRefrigeracion : Fragment() {
                         ).show()
                     }
                 }
+            }else {
+                Toast.makeText(
+                    activity, "Ingrese todos los datos",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-
-        }*/
+        }
     }
 
     fun cargarVista(){

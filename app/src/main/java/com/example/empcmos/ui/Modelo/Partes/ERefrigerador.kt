@@ -11,5 +11,7 @@ class ERefrigerador (
     var estado:Boolean,
     var imagen:String,
     var socket:String,
-    var cantidad:Number
+    var cantidad:Number,
+    var idUser: String,
+    var parte: String
 )

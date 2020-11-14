@@ -61,8 +61,8 @@
                 android:layout_marginBottom="9dp"
                 android:ems="10"
                 android:hint="Correo"
+                android:inputType="textEmailAddress"
                 android:maxLength="50"
-                android:inputType="textPersonName"
                 android:paddingTop="15dp" />
 
             <EditText
@@ -118,11 +118,7 @@
                 android:id="@+id/Btn_Agregar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Agregar" />
+                android:text="Guardar" />
         </LinearLayout>
     </ScrollView>
-
-
-
-
 </FrameLayout>

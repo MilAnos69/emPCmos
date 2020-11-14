@@ -10,5 +10,7 @@ class EFuente (
     var cantidad:Number,
     var tipo:String,
     var voltaje:Number,
-    var tamaño:String
+    var tamaño:String,
+    var idUser: String,
+    var parte: String
 )
