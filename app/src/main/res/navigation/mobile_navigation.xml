@@ -5,6 +5,7 @@
     android:id="@+id/mobile_navigation"
     android:label="Datos Personales"
     app:startDestination="@id/editVendedores">
+    app:startDestination="@id/index">
 
     <fragment
         android:id="@+id/listUsers"
@@ -29,12 +30,18 @@
     <fragment
         android:id="@+id/detalles_Productos"
         android:name="com.example.empcmos.Detalles_Productos"
-        android:label="Detalles Productos" />
+        android:label="Detalles Productos"
+        tools:layout="@layout/fragment_detalles_producto">
+        <action
+            android:id="@+id/action_detalles_Productos_to_index"
+            app:destination="@id/index" />
+    </fragment>
     <fragment
         android:id="@+id/index"
         android:name="com.example.empcmos.Index"
         android:label="fragment_index"
-        tools:layout="@layout/fragment_index" />
+        tools:layout="@layout/fragment_index" >
+    </fragment>
     <fragment
         android:id="@+id/editUsuario"
         android:name="com.example.empcmos.EditUsuario"
@@ -44,5 +51,22 @@
         android:id="@+id/editVendedores"
         android:name="com.example.empcmos.EditVendedores"
         android:label="Datos Personales"
-        tools:layout="@layout/fragment_edit_vendedores" />
+        tools:layout="@layout/fragment_edit_vendedores" >
+        tools:layout="@layout/fragment_index" >
+        <action
+            android:id="@+id/action_index_to_detalles_Productos"
+            app:destination="@id/detalles_Productos" />
+        <action
+            android:id="@+id/action_index_to_lista_pc"
+            app:destination="@id/lista_pc" />
+    </fragment>
+    <fragment
+        android:id="@+id/lista_pc"
+        android:name="com.example.empcmos.lista_pc"
+        android:label="fragment_lista_pc"
+        tools:layout="@layout/fragment_lista_pc" >
+        <action
+            android:id="@+id/action_lista_pc_to_index"
+            app:destination="@id/index" />
+    </fragment>
 </navigation>

@@ -22,7 +22,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            multiDexKeepFile file('multidex-config.txt')
         }
     }
 
@@ -61,4 +60,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.4.0'
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.google.firebase:firebase-storage:19.2.0'
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
+    implementation 'com.github.smarteist:autoimageslider:1.4.0-appcompat'
+    implementation platform('com.google.firebase:firebase-bom:25.12.0')
+    implementation 'com.google.firebase:firebase-database-ktx'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

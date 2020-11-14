@@ -1,6 +1,7 @@
 package com.example.empcmos.ui.Adapters
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.empcmos.R
 import com.example.empcmos.ui.Modelo.EProducto
+import com.squareup.picasso.Picasso
 
 class AdapterProducto(mContext: Context?, listaProducto: ArrayList<EProducto>) : RecyclerView.Adapter<AdapterProducto.ViewHolder>(), View.OnClickListener  {
 
@@ -45,11 +47,11 @@ class AdapterProducto(mContext: Context?, listaProducto: ArrayList<EProducto>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var nombre : String = Items.get(position).tituloProducto
-        var precio : String = Items.get(position).precioProducto
-        var imagen : Int = Items.get(position).imagenId
+        var precio : Number = Items.get(position).precioProducto
+        var imagen : String = Items.get(position).imagenId
         holder.nombre.setText(nombre)
-        holder.precio.setText(precio)
-        holder.imagen.setImageResource(imagen)
+        holder.precio.setText(precio.toString())
+        Picasso.get().load(imagen).into(holder.imagen)
     }
 
     override fun getItemCount(): Int {
