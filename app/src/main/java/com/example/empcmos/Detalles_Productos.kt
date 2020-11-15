@@ -39,12 +39,45 @@ class Detalles_Productos : Fragment() {
             Picasso.get().load(producto.imagenId).into(imagenDetalle)
         }
 
+
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 view.findNavController().navigate(R.id.action_detalles_Productos_to_index)
             }
         })
+        var bundleEnvio: Bundle=Bundle()
+        bundleEnvio.putSerializable("objeto", producto)
 
+        val motherBoard = DetallesMotherBoard()
+        motherBoard.arguments = bundleEnvio
+        val ram = DetallesRam()
+        ram.arguments = bundleEnvio
+        val procesador = DetallesProcesador()
+        procesador.arguments = bundleEnvio
+        val refrigeracion = DetallesRefrigeracion()
+        refrigeracion.arguments = bundleEnvio
+        val tarjetaGrafica = DetallesTarjetaGrafica()
+        tarjetaGrafica.arguments = bundleEnvio
+        val discoDuro = DetallesDiscoDuro()
+        discoDuro.arguments = bundleEnvio
+        val ssdM2 = DetallesSSDM2()
+        ssdM2.arguments = bundleEnvio
+        val fuente = DetallesFuente()
+        fuente.arguments = bundleEnvio
+        val caja = DetallesCaja()
+        caja.arguments = bundleEnvio
+        when (producto?.parte){
+            "Mother Board" -> fragmentManager?.beginTransaction()?.replace(R.id.container_fragments, motherBoard)?.addToBackStack(null)?.commit()
+            "Ram" -> fragmentManager?.beginTransaction()?.replace(R.id.container_fragments, ram)?.addToBackStack(null)?.commit()
+            "Procesador" -> fragmentManager?.beginTransaction()?.replace(R.id.container_fragments, procesador)?.addToBackStack(null)?.commit()
+            "Refrigeracion" -> fragmentManager?.beginTransaction()?.replace(R.id.container_fragments, refrigeracion)?.addToBackStack(null)?.commit()
+            "Tarjeta Grafica" -> fragmentManager?.beginTransaction()?.replace(R.id.container_fragments, tarjetaGrafica)?.addToBackStack(null)?.commit()
+            "Disco Duro" -> fragmentManager?.beginTransaction()?.replace(R.id.container_fragments, discoDuro)?.addToBackStack(null)?.commit()
+            "SSD M2" -> fragmentManager?.beginTransaction()?.replace(R.id.container_fragments, ssdM2)?.addToBackStack(null)?.commit()
+            "Fuente" -> fragmentManager?.beginTransaction()?.replace(R.id.container_fragments, fuente)?.addToBackStack(null)?.commit()
+            "Caja" -> fragmentManager?.beginTransaction()?.replace(R.id.container_fragments, caja)?.addToBackStack(null)?.commit()
+
+        }
         return view
     }
 }

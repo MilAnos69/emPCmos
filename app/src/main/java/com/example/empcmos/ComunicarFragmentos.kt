@@ -10,4 +10,6 @@ interface ComunicarFragmentos {
     fun subirImagen(idUser: String, nombre:String): String
     fun foto(): Boolean
     fun llenarProductos() : ArrayList<EProducto>
+    fun listaProductosFiltrado(parteEscogida: String, view: View)
+    fun llenarProductosFiltrados() : ArrayList<EProducto>
 }

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     android:label="Datos Personales"
-    app:startDestination="@id/editVendedores">
     app:startDestination="@id/index">
 
     <fragment
@@ -41,6 +40,15 @@
         android:name="com.example.empcmos.Index"
         android:label="fragment_index"
         tools:layout="@layout/fragment_index" >
+        <action
+            android:id="@+id/action_index_to_detalles_Productos"
+            app:destination="@id/detalles_Productos" />
+        <action
+            android:id="@+id/action_index_to_lista_pc"
+            app:destination="@id/lista_pc" />
+        <action
+            android:id="@+id/action_index_to_listarProductos"
+            app:destination="@id/listarProductos" />
     </fragment>
     <fragment
         android:id="@+id/editUsuario"
@@ -51,15 +59,7 @@
         android:id="@+id/editVendedores"
         android:name="com.example.empcmos.EditVendedores"
         android:label="Datos Personales"
-        tools:layout="@layout/fragment_edit_vendedores" >
-        tools:layout="@layout/fragment_index" >
-        <action
-            android:id="@+id/action_index_to_detalles_Productos"
-            app:destination="@id/detalles_Productos" />
-        <action
-            android:id="@+id/action_index_to_lista_pc"
-            app:destination="@id/lista_pc" />
-    </fragment>
+        tools:layout="@layout/fragment_edit_vendedores" />
     <fragment
         android:id="@+id/lista_pc"
         android:name="com.example.empcmos.lista_pc"

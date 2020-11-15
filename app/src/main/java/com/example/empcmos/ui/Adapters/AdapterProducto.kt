@@ -12,17 +12,16 @@ import com.example.empcmos.R
 import com.example.empcmos.ui.Modelo.EProducto
 import com.squareup.picasso.Picasso
 
-class AdapterProducto(mContext: Context?, listaProducto: ArrayList<EProducto>) : RecyclerView.Adapter<AdapterProducto.ViewHolder>(), View.OnClickListener  {
-
+class AdapterProducto(mContext: Context?, listaProducto: ArrayList<EProducto>) : RecyclerView.Adapter<AdapterProducto.ViewHolder>(), View.OnClickListener{
     var inglaterr : LayoutInflater
 
-    var Items = ArrayList<EProducto>()
+    var ListaItems = ArrayList<EProducto>()
 
     lateinit var listener : View.OnClickListener
 
     init {
         this.inglaterr = LayoutInflater.from(mContext)
-        this.Items = listaProducto
+        this.ListaItems = listaProducto
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -46,16 +45,16 @@ class AdapterProducto(mContext: Context?, listaProducto: ArrayList<EProducto>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var nombre : String = Items.get(position).tituloProducto
-        var precio : Number = Items.get(position).precioProducto
-        var imagen : String = Items.get(position).imagenId
+        var nombre : String = ListaItems.get(position).tituloProducto
+        var precio : Number = ListaItems.get(position).precioProducto
+        var imagen : String = ListaItems.get(position).imagenId
         holder.nombre.setText(nombre)
         holder.precio.setText(precio.toString())
-        Picasso.get().load(imagen).into(holder.imagen)
+        Picasso.get().load(imagen).resize(100,100).centerCrop().into(holder.imagen)
     }
 
     override fun getItemCount(): Int {
-        return Items.size
+        return ListaItems.size
     }
 
 

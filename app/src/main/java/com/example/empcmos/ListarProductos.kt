@@ -3,6 +3,7 @@ package com.example.empcmos
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -44,8 +45,8 @@ class ListarProductos : Fragment() {
         var view = inflater.inflate(R.layout.fragment_listar_productos, container, false)
         recyclerView = view.findViewById(R.id.listV)
         item = ArrayList<EProducto>()
-        //cargarVista()
-        //mostrarDatos()
+        cargarVista()
+        mostrarDatos()
         return view
     }
 
@@ -53,14 +54,18 @@ class ListarProductos : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         adapterProducto = AdapterProducto(context, item)
         recyclerView.adapter = this.adapterProducto
+        Log.e("entro","laputa")
 
         adapterProducto.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v : View) {
                 var nombre : String = item.get(recyclerView.getChildAdapterPosition(v)).tituloProducto
                 //var fm = interfaceComunicar.enviarProductos(item.get(recyclerView.getChildAdapterPosition(v)))
                 //fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, fm)?.addToBackStack(null)?.commit()
-                Toast.makeText(context, "Selecciono: " + nombre,Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    fun cargarVista(){
+        item.addAll(interfaceComunicar.llenarProductosFiltrados())
     }
 }

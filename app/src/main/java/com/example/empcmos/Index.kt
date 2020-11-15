@@ -146,14 +146,14 @@ class Index : Fragment() {
 
         //Cargar Datos Categoria
         itemCategoria.add(ECategoria("Procesador", R.drawable.procesador))
-        itemCategoria.add(ECategoria("MotherBoard", R.drawable.placa))
+        itemCategoria.add(ECategoria("Mother Board", R.drawable.placa))
         itemCategoria.add(ECategoria("Fuente", R.drawable.fuente))
         itemCategoria.add(ECategoria("Ram", R.drawable.ram))
         itemCategoria.add(ECategoria("Disco Duro", R.drawable.disco))
-        itemCategoria.add(ECategoria("Disco SSD", R.drawable.ssd))
-        itemCategoria.add(ECategoria("Grafica", R.drawable.grafica))
-        itemCategoria.add(ECategoria("Cooler", R.drawable.cooler))
-        itemCategoria.add(ECategoria("Case", R.drawable.caja))
+        itemCategoria.add(ECategoria("SSD M2", R.drawable.ssd))
+        itemCategoria.add(ECategoria("Tarjeta Grafica", R.drawable.grafica))
+        itemCategoria.add(ECategoria("Refrigaracion", R.drawable.cooler))
+        itemCategoria.add(ECategoria("Caja", R.drawable.caja))
 
         //Cargar Productos
         item2.addAll(interfaceComunicar.llenarProductos())
@@ -177,7 +177,7 @@ class Index : Fragment() {
         adapterCategoria.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v : View) {
                 var nombre : String = itemCategoria.get(recyclerViewCategoria.getChildAdapterPosition(v)).nombreC
-                Toast.makeText(context, "Selecciono: " + nombre, Toast.LENGTH_SHORT).show()
+                var fm = interfaceComunicar.listaProductosFiltrado(nombre,v)
             }
         })
 
@@ -188,10 +188,7 @@ class Index : Fragment() {
 
         adapterProducto.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v : View) {
-                var nombre : String = item1.get(recyclerView.getChildAdapterPosition(v)).tituloProducto
                 var fm = interfaceComunicar.enviarProductos(item1.get(recyclerView.getChildAdapterPosition(v)),v)
-                //fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, fm)?.addToBackStack(null)?.commit()
-                Toast.makeText(context, "Selecciono: " + nombre, Toast.LENGTH_SHORT).show()
             }
         })
     }
