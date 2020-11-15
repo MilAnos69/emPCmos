@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.empcmos.ui.Modelo.EUsuarios
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_edit_usuario.*
 
@@ -20,7 +21,9 @@ import kotlinx.android.synthetic.main.fragment_edit_usuario.*
 class EditUsuario : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance().currentUser
     private val userEmail = FirebaseAuth.getInstance().currentUser?.email.toString()
+    private lateinit var oldPassword: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,8 +57,7 @@ class EditUsuario : Fragment() {
                 && !TextUtils.isEmpty(telefono)) {
                 if (password.length >= 6) {
                     if (password == confirmPassword) {
-                        val db = FirebaseFirestore.getInstance()
-                        val auth = FirebaseAuth.getInstance().currentUser
+
                         val usuario = EUsuarios(
                             nombre,
                             apellido,
@@ -68,26 +70,32 @@ class EditUsuario : Fragment() {
                         )
                         val user = FirebaseAuth.getInstance().currentUser?.uid
                         var userProductsRef = user?.let { it1 -> db.collection("User").document(it1) }
+                        if (correo == userEmail && password == oldPassword){
+                            if (userProductsRef != null) {
+                                datosNuevos(usuario,userProductsRef)
+                            }
+                        }else if(password != oldPassword && correo == userEmail){
+                                auth?.updatePassword(password)?.addOnCompleteListener {
+                                    if (userProductsRef != null) {
+                                        datosNuevos(usuario,userProductsRef)
+                                    }
+                                }
 
-                        auth?.updateEmail(correo)?.addOnCompleteListener {
-                            auth?.updatePassword(password)?.addOnCompleteListener {
-                                //Correo verificación
+                        }else if(correo != userEmail && password == oldPassword){
+                            auth?.updateEmail(correo)?.addOnCompleteListener {
                                 auth?.sendEmailVerification()?.addOnCompleteListener { task ->
                                     if (userProductsRef != null) {
-                                        userProductsRef.set(usuario)
-                                            .addOnCompleteListener { task ->
-                                                if (task.isComplete) {
-                                                    Toast.makeText(
-                                                        activity, "Usuario actualizado",
-                                                        Toast.LENGTH_SHORT
-                                                    ).show()
-                                                } else {
-                                                    Toast.makeText(
-                                                        activity, "Error al actualizar usuario",
-                                                        Toast.LENGTH_LONG
-                                                    ).show()
-                                                }
-                                            }
+                                        datosNuevos(usuario,userProductsRef)
+                                    }
+                                }
+                            }
+                        }else if(correo != userEmail && password != oldPassword){
+                            auth?.updateEmail(correo)?.addOnCompleteListener {
+                                auth?.updatePassword(password)?.addOnCompleteListener {
+                                    auth?.sendEmailVerification()?.addOnCompleteListener { task ->
+                                        if (userProductsRef != null) {
+                                            datosNuevos(usuario,userProductsRef)
+                                        }
                                     }
                                 }
                             }
@@ -124,9 +132,29 @@ class EditUsuario : Fragment() {
                 Tb_Correo.setText(user.getString("correo").toString())
                 Tb_Usuario.setText(user.getString("usuario").toString())
                 Tb_Password.setText(user.getString("password").toString())
+                oldPassword = user.getString("password").toString()
                 Tb_ConfirmarPassword.setText(user.getString("password").toString())
                 Tb_Telefono.setText(user.getString("telefono").toString())
             }
+        }
+    }
+
+    fun datosNuevos(usuario: EUsuarios, userProductsRef: DocumentReference){
+        if (userProductsRef != null) {
+            userProductsRef.set(usuario)
+                .addOnCompleteListener { task ->
+                    if (task.isComplete) {
+                        Toast.makeText(
+                            activity, "Usuario actualizado",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        Toast.makeText(
+                            activity, "Error al actualizar usuario",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
         }
     }
 

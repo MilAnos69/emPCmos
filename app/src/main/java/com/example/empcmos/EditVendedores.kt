@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.empcmos.ui.Modelo.EVendedores
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_edit_vendedores.*
 import kotlinx.android.synthetic.main.fragment_edit_vendedores.Btn_Agregar
@@ -29,7 +30,9 @@ import kotlinx.android.synthetic.main.fragment_vendedores.*
 class EditVendedores : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance().currentUser
     private val userEmail = FirebaseAuth.getInstance().currentUser?.email.toString()
+    private lateinit var oldPassword: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,8 +66,6 @@ class EditVendedores : Fragment() {
             ) {
                 if (password.length >= 6) {
                     if (password == confirmPassword) {
-                        val db = FirebaseFirestore.getInstance()
-                        val auth = FirebaseAuth.getInstance().currentUser
                         val vendedores = EVendedores(
                             nombre,
                             apellido,
@@ -79,27 +80,32 @@ class EditVendedores : Fragment() {
                         val user = FirebaseAuth.getInstance().currentUser?.uid
                         var userProductsRef =
                             user?.let { it1 -> db.collection("User").document(it1) }
-
-                        auth?.updateEmail(correo)?.addOnCompleteListener {
+                        if (correo == userEmail && password == oldPassword){
+                            if (userProductsRef != null) {
+                                datosNuevos(vendedores,userProductsRef)
+                            }
+                        }else if(password != oldPassword && correo == userEmail){
                             auth?.updatePassword(password)?.addOnCompleteListener {
-                                //Correo verificación
+                                if (userProductsRef != null) {
+                                    datosNuevos(vendedores,userProductsRef)
+                                }
+                            }
+
+                        }else if(correo != userEmail && password == oldPassword){
+                            auth?.updateEmail(correo)?.addOnCompleteListener {
                                 auth?.sendEmailVerification()?.addOnCompleteListener { task ->
                                     if (userProductsRef != null) {
-                                        userProductsRef.set(vendedores)
-                                            .addOnCompleteListener { task ->
-                                                if (task.isComplete) {
-                                                    Toast.makeText(
-                                                        activity, "Vendedor actualizado",
-                                                        Toast.LENGTH_SHORT
-                                                    ).show()
-                                                } else {
-                                                    Toast.makeText(
-                                                        activity, "Error al actualizar Vendedor",
-                                                        Toast.LENGTH_LONG
-                                                    ).show()
-                                                }
-                                            }
-
+                                        datosNuevos(vendedores,userProductsRef)
+                                    }
+                                }
+                            }
+                        }else if(correo != userEmail && password != oldPassword){
+                            auth?.updateEmail(correo)?.addOnCompleteListener {
+                                auth?.updatePassword(password)?.addOnCompleteListener {
+                                    auth?.sendEmailVerification()?.addOnCompleteListener { task ->
+                                        if (userProductsRef != null) {
+                                            datosNuevos(vendedores,userProductsRef)
+                                        }
                                     }
                                 }
                             }
@@ -136,10 +142,31 @@ class EditVendedores : Fragment() {
                 Tb_Correo.setText(user.getString("correo").toString())
                 Tb_Usuario.setText(user.getString("usuario").toString())
                 Tb_Password.setText(user.getString("password").toString())
+                oldPassword = user.getString("password").toString()
                 Tb_ConfirmarPassword.setText(user.getString("password").toString())
                 Tb_Telefono.setText(user.getString("telefono").toString())
                 Tb_Direccion.setText(user.getString("direction").toString())
             }
+        }
+    }
+
+    fun datosNuevos(vendedores: EVendedores, userProductsRef: DocumentReference){
+        if (userProductsRef != null) {
+            userProductsRef.set(vendedores)
+                .addOnCompleteListener { task ->
+                    if (task.isComplete) {
+                        Toast.makeText(
+                            activity, "Vendedor actualizado",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        Toast.makeText(
+                            activity, "Error al actualizar Vendedor",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+
         }
     }
 
