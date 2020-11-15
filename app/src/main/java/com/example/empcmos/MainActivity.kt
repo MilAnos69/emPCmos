@@ -49,6 +49,7 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     private var filepath: Uri? = null
     private val db = FirebaseFirestore.getInstance()
     lateinit var listUsuarios: ArrayList<EUsuarios>
+    lateinit var listaFiltrada : ArrayList<EProducto>
     private  var rol: String=""
 
     //Datos Producto
@@ -60,6 +61,7 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         listUsuarios = ArrayList<EUsuarios>()
+        listaFiltrada = ArrayList<EProducto>()
         listaPcs = ArrayList<EProducto>()
         cargarImagenes()
     }
@@ -143,15 +145,20 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         var nombre : String
         var valor : Int
         var imagenC : String
-        var bitmap : Bitmap
+        var nombreImage : String
+        var parte: String
+        var descripcion : String
         ProductsRef.get().addOnSuccessListener {p->
             for (productos in p) {
+                parte =  productos.getString("parte").toString()
                 nombre = productos.getString("nombre").toString()
                 valor = Integer.parseInt(productos.get("valor").toString())
+                nombreImage =  productos.get("imagen").toString()
+                descripcion = productos.getString("descripcion").toString()
                 imagenC = "images/"+ productos.get("imagen").toString()
                 imgPcs.forEach {
                     if(imagenC == it.lastPathSegment){
-                        listaPcs.add(EProducto(nombre,valor,it.toString()))
+                        listaPcs.add(EProducto(parte,nombre,valor,nombreImage,descripcion,it.toString()))
                     }
                 }
             }
@@ -179,6 +186,36 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
 
     override fun llenarProductos(): ArrayList<EProducto> {
         return listaPcs
+    }
+
+    override fun listaProductosFiltrado(parteEscogida: String, view: View){
+        var nombre : String
+        var valor : Int
+        var imagenC : String
+        var nombreImage : String
+        var parte: String
+        var descripcion : String
+        var ProductsRef =  db.collection("Productos").whereEqualTo("parte",parteEscogida)
+        ProductsRef.get().addOnSuccessListener {p->
+            for (productos in p) {
+                parte =  productos.getString("parte").toString()
+                nombre = productos.getString("nombre").toString()
+                valor = Integer.parseInt(productos.get("valor").toString())
+                nombreImage =  productos.get("imagen").toString()
+                descripcion = productos.getString("descripcion").toString()
+                imagenC = "images/"+ productos.get("imagen").toString()
+                imgPcs.forEach {
+                    if(imagenC == it.lastPathSegment){
+                        listaFiltrada.add(EProducto(parte,nombre,valor,nombreImage,descripcion,it.toString()))
+                    }
+                }
+            }
+        }
+        view.findNavController().navigate(R.id.action_index_to_listarProductos)
+    }
+
+    override fun llenarProductosFiltrados(): ArrayList<EProducto> {
+        return listaFiltrada
     }
 
 
@@ -217,4 +254,5 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         storage = FirebaseStorage.getInstance()
         storageReferencia=storage!!.reference
     }
+
 }

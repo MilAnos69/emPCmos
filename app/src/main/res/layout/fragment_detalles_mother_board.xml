@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetallesMotherBoard">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/L_Descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descripcion"
+                android:textColor="#97000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/Tb_Descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/L_Marca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Marca"
+                android:textColor="#97000000"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/Tb_Marca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/L_TipoProcesador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo de Procesador"
+                android:textColor="#97000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/Tb_TipoProcesador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/L_Socket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Socket"
+                android:textColor="#97000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/Tb_Socket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/L_Tamano"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tamaño"
+                android:textColor="#97000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/TB_Tamano"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/L_Chipset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chipset"
+                android:textColor="#97000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/TB_Chipset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/L_Voltaje"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Voltaje"
+                android:textColor="#97000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/TB_Voltaje"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/L_PuertosM_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Número de Puertos SSD M.2"
+                android:textColor="#97000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/TB_PuertosM_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/L_TamanoM2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tamaño de los SSD M.2"
+                android:textColor="#97000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/TB_TamañoM2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/L_PuertosDiscoDuro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Número de Puertos de Disco Duro"
+                android:textColor="#97000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/TB_PuertosDiscoDuro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/L_TipoRam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo de Ram"
+                android:textColor="#97000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/TB_TipoRam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/L_Valor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Valor"
+                android:textColor="#97000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/TB_Valor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@android:drawable/ic_input_add" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

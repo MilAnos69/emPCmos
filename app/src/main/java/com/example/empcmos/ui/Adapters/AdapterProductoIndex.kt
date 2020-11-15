@@ -29,12 +29,14 @@ class AdapterProductoIndex(mContext: Context?, listaProducto: ArrayList<EProduct
         var nombre : TextView
         var precio : TextView
         var imagen : ImageView
+        var descripcionh : TextView
 
 
         init {
             nombre = itemView.findViewById(R.id.txt_Nombre)
             precio = itemView.findViewById(R.id.txt_Precio)
             imagen = itemView.findViewById(R.id.imagenProducto)
+            descripcionh = itemView.findViewById(R.id.txt_Descripcion)
         }
 
     }
@@ -48,9 +50,11 @@ class AdapterProductoIndex(mContext: Context?, listaProducto: ArrayList<EProduct
         var nombre : String = ListaItems.get(position).tituloProducto
         var precio : Number = ListaItems.get(position).precioProducto
         var imagen : String = ListaItems.get(position).imagenId
+        var descripcion : String = ListaItems.get(position).descripcion
         holder.nombre.setText(nombre)
         holder.precio.setText(precio.toString())
-        Picasso.get().load(imagen).into(holder.imagen)
+        holder.descripcionh.setText(descripcion)
+        Picasso.get().load(imagen).resize(170,150).centerCrop().into(holder.imagen)
     }
 
     override fun getItemCount(): Int {
