@@ -177,7 +177,7 @@ class Index : Fragment() {
         adapterCategoria.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v : View) {
                 var nombre : String = itemCategoria.get(recyclerViewCategoria.getChildAdapterPosition(v)).nombreC
-                var fm = interfaceComunicar.listaProductosFiltrado(nombre,v)
+                interfaceComunicar.listaProductosFiltrado(nombre,v)
             }
         })
 

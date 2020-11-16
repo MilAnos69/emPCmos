@@ -54,7 +54,7 @@ class AdapterProductoIndex(mContext: Context?, listaProducto: ArrayList<EProduct
         holder.nombre.setText(nombre)
         holder.precio.setText(precio.toString())
         holder.descripcionh.setText(descripcion)
-        Picasso.get().load(imagen).resize(170,150).centerCrop().into(holder.imagen)
+        Picasso.get().load(imagen).placeholder(R.drawable.progress_animation).error(R.drawable.logo_empcmos).resize(170,150).centerCrop().into(holder.imagen)
     }
 
     override fun getItemCount(): Int {

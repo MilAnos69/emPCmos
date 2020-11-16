@@ -49,14 +49,15 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     private var filepath: Uri? = null
     private val db = FirebaseFirestore.getInstance()
     lateinit var listUsuarios: ArrayList<EUsuarios>
-    lateinit var listaFiltrada : ArrayList<EProducto>
     private  var rol: String=""
+
+    //ListaPartes
+    lateinit var listaFiltrada : ArrayList<EProducto>
 
     //Datos Producto
     var listaPcs = ArrayList<EProducto>()
     var imgPcs = ArrayList<Uri>()
 
-    lateinit var mDatabase : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,6 +80,12 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         var bundleEnvio: Bundle=Bundle()
         bundleEnvio.putSerializable("objeto", producto)
         view.findNavController().navigate(R.id.action_index_to_detalles_Productos, bundleEnvio)
+    }
+
+    override fun enviarProductoLista(producto: EProducto, view: View){
+        var bundleEnvio: Bundle=Bundle()
+        bundleEnvio.putSerializable("objeto", producto)
+        view.findNavController().navigate(R.id.action_listarProductos_to_detalles_Productos, bundleEnvio)
     }
 
     override fun galeria() {
@@ -126,6 +133,8 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
             return false
         }
     }
+
+
 
     fun cargarVista(){
         val userEmail = FirebaseAuth.getInstance().currentUser?.email.toString()
@@ -189,26 +198,10 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     }
 
     override fun listaProductosFiltrado(parteEscogida: String, view: View){
-        var nombre : String
-        var valor : Int
-        var imagenC : String
-        var nombreImage : String
-        var parte: String
-        var descripcion : String
-        var ProductsRef =  db.collection("Productos").whereEqualTo("parte",parteEscogida)
-        ProductsRef.get().addOnSuccessListener {p->
-            for (productos in p) {
-                parte =  productos.getString("parte").toString()
-                nombre = productos.getString("nombre").toString()
-                valor = Integer.parseInt(productos.get("valor").toString())
-                nombreImage =  productos.get("imagen").toString()
-                descripcion = productos.getString("descripcion").toString()
-                imagenC = "images/"+ productos.get("imagen").toString()
-                imgPcs.forEach {
-                    if(imagenC == it.lastPathSegment){
-                        listaFiltrada.add(EProducto(parte,nombre,valor,nombreImage,descripcion,it.toString()))
-                    }
-                }
+        listaFiltrada.clear()
+        listaPcs.forEach {
+            if (it.parte==parteEscogida){
+                listaFiltrada.add(it)
             }
         }
         view.findNavController().navigate(R.id.action_index_to_listarProductos)
@@ -216,6 +209,10 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
 
     override fun llenarProductosFiltrados(): ArrayList<EProducto> {
         return listaFiltrada
+    }
+
+    override fun back() {
+        listaFiltrada.clear()
     }
 
 
