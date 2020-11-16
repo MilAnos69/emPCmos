@@ -6,10 +6,12 @@ import com.example.empcmos.ui.Modelo.EProducto
 
 interface ComunicarFragmentos {
     fun enviarProductos(producto: EProducto, view: View);
+    fun enviarProductoLista(producto: EProducto, view: View);
     fun galeria()
     fun subirImagen(idUser: String, nombre:String): String
     fun foto(): Boolean
     fun llenarProductos() : ArrayList<EProducto>
     fun listaProductosFiltrado(parteEscogida: String, view: View)
     fun llenarProductosFiltrados() : ArrayList<EProducto>
+    fun back()
 }

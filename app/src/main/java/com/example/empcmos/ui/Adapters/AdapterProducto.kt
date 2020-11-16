@@ -1,15 +1,20 @@
 package com.example.empcmos.ui.Adapters
 
+import android.app.Activity
 import android.content.Context
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.empcmos.R
 import com.example.empcmos.ui.Modelo.EProducto
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
 class AdapterProducto(mContext: Context?, listaProducto: ArrayList<EProducto>) : RecyclerView.Adapter<AdapterProducto.ViewHolder>(), View.OnClickListener{
@@ -48,9 +53,10 @@ class AdapterProducto(mContext: Context?, listaProducto: ArrayList<EProducto>) :
         var nombre : String = ListaItems.get(position).tituloProducto
         var precio : Number = ListaItems.get(position).precioProducto
         var imagen : String = ListaItems.get(position).imagenId
+        //var descripcion : String = ListaItems.get(position).descripcion
         holder.nombre.setText(nombre)
         holder.precio.setText(precio.toString())
-        Picasso.get().load(imagen).resize(100,100).centerCrop().into(holder.imagen)
+        Picasso.get().load(imagen).placeholder(R.drawable.progress_animation).error(R.drawable.logo_empcmos).resize(100,100).centerCrop().into(holder.imagen)
     }
 
     override fun getItemCount(): Int {

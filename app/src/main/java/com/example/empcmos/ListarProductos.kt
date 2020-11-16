@@ -9,20 +9,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.empcmos.ui.Adapters.AdapterProducto
+import com.example.empcmos.ui.Adapters.AdapterProductoIndex
 import com.example.empcmos.ui.Modelo.EProducto
 
 class ListarProductos : Fragment() {
 
     lateinit var adapterProducto : AdapterProducto
     lateinit var recyclerView : RecyclerView
-    var item = ArrayList<EProducto>()
+    var manage1 : LinearLayoutManager = LinearLayoutManager(context)
+    var item1 = ArrayList<EProducto>()
+    var item2 = ArrayList<EProducto>()
 
     //Referencias para comunicar fragment
 
-    lateinit var activity : Activity
+    lateinit var activity1 : Activity
     lateinit var interfaceComunicar : ComunicarFragmentos
 
 
@@ -33,7 +38,7 @@ class ListarProductos : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is Activity){
-            this.activity = context as Activity
+            this.activity1 = context as Activity
             this.interfaceComunicar = this.activity as ComunicarFragmentos
         }
     }
@@ -44,28 +49,38 @@ class ListarProductos : Fragment() {
     ): View? {
         var view = inflater.inflate(R.layout.fragment_listar_productos, container, false)
         recyclerView = view.findViewById(R.id.listV)
-        item = ArrayList<EProducto>()
         cargarVista()
         mostrarDatos()
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                view.findNavController().navigate(R.id.action_listarProductos_to_index)
+            }
+        })
         return view
     }
 
+    override fun onStart() {
+        super.onStart()
+    }
+
+    fun cargarVista(){
+        item1.addAll(interfaceComunicar.llenarProductosFiltrados())
+        item2.addAll(interfaceComunicar.llenarProductosFiltrados())
+    }
+
     fun mostrarDatos(){
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        adapterProducto = AdapterProducto(context, item)
+        manage1.orientation = LinearLayoutManager.VERTICAL
+        adapterProducto = AdapterProducto(context, item1)
+        recyclerView.layoutManager = manage1
         recyclerView.adapter = this.adapterProducto
-        Log.e("entro","laputa")
+        recyclerView.adapter!!.notifyDataSetChanged()
 
         adapterProducto.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v : View) {
-                var nombre : String = item.get(recyclerView.getChildAdapterPosition(v)).tituloProducto
-                //var fm = interfaceComunicar.enviarProductos(item.get(recyclerView.getChildAdapterPosition(v)))
-                //fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, fm)?.addToBackStack(null)?.commit()
+                interfaceComunicar.enviarProductoLista(item1.get(recyclerView.getChildAdapterPosition(v)),v)
             }
         })
     }
 
-    fun cargarVista(){
-        item.addAll(interfaceComunicar.llenarProductosFiltrados())
-    }
+
 }

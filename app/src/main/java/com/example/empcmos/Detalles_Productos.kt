@@ -12,9 +12,6 @@ import androidx.navigation.findNavController
 import com.example.empcmos.ui.Modelo.EProducto
 import com.squareup.picasso.Picasso
 
-/**
- * A simple [Fragment] subclass.
- */
 class Detalles_Productos : Fragment() {
     lateinit var nombreDetalle : TextView
     lateinit var imagenDetalle : ImageView
