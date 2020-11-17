@@ -14,4 +14,12 @@ interface ComunicarFragmentos {
     fun listaProductosFiltrado(parteEscogida: String, view: View)
     fun llenarProductosFiltrados() : ArrayList<EProducto>
     fun back()
+
+    fun llenarDatosPC (parteEscogida : String)
+
+    fun llenarListaFinal(string: String) : ArrayList<EProducto>
+    fun agregarListaFinal(producto: EProducto)
+    fun eliminarLista(producto: EProducto)
+
+    fun listafinalFiltro(string: String) : Boolean
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imagenProducto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo_empcmos" />
+
+        <TextView
+            android:id="@+id/txt_Nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imagenProducto"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginBottom="72dp"
+            android:layout_toEndOf="@id/imagenProducto"
+            android:layout_toRightOf="@id/imagenProducto"
+            android:text="Nombre Producto"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_Precio"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imagenProducto"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-68dp"
+            android:layout_toEndOf="@id/imagenProducto"
+            android:text="$100000"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_Descripcion"
+            android:layout_width="182dp"
+            android:layout_height="33dp"
+            android:layout_below="@id/imagenProducto"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-41dp"
+            android:layout_toEndOf="@id/imagenProducto"
+            android:text="Descripcion"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/b_eliminar"
+            android:layout_width="49dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imagenProducto"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="32dp"
+            android:layout_toEndOf="@+id/txt_Descripcion"
+            android:background="@drawable/ic_baseline_delete_24" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
