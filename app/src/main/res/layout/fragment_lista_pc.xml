@@ -1,14 +1,426 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".lista_pc">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="5dp">
 
-</FrameLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SELECCIONA TUS COMPONTES"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="#000"/>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#000" />
+
+                    <Button
+                        android:id="@+id/bte0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mother Board"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:id="@+id/botones1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/Pbte0"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Productos"
+                            android:textStyle="bold"/>
+
+                        <Button
+                            android:id="@+id/Ebte0"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Ensamble"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list0"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:visibility="gone"/>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#000" />
+
+                    <Button
+                        android:id="@+id/bte1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Procesador"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:id="@+id/botones2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/Pbte1"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Productos"
+                            android:textStyle="bold"/>
+
+                        <Button
+                            android:id="@+id/Ebte1"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Ensamble"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list1"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:visibility="gone"/>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#000" />
+
+                    <Button
+                        android:id="@+id/bte2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ram"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:id="@+id/botones3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/Pbte2"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Productos"
+                            android:textStyle="bold"/>
+
+                        <Button
+                            android:id="@+id/Ebte2"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Ensamble"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list2"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:visibility="gone"/>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#000" />
+
+                    <Button
+                        android:id="@+id/bte3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Disco Duro"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:id="@+id/botones4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/Pbte3"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Productos"
+                            android:textStyle="bold"/>
+
+                        <Button
+                            android:id="@+id/Ebte3"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Ensamble"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list3"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:visibility="gone"/>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#000" />
+
+                    <Button
+                        android:id="@+id/bte4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Disco Duro SSD M2"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:id="@+id/botones5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/Pbte4"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Productos"
+                            android:textStyle="bold"/>
+
+                        <Button
+                            android:id="@+id/Ebte4"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Ensamble"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list4"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:visibility="gone"/>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#000" />
+
+                    <Button
+                        android:id="@+id/bte5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tarjeta Grafica"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:id="@+id/botones6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/Pbte5"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Productos"
+                            android:textStyle="bold"/>
+
+                        <Button
+                            android:id="@+id/Ebte5"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Ensamble"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list5"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:visibility="gone"/>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#000" />
+
+                    <Button
+                        android:id="@+id/bte6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Refrigeracion"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:id="@+id/botones7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/Pbte6"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Productos"
+                            android:textStyle="bold"/>
+
+                        <Button
+                            android:id="@+id/Ebte6"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Ensamble"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list6"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:visibility="gone"/>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#000" />
+
+                    <Button
+                        android:id="@+id/bte7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fuente de Poder"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:id="@+id/botones8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/Pbte7"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Productos"
+                            android:textStyle="bold"/>
+
+                        <Button
+                            android:id="@+id/Ebte7"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Ensamble"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list7"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:visibility="gone"/>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#000" />
+
+                    <Button
+                        android:id="@+id/bte8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Case"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:id="@+id/botones9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/Pbte8"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Productos"
+                            android:textStyle="bold"/>
+
+                        <Button
+                            android:id="@+id/Ebte8"
+                            android:layout_width="195dp"
+                            android:layout_height="wrap_content"
+                            android:text="Ensamble"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list8"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:visibility="gone"/>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#000" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:contentPaddingBottom="5dp"
+                        android:layout_gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="20dp">
+
+                            <Button
+                                android:id="@+id/modelarBte"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Modelar"
+                                android:background="#FFA000"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

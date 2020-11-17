@@ -17,14 +17,16 @@
             android:id="@+id/imagenProducto"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/logo_empcmos"/>
+            android:src="@drawable/logo_empcmos" />
 
         <TextView
             android:id="@+id/txt_Nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:layout_marginLeft="11dp"
+            android:layout_alignBottom="@+id/imagenProducto"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginBottom="72dp"
             android:layout_toEndOf="@id/imagenProducto"
             android:layout_toRightOf="@id/imagenProducto"
             android:text="Nombre Producto"
@@ -36,11 +38,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/imagenProducto"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="194dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="-72dp"
+            android:layout_marginTop="-101dp"
             android:layout_toEndOf="@id/imagenProducto"
             android:text="$0.00"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_Descripcion"
+            android:layout_width="266dp"
+            android:layout_height="51dp"
+            android:layout_below="@id/imagenProducto"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-55dp"
+            android:layout_toEndOf="@id/imagenProducto"
+            android:text="Descripcion"
             android:textSize="12dp"
             android:textStyle="bold" />
 

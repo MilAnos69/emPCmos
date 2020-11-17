@@ -58,12 +58,15 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     var listaPcs = ArrayList<EProducto>()
     var imgPcs = ArrayList<Uri>()
 
+    lateinit var listaFinal : ArrayList<EProducto>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         listUsuarios = ArrayList<EUsuarios>()
         listaFiltrada = ArrayList<EProducto>()
         listaPcs = ArrayList<EProducto>()
+        listaFinal = ArrayList<EProducto>()
         cargarImagenes()
     }
 
@@ -214,6 +217,44 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     override fun back() {
         listaFiltrada.clear()
     }
+
+    override fun llenarDatosPC(parteEscogida: String) {
+        listaFiltrada.clear()
+        listaPcs.forEach {
+            if (it.parte==parteEscogida){
+                listaFiltrada.add(it)
+            }
+        }
+    }
+
+    override fun llenarListaFinal(string: String): ArrayList<EProducto>{
+        var lista = ArrayList<EProducto>()
+        listaFinal.forEach {
+            if(it.parte == string){
+                lista.add(it)
+            }
+        }
+        return lista
+    }
+
+    override fun agregarListaFinal(producto: EProducto) {
+        listaFinal.add(producto)
+    }
+
+    override fun eliminarLista(producto: EProducto) {
+        listaFinal.remove(producto)
+    }
+
+    override fun listafinalFiltro(string: String): Boolean {
+        listaFinal.forEach {
+            if(it.parte == string){
+                return true
+            }
+        }
+        return false
+    }
+
+
 
 
     fun llenarOnCreate(){
