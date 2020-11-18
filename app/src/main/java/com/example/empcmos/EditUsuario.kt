@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.example.empcmos.ui.Modelo.EUsuarios
 import com.google.firebase.auth.FirebaseAuth
@@ -30,6 +31,11 @@ class EditUsuario : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+
+            }
+        })
         return inflater.inflate(R.layout.fragment_edit_usuario, container, false)
     }
 

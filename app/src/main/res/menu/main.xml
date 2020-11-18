@@ -7,4 +7,10 @@
         android:title="Buscar"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always|collapseActionView"/>
+
+    <item
+        android:id="@+id/m_listar_pc"
+        android:icon="@drawable/list_pce"
+        android:title="Listar Pc"
+        app:showAsAction="ifRoom"/>
 </menu>

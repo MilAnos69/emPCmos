@@ -34,15 +34,27 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_Precio"
-            android:layout_width="125dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/imagenProducto"
             android:layout_marginStart="14dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="-68dp"
             android:layout_toEndOf="@id/imagenProducto"
-            android:text="$100000"
+            android:text="$"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_Precio"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imagenProducto"
+            android:layout_marginStart="27dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-68dp"
+            android:layout_toEndOf="@id/imagenProducto"
+            android:text="100000"
             android:textSize="18dp"
             android:textStyle="bold" />
 

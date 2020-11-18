@@ -11,7 +11,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isGone
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -119,6 +121,12 @@ class lista_pc : Fragment(), ItemSeleccionado{
         savedInstanceState: Bundle?
     ): View? {
         var view = inflater.inflate(R.layout.fragment_lista_pc, container, false)
+
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                view.findNavController().navigate(R.id.action_lista_pc_to_index)
+            }
+        })
 
         recyclerView0 = view.findViewById(R.id.list0)
         recyclerView1 = view.findViewById(R.id.list1)
@@ -470,9 +478,4 @@ class lista_pc : Fragment(), ItemSeleccionado{
         item2.removeAt(posi)
         recliclerF!!.adapter!!.notifyDataSetChanged()
     }
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 3a3097a... Seleccionar items
 }
