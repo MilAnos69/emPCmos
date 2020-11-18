@@ -76,4 +76,9 @@
             android:id="@+id/action_lista_pc_to_index"
             app:destination="@id/index" />
     </fragment>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.empcmos.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>

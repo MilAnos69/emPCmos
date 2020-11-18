@@ -13,5 +13,8 @@
         <item
             android:id="@+id/editVendedores"
             android:title="Actualizar Datos" />
+        <item
+            android:id="@+id/loginActivity"
+            android:title="Cerrar sesión" />
     </group>
 </menu>

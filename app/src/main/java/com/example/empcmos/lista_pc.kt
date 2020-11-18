@@ -438,4 +438,5 @@ class lista_pc : Fragment(), ItemSeleccionado{
         item2.removeAt(posi)
         recliclerF!!.adapter!!.notifyDataSetChanged()
     }
+
 }

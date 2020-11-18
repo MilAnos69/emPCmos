@@ -13,5 +13,8 @@
         <item
             android:id="@+id/listUsers"
             android:title="Lista Usuarios" />
+        <item
+            android:id="@+id/loginActivity"
+            android:title="Cerrar sesión" />
     </group>
 </menu>
