@@ -109,6 +109,13 @@ class InsertProcesador : Fragment() {
                             activity, "Producto creado",
                             Toast.LENGTH_SHORT
                         ).show()
+                        imageView.setImageResource(R.drawable.ic_menu_gallery)
+                        Tb_Nombre.setText("")
+                        Tb_Descripcion.setText("")
+                        TB_Voltaje.setText("")
+                        TB_Cantidad.setText("")
+                        TB_Valor.setText("")
+                        cargarVista()
                     } else {
                         Toast.makeText(
                             activity, "Error al crear el producto",
