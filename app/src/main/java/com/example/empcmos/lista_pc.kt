@@ -470,9 +470,4 @@ class lista_pc : Fragment(), ItemSeleccionado{
         item2.removeAt(posi)
         recliclerF!!.adapter!!.notifyDataSetChanged()
     }
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 3a3097a... Seleccionar items
 }

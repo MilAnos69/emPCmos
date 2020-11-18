@@ -54,6 +54,7 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     //hi
     //ListaPartes
     lateinit var listaFiltrada : ArrayList<EProducto>
+    lateinit var listaProductoVendedores : ArrayList<EProducto>
     //Datos Producto
     var listaPcs = ArrayList<EProducto>()
     var imgPcs = ArrayList<Uri>()
@@ -67,6 +68,7 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         listaFiltrada = ArrayList<EProducto>()
         listaPcs = ArrayList<EProducto>()
         listaFinal = ArrayList<EProducto>()
+        listaProductoVendedores = ArrayList<EProducto>()
         cargarImagenes()
     }
 
@@ -385,6 +387,32 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
                 }
             }
         }
+    }
+
+    override fun llenarProductosVendedor(): ArrayList<EProducto> {
+        var ProductsRef =  db.collection("Productos").whereEqualTo("estado",true).whereEqualTo("idUser", FirebaseAuth.getInstance().currentUser?.uid)
+        var nombre : String
+        var valor : Int
+        var imagenC : String
+        var nombreImage : String
+        var parte: String
+        var descripcion : String
+        ProductsRef.get().addOnSuccessListener {p->
+            for (productos in p) {
+                parte =  productos.getString("parte").toString()
+                nombre = productos.getString("nombre").toString()
+                valor = Integer.parseInt(productos.get("valor").toString())
+                nombreImage =  productos.get("imagen").toString()
+                descripcion = productos.getString("descripcion").toString()
+                imagenC = "images/"+ productos.get("imagen").toString()
+                imgPcs.forEach {
+                    if(imagenC == it.lastPathSegment){
+                        listaProductoVendedores.add(EProducto(parte,nombre,valor,nombreImage,descripcion,it.toString()))
+                    }
+                }
+            }
+        }
+        return listaProductoVendedores
     }
 
     override fun listafinalDisco(int: Int, string: String): Boolean {
