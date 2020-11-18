@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
@@ -43,7 +44,6 @@ import java.time.LocalDateTime
 class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private val SELECT_PICTURE=2
     internal var storage:FirebaseStorage?=null
     internal var storageReferencia:StorageReference?=null
     private var filepath: Uri? = null
@@ -412,6 +412,8 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         }
 
 
+
+
         val toolbar: Toolbar=findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -429,17 +431,21 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
                 R.id.listarProductos,
                 R.id.insertProducto,
                 R.id.index,
-                R.id.detalles_Productos
+                R.id.detalles_Productos,
+                R.id.lista_pc
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         storage = FirebaseStorage.getInstance()
         storageReferencia=storage!!.reference
-    }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
+        var logOut : MenuItem = navView.menu.findItem(R.id.cerrar_sesion)
+        logOut.setOnMenuItemClickListener(object : MenuItem.OnMenuItemClickListener{
+            override fun onMenuItemClick(item: MenuItem?): Boolean {
+                startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                return true
+            }
+        })
     }
-
 }

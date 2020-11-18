@@ -45,8 +45,8 @@
     <fragment
         android:id="@+id/index"
         android:name="com.example.empcmos.Index"
-        android:label="fragment_index"
-        tools:layout="@layout/fragment_index" >
+        android:label=" "
+        tools:layout="@layout/fragment_index">
         <action
             android:id="@+id/action_index_to_detalles_Productos"
             app:destination="@id/detalles_Productos" />
@@ -70,8 +70,8 @@
     <fragment
         android:id="@+id/lista_pc"
         android:name="com.example.empcmos.lista_pc"
-        android:label="fragment_lista_pc"
-        tools:layout="@layout/fragment_lista_pc" >
+        android:label="Arma tu PC"
+        tools:layout="@layout/fragment_lista_pc">
         <action
             android:id="@+id/action_lista_pc_to_index"
             app:destination="@id/index" />

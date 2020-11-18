@@ -7,7 +7,9 @@ import android.view.*
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.empcmos.ui.Adapters.AdapterItemCategoria
@@ -24,7 +26,7 @@ import kotlin.collections.ArrayList
 
 class Index : Fragment() {
 
-    lateinit var activity : Activity
+    lateinit var activity1 : Activity
     lateinit var interfaceComunicar : ComunicarFragmentos
 
     lateinit var sliderView : SliderView
@@ -46,6 +48,8 @@ class Index : Fragment() {
     lateinit var text2 : TextView
     lateinit var text3 : TextView
 
+    lateinit var vista : View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -54,8 +58,8 @@ class Index : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is Activity){
-            this.activity = context as Activity
-            this.interfaceComunicar = this.activity as ComunicarFragmentos
+            this.activity1 = context as Activity
+            this.interfaceComunicar = this.activity1 as ComunicarFragmentos
         }
     }
 
@@ -63,6 +67,9 @@ class Index : Fragment() {
         var id : Int = item.itemId
         if (id == R.id.nav_search){
             return true
+        }
+        if(id == R.id.m_listar_pc){
+            vista.findNavController().navigate(R.id.action_index_to_lista_pc)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -73,6 +80,7 @@ class Index : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_index, container, false)
+        vista = view
         sliderView = view.findViewById(R.id.imageSlider)
         recyclerViewCategoria = view.findViewById(R.id.listaCategoria)
         recyclerView = view.findViewById(R.id.listaP)
@@ -83,6 +91,12 @@ class Index : Fragment() {
         text1 = view.findViewById(R.id.text_nov)
         text2 = view.findViewById(R.id.text_cate)
         text3 = view.findViewById(R.id.text_pro)
+
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+
+            }
+        })
         return view
     }
 

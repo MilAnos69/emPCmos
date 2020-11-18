@@ -34,12 +34,14 @@ class AdapterProducto(mContext: Context?, listaProducto: ArrayList<EProducto>) :
         var nombre : TextView
         var precio : TextView
         var imagen : ImageView
+        var descripcionh : TextView
 
 
         init {
             nombre = itemView.findViewById(R.id.txt_Nombre)
             precio = itemView.findViewById(R.id.txt_Precio)
             imagen = itemView.findViewById(R.id.imagenProducto)
+            descripcionh = itemView.findViewById(R.id.txt_Descripcion)
         }
 
     }
@@ -53,9 +55,10 @@ class AdapterProducto(mContext: Context?, listaProducto: ArrayList<EProducto>) :
         var nombre : String = ListaItems.get(position).tituloProducto
         var precio : Number = ListaItems.get(position).precioProducto
         var imagen : String = ListaItems.get(position).imagenId
-        //var descripcion : String = ListaItems.get(position).descripcion
+        var descripcion : String = ListaItems.get(position).descripcion
         holder.nombre.setText(nombre)
         holder.precio.setText(precio.toString())
+        holder.descripcionh.setText(descripcion)
         Picasso.get().load(imagen).placeholder(R.drawable.progress_animation).error(R.drawable.logo_empcmos).resize(100,100).centerCrop().into(holder.imagen)
     }
 
