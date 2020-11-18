@@ -2,11 +2,13 @@ package com.example.empcmos.ui.Adapters
 
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.empcmos.R
 import com.example.empcmos.ui.Modelo.EProducto
@@ -40,11 +42,34 @@ class AdapterProductoIndex(mContext: Context?, listaProducto: ArrayList<EProduct
         }
 
     }
+
+    class BlogItemDiffCallBack(
+        var ListaItemsO : ArrayList<EProducto>,
+        var ListaItemsN : ArrayList<EProducto>
+    ): DiffUtil.Callback(){
+        override fun getOldListSize(): Int {
+            return ListaItemsO.size
+        }
+
+        override fun getNewListSize(): Int {
+            return ListaItemsN.size
+        }
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return (ListaItemsO.get(oldItemPosition).nombreImagen == ListaItemsN.get(newItemPosition).nombreImagen)
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return ListaItemsO.get(oldItemPosition).equals(ListaItemsN.get(newItemPosition))
+        }
+
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view : View =  inglaterr.inflate(R.layout.item_producto, parent, false)
         view.setOnClickListener(this)
         return ViewHolder(view)
     }
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var nombre : String = ListaItems.get(position).tituloProducto
@@ -70,5 +95,9 @@ class AdapterProductoIndex(mContext: Context?, listaProducto: ArrayList<EProduct
         if (listener!=null){
             listener.onClick(v)
         }
+    }
+
+    fun submitList() : ArrayList<EProducto>{
+        return ListaItems
     }
 }

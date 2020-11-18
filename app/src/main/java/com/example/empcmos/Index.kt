@@ -152,7 +152,7 @@ class Index : Fragment() {
         itemCategoria.add(ECategoria("Disco Duro", R.drawable.disco))
         itemCategoria.add(ECategoria("SSD M2", R.drawable.ssd))
         itemCategoria.add(ECategoria("Tarjeta Grafica", R.drawable.grafica))
-        itemCategoria.add(ECategoria("Refrigaracion", R.drawable.cooler))
+        itemCategoria.add(ECategoria("Refrigeracion", R.drawable.cooler))
         itemCategoria.add(ECategoria("Caja", R.drawable.caja))
 
         //Cargar Productos
