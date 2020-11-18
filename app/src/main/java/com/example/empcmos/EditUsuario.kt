@@ -123,7 +123,7 @@ class EditUsuario : Fragment() {
     }
 
     fun llenarDatos(){
-        var userProductsRef =  db.collection("User").whereEqualTo("correo", userEmail)
+        var userProductsRef =  db.collection("User").whereEqualTo("correo", userEmail).whereEqualTo("estado",true)
 
         userProductsRef.get().addOnSuccessListener { users ->
             for (user in users) {

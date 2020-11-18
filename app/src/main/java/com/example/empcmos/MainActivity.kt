@@ -137,11 +137,9 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         }
     }
 
-
-
     fun cargarVista(){
         val userEmail = FirebaseAuth.getInstance().currentUser?.email.toString()
-        var userProductsRef =  db.collection("User").whereEqualTo("correo",userEmail)
+        var userProductsRef =  db.collection("User").whereEqualTo("correo",userEmail).whereEqualTo("estado",true)
 
          userProductsRef.get().addOnSuccessListener { users ->
             for (user in users) {
@@ -153,7 +151,7 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     }
 
     fun getCaja(){
-        var ProductsRef =  db.collection("Productos")
+        var ProductsRef =  db.collection("Productos").whereEqualTo("estado",true)
         var nombre : String
         var valor : Int
         var imagenC : String

@@ -97,6 +97,16 @@ class InsertCaja : Fragment() {
                             activity, "Producto creado",
                             Toast.LENGTH_SHORT
                         ).show()
+                        imageView.setImageResource(R.drawable.ic_menu_gallery)
+                        Tb_Nombre.setText("")
+                        Tb_Descripcion.setText("")
+                        TB_Tamano.setText("")
+                        TB_Puertos.setText("")
+                        TB_Ventiladores.setText("")
+                        TB_Cantidad.setText("")
+                        TB_Valor.setText("")
+                        TB_Ventiladores.setText("")
+                        cargarVista()
                     } else {
                         Toast.makeText(
                             activity, "Error al crear el producto",

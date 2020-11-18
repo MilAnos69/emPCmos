@@ -56,7 +56,7 @@ class fragment_insert_producto : Fragment(){
                 val discoDuro = InsertDiscoDuro()
                 val ssdM2 = InsertSSDM2()
                 val fuente = InsertFuente()
-                val caja = DetallesCaja()
+                val caja = InsertCaja()
                 when (type){
                     "MotherBoard" -> fragmentManager?.beginTransaction()?.replace(R.id.container_fragments, motherBoard)?.addToBackStack(null)?.commit()
                     "Ram" -> fragmentManager?.beginTransaction()?.replace(R.id.container_fragments, ram)?.addToBackStack(null)?.commit()
