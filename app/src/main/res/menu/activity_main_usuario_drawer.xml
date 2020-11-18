@@ -8,7 +8,13 @@
             android:id="@+id/index"
             android:title="Inicio" />
         <item
+            android:id="@+id/lista_pc"
+            android:title="Listar PC" />
+        <item
             android:id="@+id/editUsuario"
             android:title="Actualizar Datos" />
+        <item
+            android:id="@+id/loginActivity"
+            android:title="Cerrar sesión" />
     </group>
 </menu>

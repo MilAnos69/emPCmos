@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.empcmos.R
@@ -33,6 +34,7 @@ class AdapterItemCategoria (mContext: Context?, listaCategoria: ArrayList<ECateg
             imagen = itemView.findViewById(R.id.imageView2)
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view : View =  inglaterr.inflate(R.layout.item_categoria, parent, false)
         view.setOnClickListener(this)

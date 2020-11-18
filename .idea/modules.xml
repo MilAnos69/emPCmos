@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="emPCmos/app" />
       <module fileurl="file://$PROJECT_DIR$/emPCmos.iml" filepath="$PROJECT_DIR$/emPCmos.iml" group="emPCmos" />
+      <module fileurl="file://$PROJECT_DIR$/app/emPCmos-app.iml" filepath="$PROJECT_DIR$/app/emPCmos-app.iml" group="emPCmos/app" />
     </modules>
   </component>
 </project>

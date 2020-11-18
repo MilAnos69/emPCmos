@@ -15,7 +15,14 @@
         android:id="@+id/listarProductos"
         android:name="com.example.empcmos.ListarProductos"
         android:label="Productos"
-        tools:layout="@layout/fragment_listar_productos" />
+        tools:layout="@layout/fragment_listar_productos" >
+        <action
+            android:id="@+id/action_listarProductos_to_index"
+            app:destination="@id/index" />
+        <action
+            android:id="@+id/action_listarProductos_to_detalles_Productos"
+            app:destination="@id/detalles_Productos" />
+    </fragment>
     <fragment
         android:id="@+id/listVendedores"
         android:name="com.example.empcmos.ListVendedores"
@@ -69,4 +76,9 @@
             android:id="@+id/action_lista_pc_to_index"
             app:destination="@id/index" />
     </fragment>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.empcmos.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>
