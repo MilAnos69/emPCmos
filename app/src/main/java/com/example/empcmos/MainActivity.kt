@@ -51,9 +51,9 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     lateinit var listUsuarios: ArrayList<EUsuarios>
     private  var rol: String=""
 
+    //hi
     //ListaPartes
     lateinit var listaFiltrada : ArrayList<EProducto>
-
     //Datos Producto
     var listaPcs = ArrayList<EProducto>()
     var imgPcs = ArrayList<Uri>()
@@ -252,7 +252,154 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         return false
     }
 
+    override fun validarDatosProcesadorPC(parteEscogida: String){
+        listaFiltrada.clear()
+        var string = "Mother Board"
+        var ProductsRef =  db.collection("Productos")
+        var socket : String?=null
+        listaFinal.forEach {
+            if(it.parte == string){
+                ProductsRef.whereEqualTo("imagen",it.nombreImagen).get().addOnSuccessListener {
+                    for (po in it) {
+                        socket = po.getString("socket").toString()
+                    }
+                }
+            }
+        }
+        ProductsRef.whereEqualTo("parte",parteEscogida).get().addOnSuccessListener {
+            for (po in it) {
+                if(socket == po.getString("socket").toString()){
+                    listaPcs.forEach {
+                        if(po.get("imagen").toString() == it.nombreImagen){
+                            listaFiltrada.add(it)
+                        }
+                    }
+                }
+            }
+        }
+    }
 
+    override fun validarDatosRamPC(parteEscogida: String){
+        listaFiltrada.clear()
+        var string = "Mother Board"
+        var ProductsRef =  db.collection("Productos")
+        var tipo : String?=null
+        listaFinal.forEach {
+            if(it.parte == string){
+                ProductsRef.whereEqualTo("imagen",it.nombreImagen).get().addOnSuccessListener {
+                    for (po in it) {
+                        tipo = po.getString("tipoRam").toString()
+                    }
+                }
+            }
+        }
+        ProductsRef.whereEqualTo("parte",parteEscogida).get().addOnSuccessListener {
+            for (po in it) {
+                if(tipo == po.getString("tipo").toString()){
+                    listaPcs.forEach {
+                        if(po.get("imagen").toString() == it.nombreImagen){
+                            listaFiltrada.add(it)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    override fun validarDatosSsdMdosPC(parteEscogida: String){
+        listaFiltrada.clear()
+        var string = "Mother Board"
+        var ProductsRef =  db.collection("Productos")
+        var tamaño : String?=null
+        listaFinal.forEach {
+            if(it.parte == string){
+                ProductsRef.whereEqualTo("imagen",it.nombreImagen).get().addOnSuccessListener {
+                    for (po in it) {
+                        tamaño = po.getString("tamañoM2").toString()
+                    }
+                }
+            }
+        }
+        ProductsRef.whereEqualTo("parte",parteEscogida).get().addOnSuccessListener {
+            for (po in it) {
+                if(tamaño == po.getString("tamaño").toString()){
+                    listaPcs.forEach {
+                        if(po.get("imagen").toString() == it.nombreImagen){
+                            listaFiltrada.add(it)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    override fun validarDatosCajaPC(parteEscogida: String){
+        listaFiltrada.clear()
+        var string = "Mother Board"
+        var ProductsRef =  db.collection("Productos")
+        var tm : String?=null
+        listaFinal.forEach {
+            if(it.parte == string){
+                ProductsRef.whereEqualTo("imagen",it.nombreImagen).get().addOnSuccessListener {
+                    for (po in it) {
+                        tm = po.getString("tamaño").toString()
+                    }
+                }
+            }
+        }
+        ProductsRef.whereEqualTo("parte",parteEscogida).get().addOnSuccessListener {
+            for (po in it) {
+                if(tm == po.getString("tipoPlaca").toString()){
+                    listaPcs.forEach {
+                        if(po.get("imagen").toString() == it.nombreImagen){
+                            listaFiltrada.add(it)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    override fun validarDatosFuentePC(parteEscogida: String){
+        listaFiltrada.clear()
+        var ProductsRef =  db.collection("Productos")
+        var voltaje  = 0
+        listaFiltrada.forEach {
+            ProductsRef.whereEqualTo("imagen",it.nombreImagen).get().addOnSuccessListener {
+                for (po in it) {
+                    voltaje += Integer.parseInt(po.get("voltaje").toString())
+                }
+            }
+        }
+
+        ProductsRef.whereEqualTo("parte",parteEscogida).get().addOnSuccessListener {
+            for (po in it) {
+                if(voltaje <= Integer.parseInt(po.get("voltaje").toString())){
+                    Log.e("Fuente",po.get("voltaje").toString())
+                    Log.e("Fuente",voltaje.toString())
+                    listaPcs.forEach {
+                        if(po.get("imagen").toString() == it.nombreImagen){
+                            listaFiltrada.add(it)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    override fun listafinalDisco(int: Int, string: String): Boolean {
+        var acum = 0
+        listaFinal.forEach {
+            if(it.parte == string){
+                acum+=1
+            }
+        }
+        if(acum < int){
+            return true
+        }else{
+            return false
+        }
+    }
 
 
     fun llenarOnCreate(){
@@ -289,6 +436,10 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         navView.setupWithNavController(navController)
         storage = FirebaseStorage.getInstance()
         storageReferencia=storage!!.reference
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
 }

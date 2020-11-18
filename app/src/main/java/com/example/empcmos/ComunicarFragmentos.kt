@@ -22,4 +22,14 @@ interface ComunicarFragmentos {
     fun eliminarLista(producto: EProducto)
 
     fun listafinalFiltro(string: String) : Boolean
+
+    fun validarDatosProcesadorPC (parteEscogida : String)
+    fun validarDatosRamPC (parteEscogida : String)
+    fun validarDatosSsdMdosPC (parteEscogida : String)
+    fun validarDatosCajaPC (parteEscogida : String)
+    fun validarDatosFuentePC (parteEscogida : String)
+
+
+
+    fun listafinalDisco(int: Int, string: String) : Boolean
 }

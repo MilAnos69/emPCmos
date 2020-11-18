@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.view.isGone
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.empcmos.ui.Adapters.AdapterProducto
@@ -24,6 +25,9 @@ import com.example.empcmos.ui.Modelo.EProducto
  * A simple [Fragment] subclass.
  */
 class lista_pc : Fragment(), ItemSeleccionado{
+
+    var cantidadDisco : Number = 0
+    var cantidadDisc2 : Number = 0
 
     lateinit var adapterProducto : AdapterProductoIndex
     lateinit var adapterEmsamble : AdapterProductoListaPc
@@ -296,7 +300,7 @@ class lista_pc : Fragment(), ItemSeleccionado{
                 recyclerView4,
                 recyclerView5,
                 manage7,
-                "Refrigaracion",
+                "Refrigeracion",
                 l7,
                 Pbto6,
                 Ebto6
@@ -360,27 +364,39 @@ class lista_pc : Fragment(), ItemSeleccionado{
         bton1 : Button,
         bton2 : Button
     ){
+        agregarRecicler(recycler1)
         if( recycler2.visibility.toString() == "8" && recycler3.visibility.toString() == "8" &&
             recycler4.visibility.toString() == "8" && recycler5.visibility.toString() == "8" &&
             recycler6.visibility.toString() == "8" && recycler7.visibility.toString() == "8" &&
             recycler8.visibility.toString() == "8" && recycler9.visibility.toString() == "8"){
-            if(interfaceComunicar.listafinalFiltro("Mother Board") == true || string == "Morther Board"){
-                if (recycler1.visibility.toString() == "8"){
-                    //llenamos lista principal desde el main
-                    interfaceComunicar.llenarDatosPC(string)
+            if (recycler1.visibility.toString() == "8"){
+                if(interfaceComunicar.listafinalFiltro("Mother Board") == true || string == "Mother Board"){
+                    if(string=="Procesador"){
+                        interfaceComunicar.validarDatosProcesadorPC(string)
+                    }else if(string=="Ram"){
+                        interfaceComunicar.validarDatosRamPC(string)
+                    }else if(string=="Disco Duro"){
+                        interfaceComunicar.llenarDatosPC(string)
+                    }else if(string=="SSD M2"){
+                        interfaceComunicar.validarDatosSsdMdosPC(string)
+                    }else if(string=="Caja"){
+                        interfaceComunicar.validarDatosCajaPC(string)
+                    }else if(string=="Fuente"){
+                        interfaceComunicar.validarDatosFuentePC(string)
+                    }else{
+                        interfaceComunicar.llenarDatosPC(string)
+                    }
                     item1.clear()
                     item2.clear()
                     item1.addAll(interfaceComunicar.llenarProductosFiltrados())
-                    agregarRecicler(recycler1)
-
-
                     visibleItem(linear,recycler1)
                     cargarVista(recycler1,manager,string,bton1,bton2)
-                } else {
-                    recycler1.visibility = View.GONE
-                    linear.visibility = View.GONE
                 }
+            } else {
+                recycler1.visibility = View.GONE
+                linear.visibility = View.GONE
             }
+
         }
     }
 
@@ -402,20 +418,36 @@ class lista_pc : Fragment(), ItemSeleccionado{
 
         adapterProducto.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v : View) {
-                interfaceComunicar.agregarListaFinal(item1.get(recyclerView.getChildAdapterPosition(v)))
-                Toast.makeText(activity, "Producto Agregado", Toast.LENGTH_SHORT).show()
+                if(string=="Disco Duro" && interfaceComunicar.listafinalDisco(4,string) == false){
+                    Toast.makeText(activity, "Cantidad Total", Toast.LENGTH_SHORT).show()
+                }else if(string=="SSD M2" && interfaceComunicar.listafinalDisco(2,string) == false){
+                    Toast.makeText(activity, "Cantidad Total", Toast.LENGTH_SHORT).show()
+                }else if(interfaceComunicar.listafinalDisco(1,string) == false){
+                    Toast.makeText(activity, "Cantidad Total", Toast.LENGTH_SHORT).show()
+                }else{
+                    interfaceComunicar.agregarListaFinal(item1.get(recyclerView.getChildAdapterPosition(v)))
+                    Toast.makeText(activity, "Producto Agregado", Toast.LENGTH_SHORT).show()
+                }
             }
         })
 
         bt0.setOnClickListener {
+            item1.clear()
+            item1.addAll(interfaceComunicar.llenarProductosFiltrados())
             adapterProducto = AdapterProductoIndex(context, item1)
             recyclerView.layoutManager = manager
             recyclerView.adapter = this.adapterProducto
 
             adapterProducto.setOnClickListener(object : View.OnClickListener{
                 override fun onClick(v : View) {
-                    interfaceComunicar.agregarListaFinal(item1.get(recyclerView.getChildAdapterPosition(v)))
-                    Toast.makeText(activity, "Producto Agregado", Toast.LENGTH_SHORT).show()
+                    if(string=="Disco Duro" && interfaceComunicar.listafinalDisco(4,string) == false){
+                        Toast.makeText(activity, "Cantidad Total", Toast.LENGTH_SHORT).show()
+                    }else if(string=="SSD M2" && interfaceComunicar.listafinalDisco(2,string) == false){
+                        Toast.makeText(activity, "Cantidad Total", Toast.LENGTH_SHORT).show()
+                    }else{
+                        interfaceComunicar.agregarListaFinal(item1.get(recyclerView.getChildAdapterPosition(v)))
+                        Toast.makeText(activity, "Producto Agregado", Toast.LENGTH_SHORT).show()
+                    }
                 }
             })
         }
@@ -439,4 +471,8 @@ class lista_pc : Fragment(), ItemSeleccionado{
         recliclerF!!.adapter!!.notifyDataSetChanged()
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3a3097a... Seleccionar items
 }
