@@ -51,7 +51,7 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     lateinit var listUsuarios: ArrayList<EUsuarios>
     private  var rol: String=""
 
-    //ListaPartes
+
     lateinit var listaFiltrada : ArrayList<EProducto>
     //Datos Producto
     var listaPcs = ArrayList<EProducto>()
