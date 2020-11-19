@@ -81,4 +81,9 @@
         android:name="com.example.empcmos.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/listarProductosVendedores"
+        android:name="com.example.empcmos.ListarProductosVendedores"
+        android:label="Productos"
+        tools:layout="@layout/fragment_listar_productos_vendedor" />
 </navigation>
