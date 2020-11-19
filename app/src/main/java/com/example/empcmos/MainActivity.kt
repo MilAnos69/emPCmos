@@ -2,7 +2,6 @@ package com.example.empcmos
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -11,39 +10,31 @@ import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RequiresApi
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
 import com.example.empcmos.ui.Modelo.EProducto
 import com.example.empcmos.ui.Modelo.EUsuarios
-import com.example.empcmos.ui.Modelo.Partes.ECaja
-import com.example.empcmos.ui.Modelo.Partes.ECategoria
 import com.google.android.gms.tasks.Task
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
-import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ListResult
 import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.item_categoria.*
 import java.io.IOException
 import java.time.LocalDateTime
 
 class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private val SELECT_PICTURE=2
     internal var storage:FirebaseStorage?=null
     internal var storageReferencia:StorageReference?=null
     private var filepath: Uri? = null
@@ -90,14 +81,17 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     override fun enviarProductoLista(producto: EProducto, view: View){
         var bundleEnvio: Bundle=Bundle()
         bundleEnvio.putSerializable("objeto", producto)
-        view.findNavController().navigate(R.id.action_listarProductos_to_detalles_Productos, bundleEnvio)
+        view.findNavController().navigate(
+            R.id.action_listarProductos_to_detalles_Productos,
+            bundleEnvio
+        )
     }
 
     override fun galeria() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent,"Seleccionar Imagen"), 111)
+        startActivityForResult(Intent.createChooser(intent, "Seleccionar Imagen"), 111)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -106,7 +100,7 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
             try {
                 filepath = data.data!!;
                 val img : ImageView = findViewById(R.id.imageView)
-                var bitmap = MediaStore.Images.Media.getBitmap(contentResolver,filepath)
+                var bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filepath)
                 img.setImageBitmap(bitmap)
                 if (filepath != null){
                     foto()
@@ -118,11 +112,11 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun subirImagen(idUser: String, nombre:String): String {
+    override fun subirImagen(idUser: String, nombre: String): String {
         val current = LocalDateTime.now().toString()
         val imagen: String = current.toString() + "_" + idUser + "_" + nombre
         if(filepath!=null){
-            var referenciaImagen = storageReferencia!!.child("images/"+ imagen)
+            var referenciaImagen = storageReferencia!!.child("images/" + imagen)
             referenciaImagen.putFile(filepath!!)
             return imagen
         }else{
@@ -141,26 +135,30 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
 
     fun cargarVista(){
         val userEmail = FirebaseAuth.getInstance().currentUser?.email.toString()
-        var userProductsRef =  db.collection("User").whereEqualTo("correo",userEmail).whereEqualTo("estado",true)
+        var userProductsRef =  db.collection("User").whereEqualTo("correo", userEmail).whereEqualTo(
+            "estado",
+            true
+        )
 
          userProductsRef.get().addOnSuccessListener { users ->
             for (user in users) {
                 rol = user.getString("rol").toString()
             }
+             getRol()
              llenarOnCreate()
         }
 
     }
 
     fun getCaja(){
-        var ProductsRef =  db.collection("Productos").whereEqualTo("estado",true)
+        var ProductsRef =  db.collection("Productos").whereEqualTo("estado", true)
         var nombre : String
         var valor : Int
         var imagenC : String
         var nombreImage : String
         var parte: String
         var descripcion : String
-        ProductsRef.get().addOnSuccessListener {p->
+        ProductsRef.get().addOnSuccessListener { p->
             for (productos in p) {
                 parte =  productos.getString("parte").toString()
                 nombre = productos.getString("nombre").toString()
@@ -170,7 +168,16 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
                 imagenC = "images/"+ productos.get("imagen").toString()
                 imgPcs.forEach {
                     if(imagenC == it.lastPathSegment){
-                        listaPcs.add(EProducto(parte,nombre,valor,nombreImage,descripcion,it.toString()))
+                        listaPcs.add(
+                            EProducto(
+                                parte,
+                                nombre,
+                                valor,
+                                nombreImage,
+                                descripcion,
+                                it.toString()
+                            )
+                        )
                     }
                 }
             }
@@ -261,14 +268,14 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         var socket : String?=null
         listaFinal.forEach {
             if(it.parte == string){
-                ProductsRef.whereEqualTo("imagen",it.nombreImagen).get().addOnSuccessListener {
+                ProductsRef.whereEqualTo("imagen", it.nombreImagen).get().addOnSuccessListener {
                     for (po in it) {
                         socket = po.getString("socket").toString()
                     }
                 }
             }
         }
-        ProductsRef.whereEqualTo("parte",parteEscogida).get().addOnSuccessListener {
+        ProductsRef.whereEqualTo("parte", parteEscogida).get().addOnSuccessListener {
             for (po in it) {
                 if(socket == po.getString("socket").toString()){
                     listaPcs.forEach {
@@ -288,14 +295,14 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         var tipo : String?=null
         listaFinal.forEach {
             if(it.parte == string){
-                ProductsRef.whereEqualTo("imagen",it.nombreImagen).get().addOnSuccessListener {
+                ProductsRef.whereEqualTo("imagen", it.nombreImagen).get().addOnSuccessListener {
                     for (po in it) {
                         tipo = po.getString("tipoRam").toString()
                     }
                 }
             }
         }
-        ProductsRef.whereEqualTo("parte",parteEscogida).get().addOnSuccessListener {
+        ProductsRef.whereEqualTo("parte", parteEscogida).get().addOnSuccessListener {
             for (po in it) {
                 if(tipo == po.getString("tipo").toString()){
                     listaPcs.forEach {
@@ -315,14 +322,14 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         var tamaño : String?=null
         listaFinal.forEach {
             if(it.parte == string){
-                ProductsRef.whereEqualTo("imagen",it.nombreImagen).get().addOnSuccessListener {
+                ProductsRef.whereEqualTo("imagen", it.nombreImagen).get().addOnSuccessListener {
                     for (po in it) {
                         tamaño = po.getString("tamañoM2").toString()
                     }
                 }
             }
         }
-        ProductsRef.whereEqualTo("parte",parteEscogida).get().addOnSuccessListener {
+        ProductsRef.whereEqualTo("parte", parteEscogida).get().addOnSuccessListener {
             for (po in it) {
                 if(tamaño == po.getString("tamaño").toString()){
                     listaPcs.forEach {
@@ -342,14 +349,14 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         var tm : String?=null
         listaFinal.forEach {
             if(it.parte == string){
-                ProductsRef.whereEqualTo("imagen",it.nombreImagen).get().addOnSuccessListener {
+                ProductsRef.whereEqualTo("imagen", it.nombreImagen).get().addOnSuccessListener {
                     for (po in it) {
                         tm = po.getString("tamaño").toString()
                     }
                 }
             }
         }
-        ProductsRef.whereEqualTo("parte",parteEscogida).get().addOnSuccessListener {
+        ProductsRef.whereEqualTo("parte", parteEscogida).get().addOnSuccessListener {
             for (po in it) {
                 if(tm == po.getString("tipoPlaca").toString()){
                     listaPcs.forEach {
@@ -367,18 +374,18 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         var ProductsRef =  db.collection("Productos")
         var voltaje  = 0
         listaFiltrada.forEach {
-            ProductsRef.whereEqualTo("imagen",it.nombreImagen).get().addOnSuccessListener {
+            ProductsRef.whereEqualTo("imagen", it.nombreImagen).get().addOnSuccessListener {
                 for (po in it) {
                     voltaje += Integer.parseInt(po.get("voltaje").toString())
                 }
             }
         }
 
-        ProductsRef.whereEqualTo("parte",parteEscogida).get().addOnSuccessListener {
+        ProductsRef.whereEqualTo("parte", parteEscogida).get().addOnSuccessListener {
             for (po in it) {
                 if(voltaje <= Integer.parseInt(po.get("voltaje").toString())){
-                    Log.e("Fuente",po.get("voltaje").toString())
-                    Log.e("Fuente",voltaje.toString())
+                    Log.e("Fuente", po.get("voltaje").toString())
+                    Log.e("Fuente", voltaje.toString())
                     listaPcs.forEach {
                         if(po.get("imagen").toString() == it.nombreImagen){
                             listaFiltrada.add(it)
@@ -390,14 +397,18 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     }
 
     override fun llenarProductosVendedor(): ArrayList<EProducto> {
-        var ProductsRef =  db.collection("Productos").whereEqualTo("estado",true).whereEqualTo("idUser", FirebaseAuth.getInstance().currentUser?.uid)
+        var ProductsRef =  db.collection("Productos").whereEqualTo("estado", true).whereEqualTo(
+            "idUser",
+            FirebaseAuth.getInstance().currentUser?.uid
+        )
+        //var id: DataSnapshot
         var nombre : String
         var valor : Int
         var imagenC : String
         var nombreImage : String
         var parte: String
         var descripcion : String
-        ProductsRef.get().addOnSuccessListener {p->
+        ProductsRef.get().addOnSuccessListener { p->
             for (productos in p) {
                 parte =  productos.getString("parte").toString()
                 nombre = productos.getString("nombre").toString()
@@ -407,12 +418,25 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
                 imagenC = "images/"+ productos.get("imagen").toString()
                 imgPcs.forEach {
                     if(imagenC == it.lastPathSegment){
-                        listaProductoVendedores.add(EProducto(parte,nombre,valor,nombreImage,descripcion,it.toString()))
+                        listaProductoVendedores.add(
+                            EProducto(
+                                parte,
+                                nombre,
+                                valor,
+                                nombreImage,
+                                descripcion,
+                                it.toString()
+                            )
+                        )
                     }
                 }
             }
         }
         return listaProductoVendedores
+    }
+
+    override fun getRol(): String {
+        return rol
     }
 
     override fun listafinalDisco(int: Int, string: String): Boolean {
@@ -433,12 +457,12 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     fun llenarOnCreate(){
         if(rol == "Vendedor"){
             setContentView(R.layout.activity_main_vendedor)
+            llenarProductosVendedor()
         }else if(rol == "Usuario"){
             setContentView(R.layout.activity_main_usuario)
         }else if(rol == ""){
             setContentView(R.layout.activity_main)
         }
-
 
         val toolbar: Toolbar=findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -457,7 +481,9 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
                 R.id.listarProductos,
                 R.id.insertProducto,
                 R.id.index,
-                R.id.detalles_Productos
+                R.id.detalles_Productos,
+                R.id.lista_pc,
+                R.id.listarProductosVendedores
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -465,9 +491,4 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         storage = FirebaseStorage.getInstance()
         storageReferencia=storage!!.reference
     }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
-
 }

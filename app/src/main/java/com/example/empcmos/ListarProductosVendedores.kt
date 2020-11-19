@@ -17,6 +17,8 @@ import com.example.empcmos.ui.Adapters.AdapterProducto
 import com.example.empcmos.ui.Adapters.AdapterProductoIndex
 import com.example.empcmos.ui.Adapters.AdapterProductoListaVendedor
 import com.example.empcmos.ui.Modelo.EProducto
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 
 class ListarProductosVendedores : Fragment() , ItemSeleccionado {
 
@@ -84,7 +86,9 @@ class ListarProductosVendedores : Fragment() , ItemSeleccionado {
     }
 
     override fun eliminar(posi: Int) {
-        TODO("Not yet implemented")
+        interfaceComunicar.eliminarLista(item1.get(posi))
+        item1.removeAt(posi)
+        recyclerView!!.adapter!!.notifyDataSetChanged()
     }
 
 }

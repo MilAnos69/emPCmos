@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".RegistroVendedorActivity"></activity>
         <activity android:name=".RegistroUsuarioActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

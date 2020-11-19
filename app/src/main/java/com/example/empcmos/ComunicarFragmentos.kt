@@ -30,7 +30,7 @@ interface ComunicarFragmentos {
     fun validarDatosFuentePC (parteEscogida : String)
 
     fun llenarProductosVendedor(): ArrayList<EProducto>
-
+    fun getRol():String
 
 
     fun listafinalDisco(int: Int, string: String) : Boolean

@@ -1,6 +1,7 @@
 package com.example.empcmos
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -46,6 +47,7 @@ class ListUsers : Fragment() {
                     user?.getString("password").toString(),user?.getString("telefono").toString(),
                     user?.getBoolean("estado"),user?.getString("rol").toString()))
             }
+            Log.e("ar",listUsuarios.toString())
             mostrarDatos()
         }
     }

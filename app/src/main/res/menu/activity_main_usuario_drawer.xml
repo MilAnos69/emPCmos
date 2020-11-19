@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
@@ -8,13 +9,11 @@
             android:id="@+id/index"
             android:title="Inicio" />
         <item
-            android:id="@+id/lista_pc"
-            android:title="Listar PC" />
-        <item
             android:id="@+id/editUsuario"
             android:title="Actualizar Datos" />
         <item
             android:id="@+id/loginActivity"
-            android:title="Cerrar sesión" />
+            app:showAsAction="ifRoom"
+            android:title="Cerrar sesión"/>
     </group>
 </menu>
