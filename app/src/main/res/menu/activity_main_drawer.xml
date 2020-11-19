@@ -5,7 +5,7 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/listarProductos"
+            android:id="@+id/listarProductosAdmin"
             android:title="Lista Productos" />
         <item
             android:id="@+id/listVendedores"

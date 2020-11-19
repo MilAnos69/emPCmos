@@ -224,31 +224,6 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         listaFiltrada.clear()
     }
 
-    override fun getpp() {
-        listaPcs.clear()
-        var ProductsRef =  db.collection("Productos").whereEqualTo("estado",true)
-        var nombre : String
-        var valor : Int
-        var imagenC : String
-        var nombreImage : String
-        var parte: String
-        var descripcion : String
-        ProductsRef.get().addOnSuccessListener {p->
-            for (productos in p) {
-                parte =  productos.getString("parte").toString()
-                nombre = productos.getString("nombre").toString()
-                valor = Integer.parseInt(productos.get("valor").toString())
-                nombreImage =  productos.get("imagen").toString()
-                descripcion = productos.getString("descripcion").toString()
-                imagenC = "images/"+ productos.get("imagen").toString()
-                imgPcs.forEach {
-                    if(imagenC == it.lastPathSegment){
-                        listaPcs.add(EProducto(parte,nombre,valor,nombreImage,descripcion,it.toString()))
-                    }
-                }
-            }
-        }
-    }
 
     override fun llenarDatosPC(parteEscogida: String) {
         listaFiltrada.clear()
@@ -422,6 +397,10 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     }
 
     override fun llenarProductosVendedor(): ArrayList<EProducto> {
+        return listaProductoVendedores
+    }
+
+    fun listarppv(){
         var ProductsRef =  db.collection("Productos").whereEqualTo("estado", true).whereEqualTo(
             "idUser",
             FirebaseAuth.getInstance().currentUser?.uid
@@ -457,7 +436,6 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
                 }
             }
         }
-        return listaProductoVendedores
     }
 
     override fun listafinalDisco(int: Int, string: String): Boolean {
@@ -474,10 +452,14 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         }
     }
 
+    override fun eliminarlistavendedor(producto: EProducto) {
+        listaProductoVendedores.remove(producto)
+    }
+
     fun llenarOnCreate(){
         if(rol == "Vendedor"){
             setContentView(R.layout.activity_main_vendedor)
-            llenarProductosVendedor()
+            listarppv()
         }else if(rol == "Usuario"){
             setContentView(R.layout.activity_main_usuario)
         }else if(rol == ""){
@@ -503,7 +485,8 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
                 R.id.index,
                 R.id.detalles_Productos,
                 R.id.lista_pc,
-                R.id.listarProductosVendedores
+                R.id.listarProductosVendedores,
+                R.id.listarProductosAdmin
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

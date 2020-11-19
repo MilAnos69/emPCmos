@@ -108,7 +108,6 @@ class Index : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        interfaceComunicar.getpp()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
