@@ -486,7 +486,8 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
                 R.id.detalles_Productos,
                 R.id.lista_pc,
                 R.id.listarProductosVendedores,
-                R.id.listarProductosAdmin
+                R.id.listarProductosAdmin,
+                R.id.compra
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
