@@ -90,8 +90,8 @@
         android:label="Productos"
         tools:layout="@layout/fragment_listar_productos_vendedor" />
     <fragment
-        android:id="@+id/listarProductosAdmin"
-        android:name="com.example.empcmos.ListarProductosAdmin"
-        android:label="Lista Productos"
-        tools:layout="@layout/fragment_listar_productos_admin"/>
+        android:id="@+id/compra"
+        android:name="com.example.empcmos.Compra"
+        android:label="fragment_compra"
+        tools:layout="@layout/fragment_compra" />
 </navigation>
