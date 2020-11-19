@@ -8,7 +8,7 @@
             android:id="@+id/insertProducto"
             android:title="Agregar Productos" />
         <item
-            android:id="@+id/listarProductos"
+            android:id="@+id/listarProductosVendedores"
             android:title="Lista Productos" />
         <item
             android:id="@+id/editVendedores"

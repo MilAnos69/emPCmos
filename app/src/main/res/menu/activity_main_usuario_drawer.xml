@@ -12,7 +12,8 @@
             android:id="@+id/editUsuario"
             android:title="Actualizar Datos" />
         <item
-            android:id="@+id/loginActivity"
-            android:title="Cerrar sesión" />
+            android:id="@+id/cerrar_sesion"
+            app:showAsAction="ifRoom"
+            android:title="Cerrar sesión"/>
     </group>
 </menu>
