@@ -41,7 +41,6 @@ class DetallesDiscoDuro : Fragment() {
                 Tb_Tipo.setText(user.getString("tipo").toString())
                 TB_Voltaje.setText(user.get("voltaje").toString())
                 TB_Capacidad.setText(user.get("capacidad").toString())
-                TB_Valor.setText(user.get("valor").toString())
             }
         }
     }

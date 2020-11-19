@@ -42,7 +42,6 @@ class DetallesTarjetaGrafica : Fragment() {
                 Tb_TipoSalida.setText(user.getString("tipoSalida").toString())
                 TB_VRam.setText(user.get("vram").toString())
                 TB_Voltaje.setText(user.get("voltaje").toString())
-                TB_Valor.setText(user.get("valor").toString())
             }
         }
     }

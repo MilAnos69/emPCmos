@@ -42,7 +42,6 @@ class DetallesCaja : Fragment() {
                 TB_Tamano.setText(user.getString("tamaño").toString())
                 TB_Puertos.setText(user.get("cantidadUSB").toString())
                 TB_Ventiladores.setText(user.get("cantidadVentiladores").toString())
-                TB_Valor.setText(user.get("valor").toString())
             }
         }
     }

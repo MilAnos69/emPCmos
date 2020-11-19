@@ -47,7 +47,6 @@ class DetallesMotherBoard : Fragment() {
                 TB_TamañoM2.setText(user.getString("tamañoM2").toString())
                 TB_PuertosDiscoDuro.setText(user.get("puertoDiscoDuro").toString())
                 TB_TipoRam.setText(user.getString("tipoRam").toString())
-                TB_Valor.setText(user.get("valor").toString())
             }
         }
     }

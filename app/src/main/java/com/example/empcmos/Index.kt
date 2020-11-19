@@ -55,6 +55,8 @@ class Index : Fragment() {
         setHasOptionsMenu(true)
     }
 
+
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is Activity){
@@ -97,13 +99,16 @@ class Index : Fragment() {
 
             }
         })
+
+
+        cargarVista()
+        mostrarDatos()
         return view
     }
 
     override fun onStart() {
         super.onStart()
-        cargarVista()
-        mostrarDatos()
+        interfaceComunicar.getpp()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -41,7 +41,6 @@ class DetallesRam : Fragment() {
                 Tb_Marca.setText(user.getString("marca").toString())
                 TB_TipoRam.setText(user.getString("tipo").toString())
                 TB_Frecuencia.setText(user.get("frecuencia").toString())
-                TB_Valor.setText(user.get("valor").toString())
             }
         }
     }

@@ -53,7 +53,7 @@ class ListarProductos : Fragment() {
         mostrarDatos()
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                view.findNavController().navigate(R.id.action_listarProductos_to_index)
+
             }
         })
         return view

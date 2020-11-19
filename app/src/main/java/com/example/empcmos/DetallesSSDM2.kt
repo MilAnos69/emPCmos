@@ -43,7 +43,6 @@ class DetallesSSDM2 : Fragment() {
                 TB_Tamano.setText(user.getString("tamaño").toString())
                 TB_Voltaje.setText(user.get("voltaje").toString())
                 TB_Capacidad.setText(user.get("capacidad").toString())
-                TB_Valor.setText(user.get("valor").toString())
             }
         }
     }

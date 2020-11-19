@@ -40,7 +40,6 @@ class DetallesFuente : Fragment() {
                 Tb_Marca.setText(user.getString("marca").toString())
                 TB_Voltaje.setText(user.get("voltaje").toString())
                 TB_Tamano.setText(user.getString("tamaño").toString())
-                TB_Valor.setText(user.get("valor").toString())
             }
         }
     }

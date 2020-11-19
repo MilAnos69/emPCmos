@@ -15,6 +15,7 @@ interface ComunicarFragmentos {
     fun llenarProductosFiltrados() : ArrayList<EProducto>
     fun back()
 
+    fun getpp()
     fun llenarDatosPC (parteEscogida : String)
 
     fun llenarListaFinal(string: String) : ArrayList<EProducto>
@@ -30,7 +31,6 @@ interface ComunicarFragmentos {
     fun validarDatosFuentePC (parteEscogida : String)
 
     fun llenarProductosVendedor(): ArrayList<EProducto>
-    fun getRol():String
 
 
     fun listafinalDisco(int: Int, string: String) : Boolean
