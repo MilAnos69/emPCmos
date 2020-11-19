@@ -143,7 +143,7 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
 
          userProductsRef.get().addOnSuccessListener { users ->
             for (user in users) {
-                rol = user.getString("rol").toString()
+                setRol(user.getString("rol").toString())
             }
              llenarOnCreate()
         }
@@ -214,6 +214,32 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
 
     override fun back() {
         listaFiltrada.clear()
+    }
+
+    override fun getpp() {
+        listaPcs.clear()
+        var ProductsRef =  db.collection("Productos").whereEqualTo("estado",true)
+        var nombre : String
+        var valor : Int
+        var imagenC : String
+        var nombreImage : String
+        var parte: String
+        var descripcion : String
+        ProductsRef.get().addOnSuccessListener {p->
+            for (productos in p) {
+                parte =  productos.getString("parte").toString()
+                nombre = productos.getString("nombre").toString()
+                valor = Integer.parseInt(productos.get("valor").toString())
+                nombreImage =  productos.get("imagen").toString()
+                descripcion = productos.getString("descripcion").toString()
+                imagenC = "images/"+ productos.get("imagen").toString()
+                imgPcs.forEach {
+                    if(imagenC == it.lastPathSegment){
+                        listaPcs.add(EProducto(parte,nombre,valor,nombreImage,descripcion,it.toString()))
+                    }
+                }
+            }
+        }
     }
 
     override fun llenarDatosPC(parteEscogida: String) {
@@ -401,6 +427,14 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         }
     }
 
+    override fun getRol(): String {
+        return rol
+    }
+
+
+    fun setRol(string: String){
+        rol = string
+    }
 
     fun llenarOnCreate(){
         if(rol == "Vendedor"){
@@ -439,13 +473,5 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         navView.setupWithNavController(navController)
         storage = FirebaseStorage.getInstance()
         storageReferencia=storage!!.reference
-
-        var logOut : MenuItem = navView.menu.findItem(R.id.cerrar_sesion)
-        logOut.setOnMenuItemClickListener(object : MenuItem.OnMenuItemClickListener{
-            override fun onMenuItemClick(item: MenuItem?): Boolean {
-                startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                return true
-            }
-        })
     }
 }

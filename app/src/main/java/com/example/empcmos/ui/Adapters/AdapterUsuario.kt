@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.empcmos.R
 import com.example.empcmos.ui.Modelo.EUsuarios
 
-class AdapterUsuario(mContext: Context?, listaUsuario: ArrayList<EUsuarios>) : RecyclerView.Adapter<com.example.empcmos.ui.Adapters.AdapterUsuario.ViewHolderU>(), View.OnClickListener  {
+class AdapterUsuario(mContext: Context?, listaUsuario: ArrayList<EUsuarios>) : RecyclerView.Adapter<com.example.empcmos.ui.Adapters.AdapterUsuario.ViewHolderU>(){
     var inglaterr : LayoutInflater
 
     var Items = ArrayList<EUsuarios>()
@@ -35,23 +35,11 @@ class AdapterUsuario(mContext: Context?, listaUsuario: ArrayList<EUsuarios>) : R
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderU {
         var view : View =  inglaterr.inflate(R.layout.usuario, parent, false)
-        view.setOnClickListener(this)
         return ViewHolderU(view)
     }
 
     override fun getItemCount(): Int {
         return Items.size
-    }
-
-
-    fun setOnClickListener(listener : View.OnClickListener){
-        this.listener = listener
-    }
-
-    override fun onClick(v: View?) {
-        if (listener!=null){
-            listener.onClick(v)
-        }
     }
 
     override fun onBindViewHolder(holder: ViewHolderU, position: Int) {

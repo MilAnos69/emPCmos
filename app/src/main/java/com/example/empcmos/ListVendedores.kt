@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.empcmos.ui.Adapters.AdapterVendedor
@@ -30,6 +32,11 @@ class ListVendedores : Fragment() {
         recyclerView = view.findViewById(R.id.LV_Vendedores)
         listVendedores = ArrayList<EVendedores>()
         cargarVista()
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+
+            }
+        })
         return view
     }
 

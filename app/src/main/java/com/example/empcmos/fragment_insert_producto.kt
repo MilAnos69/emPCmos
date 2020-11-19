@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.activity.OnBackPressedCallback
 import kotlinx.android.synthetic.main.fragment_insert_producto.*
 
 /**
@@ -34,6 +35,11 @@ class fragment_insert_producto : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+
+            }
+        })
         return inflater.inflate(R.layout.fragment_insert_producto, container, false)
     }
 

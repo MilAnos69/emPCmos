@@ -42,7 +42,6 @@ class DetallesRefrigeracion : Fragment() {
                 TB_Socket.setText(user.getString("socket").toString())
                 TB_Voltaje.setText(user.get("voltaje").toString())
                 TB_Tamano.setText(user.getString("tamaño").toString())
-                TB_Valor.setText(user.get("valor").toString())
             }
         }
     }

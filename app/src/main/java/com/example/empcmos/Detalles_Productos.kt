@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso
 
 class Detalles_Productos : Fragment() {
     lateinit var nombreDetalle : TextView
+    lateinit var precio : TextView
     lateinit var imagenDetalle : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +28,14 @@ class Detalles_Productos : Fragment() {
         var view = inflater.inflate(R.layout.fragment_detalles_producto, container, false)
         nombreDetalle = view.findViewById(R.id.nombre_producto)
         imagenDetalle = view.findViewById(R.id.imagen_producto)
+        precio = view.findViewById(R.id.precio_producto)
 
         var objetoProducto : Bundle? = arguments
         var producto : EProducto? = null
         if (objetoProducto!=null){
             producto =objetoProducto.getSerializable("objeto") as EProducto
             nombreDetalle.setText(producto.tituloProducto)
+            precio.setText(producto.precioProducto.toString())
             Picasso.get().load(producto.imagenId).into(imagenDetalle)
         }
 

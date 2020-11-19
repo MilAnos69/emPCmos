@@ -42,7 +42,6 @@ class DetallesProcesador : Fragment() {
                 Tb_Generacion.setText(user.getString("generacion").toString())
                 Tb_Socket.setText(user.getString("socket").toString())
                 TB_Voltaje.setText(user.get("voltaje").toString())
-                TB_Valor.setText(user.get("valor").toString())
             }
         }
     }
