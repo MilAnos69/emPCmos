@@ -26,7 +26,6 @@ class ListarProductosVendedores : Fragment() , ItemSeleccionado {
     lateinit var recyclerView : RecyclerView
     var manage1 : LinearLayoutManager = LinearLayoutManager(context)
     var item1 = ArrayList<EProducto>()
-    var item2 = ArrayList<EProducto>()
 
     //Referencias para comunicar fragment
 
@@ -56,7 +55,7 @@ class ListarProductosVendedores : Fragment() , ItemSeleccionado {
         mostrarDatos()
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                view.findNavController().navigate(R.id.action_listarProductos_to_index)
+
             }
         })
         return view
@@ -67,8 +66,8 @@ class ListarProductosVendedores : Fragment() , ItemSeleccionado {
     }
 
     fun cargarVista(){
+        item1.clear()
         item1.addAll(interfaceComunicar.llenarProductosVendedor())
-        item2.addAll(interfaceComunicar.llenarProductosVendedor())
     }
 
     fun mostrarDatos(){
@@ -86,7 +85,7 @@ class ListarProductosVendedores : Fragment() , ItemSeleccionado {
     }
 
     override fun eliminar(posi: Int) {
-        interfaceComunicar.eliminarLista(item1.get(posi))
+        interfaceComunicar.eliminarlistavendedor(item1.get(posi))
         item1.removeAt(posi)
         recyclerView!!.adapter!!.notifyDataSetChanged()
     }

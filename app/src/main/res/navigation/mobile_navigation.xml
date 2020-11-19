@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+ <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_detalles_Productos_to_index"
             app:destination="@id/index" />
+        <action
+            android:id="@+id/action_detalles_Productos_to_lista_pc"
+            app:destination="@id/lista_pc" />
     </fragment>
     <fragment
         android:id="@+id/index"

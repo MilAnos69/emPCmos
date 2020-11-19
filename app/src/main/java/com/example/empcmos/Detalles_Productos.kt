@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
@@ -16,6 +17,7 @@ class Detalles_Productos : Fragment() {
     lateinit var nombreDetalle : TextView
     lateinit var precio : TextView
     lateinit var imagenDetalle : ImageView
+    lateinit var bt : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,7 @@ class Detalles_Productos : Fragment() {
         nombreDetalle = view.findViewById(R.id.nombre_producto)
         imagenDetalle = view.findViewById(R.id.imagen_producto)
         precio = view.findViewById(R.id.precio_producto)
+        bt = view.findViewById(R.id.btnlistapc)
 
         var objetoProducto : Bundle? = arguments
         var producto : EProducto? = null
@@ -37,6 +40,10 @@ class Detalles_Productos : Fragment() {
             nombreDetalle.setText(producto.tituloProducto)
             precio.setText(producto.precioProducto.toString())
             Picasso.get().load(producto.imagenId).into(imagenDetalle)
+        }
+
+        bt.setOnClickListener {
+            view.findNavController().navigate(R.id.action_detalles_Productos_to_lista_pc)
         }
 
 
@@ -79,5 +86,5 @@ class Detalles_Productos : Fragment() {
 
         }
         return view
+        }
     }
-}

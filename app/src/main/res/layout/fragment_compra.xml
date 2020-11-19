@@ -24,9 +24,10 @@
                     android:id="@+id/I_Placa"
                     android:layout_width="429dp"
                     android:layout_height="417dp"
-                    android:src="@drawable/placaEjemplo"
+                    android:src="@drawable/placaejemplo"
                     tools:layout_editor_absoluteX="350dp"
-                    tools:layout_editor_absoluteY="73dp" />
+                    tools:layout_editor_absoluteY="73dp"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/I_Caja"
@@ -34,7 +35,8 @@
                     android:layout_height="455dp"
                     android:src="@drawable/caja"
                     tools:layout_editor_absoluteX="770dp"
-                    tools:layout_editor_absoluteY="46dp" />
+                    tools:layout_editor_absoluteY="46dp"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/I_Procesador"
@@ -42,7 +44,8 @@
                     android:layout_height="129dp"
                     android:src="@drawable/procesador"
                     tools:layout_editor_absoluteX="13dp"
-                    tools:layout_editor_absoluteY="54dp" />
+                    tools:layout_editor_absoluteY="54dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/I_Mother"
@@ -50,7 +53,8 @@
                     android:layout_height="129dp"
                     android:src="@drawable/procesador"
                     tools:layout_editor_absoluteX="1210dp"
-                    tools:layout_editor_absoluteY="54dp" />
+                    tools:layout_editor_absoluteY="54dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/I_Fuente"
@@ -58,7 +62,8 @@
                     android:layout_height="129dp"
                     android:src="@drawable/procesador"
                     tools:layout_editor_absoluteX="1210dp"
-                    tools:layout_editor_absoluteY="217dp" />
+                    tools:layout_editor_absoluteY="217dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/I_TarjetaGrafica"
@@ -66,7 +71,8 @@
                     android:layout_height="129dp"
                     android:src="@drawable/grafica"
                     tools:layout_editor_absoluteX="13dp"
-                    tools:layout_editor_absoluteY="229dp" />
+                    tools:layout_editor_absoluteY="229dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <TextView
                     android:id="@+id/textView5"
@@ -75,7 +81,8 @@
                     android:text="Tarjeta Gráfica"
                     android:textSize="16sp"
                     tools:layout_editor_absoluteX="13dp"
-                    tools:layout_editor_absoluteY="196dp" />
+                    tools:layout_editor_absoluteY="196dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <TextView
                     android:id="@+id/textView6"
@@ -84,7 +91,8 @@
                     android:text="Disco Duro"
                     android:textSize="16sp"
                     tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="196dp" />
+                    tools:layout_editor_absoluteY="196dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <TextView
                     android:id="@+id/textView7"
@@ -93,7 +101,8 @@
                     android:text="SSD M.2"
                     android:textSize="16sp"
                     tools:layout_editor_absoluteX="13dp"
-                    tools:layout_editor_absoluteY="365dp" />
+                    tools:layout_editor_absoluteY="365dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/I_Ram"
@@ -101,7 +110,8 @@
                     android:layout_height="129dp"
                     android:src="@drawable/ram"
                     tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="54dp" />
+                    tools:layout_editor_absoluteY="54dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/I_DiscoDuro"
@@ -109,7 +119,8 @@
                     android:layout_height="129dp"
                     android:src="@drawable/disco"
                     tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="229dp" />
+                    tools:layout_editor_absoluteY="229dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/I_SSDM2"
@@ -117,7 +128,8 @@
                     android:layout_height="129dp"
                     android:src="@drawable/ssd"
                     tools:layout_editor_absoluteX="13dp"
-                    tools:layout_editor_absoluteY="394dp" />
+                    tools:layout_editor_absoluteY="394dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <TextView
                     android:id="@+id/textView8"
@@ -126,7 +138,8 @@
                     android:text="Cooler"
                     android:textSize="16sp"
                     tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="365dp" />
+                    tools:layout_editor_absoluteY="365dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/I_Cooler"
@@ -134,7 +147,8 @@
                     android:layout_height="129dp"
                     android:src="@drawable/cooler"
                     tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="394dp" />
+                    tools:layout_editor_absoluteY="394dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <TextView
                     android:id="@+id/textView3"
@@ -143,7 +157,8 @@
                     android:text="Ram"
                     android:textSize="16sp"
                     tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="25dp" />
+                    tools:layout_editor_absoluteY="25dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <TextView
                     android:id="@+id/textView4"
@@ -152,7 +167,8 @@
                     android:text="Mother Board"
                     android:textSize="16sp"
                     tools:layout_editor_absoluteX="350dp"
-                    tools:layout_editor_absoluteY="33dp" />
+                    tools:layout_editor_absoluteY="33dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <TextView
                     android:id="@+id/textView9"
@@ -161,7 +177,8 @@
                     android:text="Procesador"
                     android:textSize="16sp"
                     tools:layout_editor_absoluteX="13dp"
-                    tools:layout_editor_absoluteY="26dp" />
+                    tools:layout_editor_absoluteY="26dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <TextView
                     android:id="@+id/textView10"
@@ -169,7 +186,8 @@
                     android:layout_height="wrap_content"
                     android:text="Caja"
                     tools:layout_editor_absoluteX="772dp"
-                    tools:layout_editor_absoluteY="18dp" />
+                    tools:layout_editor_absoluteY="18dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <TextView
                     android:id="@+id/textView11"
@@ -177,7 +195,8 @@
                     android:layout_height="wrap_content"
                     android:text="Mother Board"
                     tools:layout_editor_absoluteX="1210dp"
-                    tools:layout_editor_absoluteY="26dp" />
+                    tools:layout_editor_absoluteY="26dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <TextView
                     android:id="@+id/textView12"
@@ -185,23 +204,26 @@
                     android:layout_height="wrap_content"
                     android:text="Fuente"
                     tools:layout_editor_absoluteX="1210dp"
-                    tools:layout_editor_absoluteY="192dp" />
+                    tools:layout_editor_absoluteY="192dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView19"
                     android:layout_width="33dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/puestoUno"
+                    android:src="@drawable/uno"
                     tools:layout_editor_absoluteX="111dp"
-                    tools:layout_editor_absoluteY="158dp" />
+                    tools:layout_editor_absoluteY="158dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView21"
                     android:layout_width="33dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/puestoDos"
+                    android:src="@drawable/dos"
                     tools:layout_editor_absoluteX="285dp"
-                    tools:layout_editor_absoluteY="158dp" />
+                    tools:layout_editor_absoluteY="158dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView35"
@@ -209,7 +231,8 @@
                     android:layout_height="25dp"
                     android:src="@drawable/siete"
                     tools:layout_editor_absoluteX="1308dp"
-                    tools:layout_editor_absoluteY="158dp" />
+                    tools:layout_editor_absoluteY="158dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView36"
@@ -217,55 +240,62 @@
                     android:layout_height="25dp"
                     android:src="@drawable/ocho"
                     tools:layout_editor_absoluteX="1308dp"
-                    tools:layout_editor_absoluteY="321dp" />
+                    tools:layout_editor_absoluteY="321dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView26"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/puestoDos"
+                    android:src="@drawable/dos"
                     tools:layout_editor_absoluteX="661dp"
-                    tools:layout_editor_absoluteY="158dp" />
+                    tools:layout_editor_absoluteY="158dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView22"
                     android:layout_width="33dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/puestoCuatro"
+                    android:src="@drawable/cuatro"
                     tools:layout_editor_absoluteX="285dp"
-                    tools:layout_editor_absoluteY="333dp" />
+                    tools:layout_editor_absoluteY="333dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView29"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/puestoCuatro"
+                    android:src="@drawable/cuatro"
                     tools:layout_editor_absoluteX="837dp"
-                    tools:layout_editor_absoluteY="386dp" />
+                    tools:layout_editor_absoluteY="386dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView23"
                     android:layout_width="33dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/puestoTres"
+                    android:src="@drawable/tres"
                     tools:layout_editor_absoluteX="111dp"
-                    tools:layout_editor_absoluteY="333dp" />
+                    tools:layout_editor_absoluteY="333dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView27"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/puestoTres"
+                    android:src="@drawable/tres"
                     tools:layout_editor_absoluteX="505dp"
-                    tools:layout_editor_absoluteY="386dp" />
+                    tools:layout_editor_absoluteY="386dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView28"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/puestoTres"
+                    android:src="@drawable/tres"
                     tools:layout_editor_absoluteX="502dp"
-                    tools:layout_editor_absoluteY="300dp" />
+                    tools:layout_editor_absoluteY="300dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView24"
@@ -273,7 +303,8 @@
                     android:layout_height="25dp"
                     android:src="@drawable/cinco"
                     tools:layout_editor_absoluteX="111dp"
-                    tools:layout_editor_absoluteY="498dp" />
+                    tools:layout_editor_absoluteY="498dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView30"
@@ -281,7 +312,8 @@
                     android:layout_height="40dp"
                     android:src="@drawable/cinco"
                     tools:layout_editor_absoluteX="567dp"
-                    tools:layout_editor_absoluteY="261dp" />
+                    tools:layout_editor_absoluteY="261dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView25"
@@ -289,7 +321,8 @@
                     android:layout_height="25dp"
                     android:src="@drawable/seis"
                     tools:layout_editor_absoluteX="285dp"
-                    tools:layout_editor_absoluteY="498dp" />
+                    tools:layout_editor_absoluteY="498dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView31"
@@ -297,15 +330,17 @@
                     android:layout_height="40dp"
                     android:src="@drawable/seis"
                     tools:layout_editor_absoluteX="1022dp"
-                    tools:layout_editor_absoluteY="261dp" />
+                    tools:layout_editor_absoluteY="261dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView20"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/puestoUno"
+                    android:src="@drawable/uno"
                     tools:layout_editor_absoluteX="573dp"
-                    tools:layout_editor_absoluteY="171dp" />
+                    tools:layout_editor_absoluteY="171dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView32"
@@ -313,7 +348,8 @@
                     android:layout_height="70dp"
                     android:src="@drawable/siete"
                     tools:layout_editor_absoluteX="693dp"
-                    tools:layout_editor_absoluteY="420dp" />
+                    tools:layout_editor_absoluteY="420dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView33"
@@ -321,7 +357,8 @@
                     android:layout_height="40dp"
                     android:src="@drawable/siete"
                     tools:layout_editor_absoluteX="893dp"
-                    tools:layout_editor_absoluteY="211dp" />
+                    tools:layout_editor_absoluteY="211dp"
+                    tools:ignore="MissingConstraints"/>
 
                 <ImageView
                     android:id="@+id/imageView37"
@@ -329,7 +366,8 @@
                     android:layout_height="40dp"
                     android:src="@drawable/ocho"
                     tools:layout_editor_absoluteX="1002dp"
-                    tools:layout_editor_absoluteY="394dp" />
+                    tools:layout_editor_absoluteY="394dp"
+                    tools:ignore="MissingConstraints"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </HorizontalScrollView>
