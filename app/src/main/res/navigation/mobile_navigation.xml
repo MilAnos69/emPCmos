@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     android:label="Datos Personales"
-    app:startDestination="@id/index">
+    app:startDestination="@id/compra">
 
     <fragment
         android:id="@+id/listUsers"
@@ -37,7 +37,8 @@
         android:id="@+id/detalles_Productos"
         android:name="com.example.empcmos.Detalles_Productos"
         android:label="Detalles Productos"
-        tools:layout="@layout/fragment_detalles_producto">
+        tools:layout="@layout/fragment_detalles_producto"
+        app:startDestination="@id/action_detalles_Productos_to_lista_pc">
         <action
             android:id="@+id/action_detalles_Productos_to_index"
             app:destination="@id/index" />
