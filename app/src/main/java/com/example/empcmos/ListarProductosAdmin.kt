@@ -48,7 +48,7 @@ class ListarProductosAdmin : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.fragment_listar_productos_vendedor, container, false)
+        var view = inflater.inflate(R.layout.fragment_listar_productos_admin, container, false)
         recyclerView = view.findViewById(R.id.listV)
         cargarVista()
         mostrarDatos()

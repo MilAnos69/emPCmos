@@ -24,9 +24,11 @@
                     android:id="@+id/I_Placa"
                     android:layout_width="429dp"
                     android:layout_height="417dp"
-                    android:src="@drawable/placaejemplo"
-                    tools:layout_editor_absoluteX="350dp"
-                    tools:layout_editor_absoluteY="73dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/placa_ejemplo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/I_DiscoDuro"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="MissingConstraints" />
 
                 <ImageView
@@ -34,8 +36,11 @@
                     android:layout_width="417dp"
                     android:layout_height="455dp"
                     android:src="@drawable/caja"
-                    tools:layout_editor_absoluteX="770dp"
-                    tools:layout_editor_absoluteY="46dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/I_Fuente"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/I_Placa"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="MissingConstraints" />
 
                 <ImageView
@@ -43,331 +48,428 @@
                     android:layout_width="131dp"
                     android:layout_height="129dp"
                     android:src="@drawable/procesador"
-                    tools:layout_editor_absoluteX="13dp"
-                    tools:layout_editor_absoluteY="54dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toTopOf="@+id/textView5"
+                    app:layout_constraintEnd_toStartOf="@+id/I_Ram"
+                    app:layout_constraintHorizontal_bias="0.285"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.805"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/I_Mother"
                     android:layout_width="131dp"
                     android:layout_height="129dp"
+                    android:layout_marginStart="1224dp"
                     android:src="@drawable/procesador"
-                    tools:layout_editor_absoluteX="1210dp"
-                    tools:layout_editor_absoluteY="54dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.129"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/I_Fuente"
                     android:layout_width="131dp"
                     android:layout_height="129dp"
                     android:src="@drawable/procesador"
-                    tools:layout_editor_absoluteX="1210dp"
-                    tools:layout_editor_absoluteY="217dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/I_Placa"
+                    app:layout_constraintTop_toBottomOf="@+id/I_Mother"
+                    app:layout_constraintVertical_bias="0.111"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/I_TarjetaGrafica"
                     android:layout_width="131dp"
                     android:layout_height="129dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
                     android:src="@drawable/grafica"
-                    tools:layout_editor_absoluteX="13dp"
-                    tools:layout_editor_absoluteY="229dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toTopOf="@+id/textView7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
                     android:text="Tarjeta Gráfica"
                     android:textSize="16sp"
-                    tools:layout_editor_absoluteX="13dp"
-                    tools:layout_editor_absoluteY="196dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toTopOf="@+id/I_TarjetaGrafica"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
                     android:text="Disco Duro"
                     android:textSize="16sp"
-                    tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="196dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView5"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.369"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:text="SSD M.2"
                     android:textSize="16sp"
-                    tools:layout_editor_absoluteX="13dp"
-                    tools:layout_editor_absoluteY="365dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toTopOf="@+id/I_SSDM2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/I_Ram"
                     android:layout_width="131dp"
                     android:layout_height="129dp"
+                    android:layout_marginStart="188dp"
                     android:src="@drawable/ram"
-                    tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="54dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.129"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/I_DiscoDuro"
                     android:layout_width="131dp"
                     android:layout_height="129dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="216dp"
                     android:src="@drawable/disco"
-                    tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="229dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintStart_toEndOf="@+id/I_TarjetaGrafica"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/I_SSDM2"
                     android:layout_width="131dp"
                     android:layout_height="129dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="48dp"
                     android:src="@drawable/ssd"
-                    tools:layout_editor_absoluteX="13dp"
-                    tools:layout_editor_absoluteY="394dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="108dp"
                     android:text="Cooler"
                     android:textSize="16sp"
-                    tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="365dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toTopOf="@+id/I_Cooler"
+                    app:layout_constraintStart_toEndOf="@+id/textView7"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/I_Cooler"
                     android:layout_width="131dp"
                     android:layout_height="129dp"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginBottom="48dp"
                     android:src="@drawable/cooler"
-                    tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="394dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/I_SSDM2"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="196dp"
+                    android:layout_marginTop="28dp"
                     android:text="Ram"
                     android:textSize="16sp"
-                    tools:layout_editor_absoluteX="187dp"
-                    tools:layout_editor_absoluteY="25dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="348dp"
                     android:text="Mother Board"
                     android:textSize="16sp"
-                    tools:layout_editor_absoluteX="350dp"
-                    tools:layout_editor_absoluteY="33dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.064"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:text="Procesador"
                     android:textSize="16sp"
-                    tools:layout_editor_absoluteX="13dp"
-                    tools:layout_editor_absoluteY="26dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toTopOf="@+id/I_Procesador"
+                    app:layout_constraintEnd_toStartOf="@+id/textView3"
+                    app:layout_constraintHorizontal_bias="0.152"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.47"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/textView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="776dp"
+                    android:layout_marginTop="28dp"
                     android:text="Caja"
-                    tools:layout_editor_absoluteX="772dp"
-                    tools:layout_editor_absoluteY="18dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="408dp"
+                    android:layout_marginTop="32dp"
                     android:text="Mother Board"
-                    tools:layout_editor_absoluteX="1210dp"
-                    tools:layout_editor_absoluteY="26dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView10"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="84dp"
                     android:text="Fuente"
-                    tools:layout_editor_absoluteX="1210dp"
-                    tools:layout_editor_absoluteY="192dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toTopOf="@+id/I_Fuente"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/I_Mother"
+                    app:layout_constraintVertical_bias="0.222"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView19"
                     android:layout_width="33dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="112dp"
                     android:src="@drawable/uno"
-                    tools:layout_editor_absoluteX="111dp"
-                    tools:layout_editor_absoluteY="158dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="@+id/I_Procesador"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView21"
                     android:layout_width="33dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="288dp"
                     android:src="@drawable/dos"
-                    tools:layout_editor_absoluteX="285dp"
-                    tools:layout_editor_absoluteY="158dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="@+id/I_Ram"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.987"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView35"
                     android:layout_width="33dp"
                     android:layout_height="25dp"
                     android:src="@drawable/siete"
-                    tools:layout_editor_absoluteX="1308dp"
-                    tools:layout_editor_absoluteY="158dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.297"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView36"
                     android:layout_width="33dp"
                     android:layout_height="25dp"
                     android:src="@drawable/ocho"
-                    tools:layout_editor_absoluteX="1308dp"
-                    tools:layout_editor_absoluteY="321dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.596"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView26"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
+                    android:layout_marginStart="656dp"
                     android:src="@drawable/dos"
-                    tools:layout_editor_absoluteX="661dp"
-                    tools:layout_editor_absoluteY="158dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.326"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView22"
                     android:layout_width="33dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="288dp"
+                    android:layout_marginTop="320dp"
                     android:src="@drawable/cuatro"
-                    tools:layout_editor_absoluteX="285dp"
-                    tools:layout_editor_absoluteY="333dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView29"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
+                    android:layout_marginEnd="432dp"
                     android:src="@drawable/cuatro"
-                    tools:layout_editor_absoluteX="837dp"
-                    tools:layout_editor_absoluteY="386dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.753"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView23"
                     android:layout_width="33dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="112dp"
+                    android:layout_marginTop="320dp"
                     android:src="@drawable/tres"
-                    tools:layout_editor_absoluteX="111dp"
-                    tools:layout_editor_absoluteY="333dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView27"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
+                    android:layout_marginStart="504dp"
                     android:src="@drawable/tres"
-                    tools:layout_editor_absoluteX="505dp"
-                    tools:layout_editor_absoluteY="386dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.738"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView28"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
+                    android:layout_marginStart="504dp"
                     android:src="@drawable/tres"
-                    tools:layout_editor_absoluteX="502dp"
-                    tools:layout_editor_absoluteY="300dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.585"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView24"
                     android:layout_width="33dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="108dp"
+                    android:layout_marginBottom="48dp"
                     android:src="@drawable/cinco"
-                    tools:layout_editor_absoluteX="111dp"
-                    tools:layout_editor_absoluteY="498dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView30"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
+                    android:layout_marginStart="560dp"
                     android:src="@drawable/cinco"
-                    tools:layout_editor_absoluteX="567dp"
-                    tools:layout_editor_absoluteY="261dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.521"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView25"
                     android:layout_width="33dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="288dp"
+                    android:layout_marginBottom="48dp"
                     android:src="@drawable/seis"
-                    tools:layout_editor_absoluteX="285dp"
-                    tools:layout_editor_absoluteY="498dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView31"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
+                    android:layout_marginEnd="296dp"
                     android:src="@drawable/seis"
-                    tools:layout_editor_absoluteX="1022dp"
-                    tools:layout_editor_absoluteY="261dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.443"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView20"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
+                    android:layout_marginStart="560dp"
                     android:src="@drawable/uno"
-                    tools:layout_editor_absoluteX="573dp"
-                    tools:layout_editor_absoluteY="171dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.338"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView32"
                     android:layout_width="61dp"
                     android:layout_height="70dp"
+                    android:layout_marginStart="664dp"
                     android:src="@drawable/siete"
-                    tools:layout_editor_absoluteX="693dp"
-                    tools:layout_editor_absoluteY="420dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.851"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView33"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
+                    android:layout_marginEnd="420dp"
                     android:src="@drawable/siete"
-                    tools:layout_editor_absoluteX="893dp"
-                    tools:layout_editor_absoluteY="211dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.403"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView37"
                     android:layout_width="49dp"
                     android:layout_height="40dp"
+                    android:layout_marginEnd="304dp"
                     android:src="@drawable/ocho"
-                    tools:layout_editor_absoluteX="1002dp"
-                    tools:layout_editor_absoluteY="394dp"
-                    tools:ignore="MissingConstraints"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.753"
+                    tools:ignore="MissingConstraints" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </HorizontalScrollView>
@@ -381,15 +483,15 @@
                 android:id="@+id/textView"
                 android:layout_width="166dp"
                 android:layout_height="34dp"
-                android:layout_marginBottom="112dp"
+                android:layout_marginBottom="104dp"
                 android:text="COSTO TOTAL"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.147"
+                app:layout_constraintHorizontal_bias="0.065"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
@@ -405,19 +507,33 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="203dp"
-                android:layout_height="36dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/Comprar"
+                app:layout_constraintHorizontal_bias="0.075"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintVertical_bias="0.211" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/Comprar"
-                app:layout_constraintHorizontal_bias="0.242"
+                app:layout_constraintHorizontal_bias="0.307"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:layout_constraintVertical_bias="0.2" />
+                app:layout_constraintVertical_bias="0.211" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

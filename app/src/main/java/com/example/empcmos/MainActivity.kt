@@ -41,6 +41,7 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     private val db = FirebaseFirestore.getInstance()
     lateinit var listUsuarios: ArrayList<EUsuarios>
     private  var rol: String=""
+    var precio = 0
 
     //hi
     //ListaPartes
@@ -249,7 +250,11 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     }
 
     override fun eliminarLista(producto: EProducto) {
-        listaFinal.remove(producto)
+        if(producto.parte == "Mother Board"){
+            listaFinal.clear()
+        }else{
+            listaFinal.remove(producto)
+        }
     }
 
     override fun listafinalFiltro(string: String): Boolean {
@@ -454,6 +459,22 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
 
     override fun eliminarlistavendedor(producto: EProducto) {
         listaProductoVendedores.remove(producto)
+    }
+
+    override fun listatotal(): ArrayList<EProducto> {
+        return listaFinal
+    }
+
+    override fun setprecio(int: Int){
+        precio = int
+    }
+
+    override fun precio(): Int {
+        return precio
+    }
+
+    override fun limpiarlista() {
+        listaFinal.clear()
     }
 
     fun llenarOnCreate(){

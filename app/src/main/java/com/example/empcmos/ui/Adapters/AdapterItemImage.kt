@@ -44,11 +44,6 @@ class AdapterItemImage(mContext: Context?, listaImagenes: List<Int>) : SliderVie
         var img : Int = imagenes.get(position)
         if (viewHolder != null) {
             viewHolder.imageView.setImageResource(img)
-            viewHolder.imageView.setOnClickListener(object : View.OnClickListener{
-                override fun onClick(v: View?) {
-                    Toast.makeText(context, "This is item in position " + position, Toast.LENGTH_SHORT).show();
-                }
-            })
         }
     }
 }
