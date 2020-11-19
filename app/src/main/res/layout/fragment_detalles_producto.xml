@@ -81,6 +81,22 @@
                     android:layout_height="match_parent"></FrameLayout>
 
             </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp">
+
+                <Button
+                    android:id="@+id/btnlistapc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Arma tu pc"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="#FFF"
+                    android:background="#02022B"/>
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
