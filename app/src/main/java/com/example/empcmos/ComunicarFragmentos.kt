@@ -35,4 +35,14 @@ interface ComunicarFragmentos {
     fun listafinalDisco(int: Int, string: String) : Boolean
 
     fun eliminarlistavendedor(producto: EProducto)
+
+    fun listatotal() : ArrayList<EProducto>
+
+    fun precio() : Int
+
+    fun setprecio(int: Int)
+
+    fun limpiarlista()
+
+    fun listarppv()
 }

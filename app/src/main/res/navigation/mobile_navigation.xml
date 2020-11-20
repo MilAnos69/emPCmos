@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     android:label="Datos Personales"
-    app:startDestination="@id/compra">
+    app:startDestination="@id/index">
 
     <fragment
         android:id="@+id/listUsers"
@@ -79,6 +79,9 @@
         <action
             android:id="@+id/action_lista_pc_to_index"
             app:destination="@id/index" />
+        <action
+            android:id="@+id/action_lista_pc_to_compra"
+            app:destination="@id/compra" />
     </fragment>
     <activity
         android:id="@+id/loginActivity"
@@ -94,5 +97,26 @@
         android:id="@+id/compra"
         android:name="com.example.empcmos.Compra"
         android:label="fragment_compra"
-        tools:layout="@layout/fragment_compra" />
+        tools:layout="@layout/fragment_compra" >
+        <action
+            android:id="@+id/action_compra_to_pago"
+            app:destination="@id/pago" />
+        <action
+            android:id="@+id/action_compra_to_lista_pc"
+            app:destination="@id/lista_pc" />
+    </fragment>
+    <fragment
+        android:id="@+id/pago"
+        android:name="com.example.empcmos.pago"
+        android:label=" "
+        tools:layout="@layout/fragment_pago" >
+        <action
+            android:id="@+id/action_pago_to_index"
+            app:destination="@id/index" />
+    </fragment>
+    <fragment
+        android:id="@+id/listarProductosAdmin"
+        android:name="com.example.empcmos.ListarProductosAdmin"
+        android:label="Productos"
+        tools:layout="@layout/fragment_listar_productos_admin" />
 </navigation>

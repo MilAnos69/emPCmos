@@ -41,6 +41,7 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
     private val db = FirebaseFirestore.getInstance()
     lateinit var listUsuarios: ArrayList<EUsuarios>
     private  var rol: String=""
+    var precio = 0
 
     //hi
     //ListaPartes
@@ -400,7 +401,8 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
         return listaProductoVendedores
     }
 
-    fun listarppv(){
+    override fun listarppv(){
+        listaProductoVendedores.clear()
         var ProductsRef =  db.collection("Productos").whereEqualTo("estado", true).whereEqualTo(
             "idUser",
             FirebaseAuth.getInstance().currentUser?.uid
@@ -454,6 +456,22 @@ class MainActivity() : AppCompatActivity(), ComunicarFragmentos {
 
     override fun eliminarlistavendedor(producto: EProducto) {
         listaProductoVendedores.remove(producto)
+    }
+
+    override fun listatotal(): ArrayList<EProducto> {
+        return listaFinal
+    }
+
+    override fun precio(): Int {
+        return precio
+    }
+
+    override fun setprecio(int: Int) {
+        precio = int
+    }
+
+    override fun limpiarlista() {
+        listaFinal.clear()
     }
 
     fun llenarOnCreate(){

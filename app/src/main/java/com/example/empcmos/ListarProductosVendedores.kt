@@ -63,6 +63,7 @@ class ListarProductosVendedores : Fragment() , ItemSeleccionado {
 
     override fun onStart() {
         super.onStart()
+        interfaceComunicar.listarppv()
     }
 
     fun cargarVista(){

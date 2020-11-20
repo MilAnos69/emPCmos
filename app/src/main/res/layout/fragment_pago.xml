@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pago"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical"
+    android:gravity="center">
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="272dp"
+        android:layout_height="203dp"
+        android:src="@drawable/logoempcmos"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="32dp" />
+
+    <TextView
+        android:id="@+id/factura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FACTURA EmPCmos"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:textSize="25dp"/>
+    <TextView
+        android:id="@+id/fecha_final"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="02/06/2011"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:text="¡¡¡Gracias por comprar, ojala vuelvas pronto!!!"
+        android:textAlignment="center"
+        android:textColor="#FFF"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="310dp"
+        android:layout_height="50dp"
+        android:text="Consigna en cualquier punto de pago Efecty del país"
+        android:textAlignment="center"
+        android:textColor="#FFF"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/precio_final"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000000"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="310dp"
+        android:layout_height="30dp"
+        android:text="Codigo:"
+        android:textAlignment="center"
+        android:textColor="#FFF"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/codigo_final"
+        android:layout_width="310dp"
+        android:layout_height="104dp"
+        android:text="0000000000000"
+        android:textAlignment="center"
+        android:textColor="#FFF"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>

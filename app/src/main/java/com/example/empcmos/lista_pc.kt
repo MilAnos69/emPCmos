@@ -28,9 +28,6 @@ import com.example.empcmos.ui.Modelo.EProducto
  */
 class lista_pc : Fragment(), ItemSeleccionado{
 
-    var cantidadDisco : Number = 0
-    var cantidadDisc2 : Number = 0
-
     lateinit var adapterProducto : AdapterProductoIndex
     lateinit var adapterEmsamble : AdapterProductoListaPc
 
@@ -103,6 +100,8 @@ class lista_pc : Fragment(), ItemSeleccionado{
 
     var item2 = ArrayList<EProducto>()
 
+    var validarItems = ArrayList<String>()
+
     //Referencias para comunicar fragment
 
     lateinit var activity1 : Activity
@@ -127,6 +126,16 @@ class lista_pc : Fragment(), ItemSeleccionado{
                 view.findNavController().navigate(R.id.action_lista_pc_to_index)
             }
         })
+
+        validarItems.add("Procesador")
+        validarItems.add("Mother Board")
+        validarItems.add("Fuente")
+        validarItems.add("Ram")
+        validarItems.add("Disco Duro")
+        validarItems.add("SSD M2")
+        validarItems.add("Tarjeta Grafica")
+        validarItems.add("Refrigeracion")
+        validarItems.add("Caja")
 
         recyclerView0 = view.findViewById(R.id.list0)
         recyclerView1 = view.findViewById(R.id.list1)
@@ -353,6 +362,15 @@ class lista_pc : Fragment(), ItemSeleccionado{
 
             )
         }
+
+        modelarBto.setOnClickListener {
+            item2.addAll(interfaceComunicar.listatotal())
+            if(item2.isNotEmpty() && item2.size >= 9){
+                view.findNavController().navigate(R.id.action_lista_pc_to_compra)
+            }else{
+                Toast.makeText(activity, "Ingrese todo los Productos", Toast.LENGTH_SHORT).show()
+            }
+        }
         return view
     }
 
@@ -442,6 +460,21 @@ class lista_pc : Fragment(), ItemSeleccionado{
         bt0.setOnClickListener {
             item1.clear()
             item1.addAll(interfaceComunicar.llenarProductosFiltrados())
+            if(item1.isEmpty() && string=="Procesador"){
+                interfaceComunicar.validarDatosProcesadorPC(string)
+            }else if(item1.isEmpty() && string=="Ram"){
+                interfaceComunicar.validarDatosRamPC(string)
+            }else if(item1.isEmpty() && string=="Disco Duro"){
+                interfaceComunicar.llenarDatosPC(string)
+            }else if(item1.isEmpty() && string=="SSD M2"){
+                interfaceComunicar.validarDatosSsdMdosPC(string)
+            }else if(item1.isEmpty() && string=="Caja"){
+                interfaceComunicar.validarDatosCajaPC(string)
+            }else if(item1.isEmpty() && string=="Fuente"){
+                interfaceComunicar.validarDatosFuentePC(string)
+            }else if(item1.isEmpty()){
+                interfaceComunicar.llenarDatosPC(string)
+            }
             adapterProducto = AdapterProductoIndex(context, item1)
             recyclerView.layoutManager = manager
             recyclerView.adapter = this.adapterProducto

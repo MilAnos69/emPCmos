@@ -71,6 +71,7 @@ class Index : Fragment() {
             return true
         }
         if(id == R.id.m_listar_pc){
+            interfaceComunicar.limpiarlista()
             vista.findNavController().navigate(R.id.action_index_to_lista_pc)
         }
         return super.onOptionsItemSelected(item)

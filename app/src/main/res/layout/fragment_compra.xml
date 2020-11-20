@@ -25,7 +25,7 @@
                     android:layout_width="429dp"
                     android:layout_height="417dp"
                     android:layout_marginStart="20dp"
-                    android:src="@drawable/placaejemplo"
+                    android:src="@drawable/placa_ejemplo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/I_DiscoDuro"
                     app:layout_constraintTop_toTopOf="parent"
@@ -483,15 +483,15 @@
                 android:id="@+id/textView"
                 android:layout_width="166dp"
                 android:layout_height="34dp"
-                android:layout_marginBottom="112dp"
+                android:layout_marginBottom="104dp"
                 android:text="COSTO TOTAL"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.147"
+                app:layout_constraintHorizontal_bias="0.065"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
@@ -507,19 +507,33 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="203dp"
-                android:layout_height="36dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/Comprar"
+                app:layout_constraintHorizontal_bias="0.075"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintVertical_bias="0.211" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/Comprar"
-                app:layout_constraintHorizontal_bias="0.242"
+                app:layout_constraintHorizontal_bias="0.307"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:layout_constraintVertical_bias="0.2" />
+                app:layout_constraintVertical_bias="0.211" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
